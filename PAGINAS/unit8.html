@@ -106,7 +106,7 @@
     background:#FFFDF8;
   }
   .field input[type=text]:focus, .field select:focus{outline:none;border-color:var(--sky-dark);}
-  .btn-check, .btn-reset{
+  .btn-check, .btn-reset, .btn-show{
     font-family:'Nunito',sans-serif;
     font-weight:800;
     font-size:.82rem;
@@ -117,11 +117,14 @@
   }
   .btn-check{background:var(--mint-dark);color:white;}
   .btn-check:hover{background:#3f9268;}
+  .btn-show{background:var(--sky-dark);color:white;}
+  .btn-show:hover{background:#268aab;}
   .btn-reset{background:#F2EFE7;color:var(--ink);}
   .btn-reset:hover{background:#E7E2D5;}
   .feedback{font-weight:800;font-size:1.05rem;min-width:22px;text-align:center;}
   .feedback.ok{color:var(--ok);}
   .feedback.bad{color:var(--bad);}
+  .feedback.shown{color:var(--sky-dark);}
   .revealed{font-size:.8rem;color:var(--bad);font-weight:700;flex-basis:100%;margin-top:-4px;}
 
   /* WORD BANK */
@@ -165,6 +168,12 @@
   .checkall:hover{background:#e56947;}
 
   .radiofield label{display:flex;align-items:center;gap:8px;font-weight:700;padding:4px 0;cursor:pointer;}
+
+  .btn-show-mini{
+    background:var(--sky-dark);color:white;border:none;border-radius:999px;
+    font-size:.75rem;padding:2px 7px;cursor:pointer;vertical-align:middle;
+  }
+  .btn-show-mini:hover{background:#268aab;}
 
   footer{text-align:center;color:var(--ink-light);font-size:.85rem;padding:30px 0 10px;}
 </style>
@@ -257,10 +266,11 @@
     <div id="grid5"></div>
     <button class="checkall" data-group="grid5">Check ✔ all</button>
     <p class="instructions" style="margin-top:14px;">Which two words on this list are <b>uncountable</b>?</p>
-    <div class="field" data-answer="lemonade,chocolate">
+    <div class="field" data-answer="lemonade, chocolate|lemonade,chocolate">
       <span class="qtext">Answer:</span>
       <input type="text" class="ans-input" placeholder="word 1, word 2">
       <button class="btn-check">✔ Check</button>
+      <button class="btn-show">👀 Show answer</button>
       <button class="btn-reset">🔄 Try again</button>
       <span class="feedback"></span>
     </div>
@@ -325,13 +335,14 @@
     <div class="wordbank"><span>park</span><span>phoned</span><span>ran</span><span>glass</span><span>balcony</span><span>laughed</span><span>house</span><span>downstairs</span></div>
     <div class="passage">
       My name is Tom. On Saturday I went to the <span class="blank">park</span> because I wanted to play football. At eleven o'clock, my dad
-      (1) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="phoned"> me. He wanted me to come home for lunch. I
-      (2) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="ran"> home quickly. My little sister was in the garden. I gave her a
-      (3) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="glass"> of lemonade because she was hot. Then she asked me to make her a sandwich. We ate lunch on the
-      (4) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="balcony"> because it was sunny. Later, my friend Ana came to visit. She told a funny joke and I
-      (5) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="laughed"> a lot!
+      (1) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="phoned"> <button class="btn-show-mini" data-target="1">👀</button> me. He wanted me to come home for lunch. I
+      (2) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="ran"> <button class="btn-show-mini" data-target="2">👀</button> home quickly. My little sister was in the garden. I gave her a
+      (3) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="glass"> <button class="btn-show-mini" data-target="3">👀</button> of lemonade because she was hot. Then she asked me to make her a sandwich. We ate lunch on the
+      (4) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="balcony"> <button class="btn-show-mini" data-target="4">👀</button> because it was sunny. Later, my friend Ana came to visit. She told a funny joke and I
+      (5) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="laughed"> <button class="btn-show-mini" data-target="5">👀</button> a lot!
     </div>
     <button class="checkall" data-group="s8passage" id="checkPassage">Check ✔ all</button>
+    <button class="btn-show" id="showPassage" style="margin-left:8px;">👀 Show all</button>
     <p class="instructions" style="margin-top:16px;">(6) Now choose the best title for the story.</p>
     <div class="radiofield" data-answer="Tom's busy Saturday">
       <label><input type="radio" name="title8" value="A day in the garden"> A day in the garden</label>
@@ -339,6 +350,7 @@
       <label><input type="radio" name="title8" value="The boy who laughed"> The boy who laughed</label>
       <div style="margin-top:6px;">
         <button class="btn-check">✔ Check</button>
+        <button class="btn-show">👀 Show answer</button>
         <button class="btn-reset">🔄 Try again</button>
         <span class="feedback"></span>
       </div>
@@ -375,10 +387,19 @@ function makeField(question, answer, type, options){
   }
   div.appendChild(input);
   const bc = document.createElement('button'); bc.className='btn-check'; bc.textContent='✔ Check';
+  const bs = document.createElement('button'); bs.className='btn-show'; bs.textContent='👀 Show answer';
   const br = document.createElement('button'); br.className='btn-reset'; br.textContent='🔄 Try again';
   const fb = document.createElement('span'); fb.className='feedback';
-  div.appendChild(bc); div.appendChild(br); div.appendChild(fb);
+  div.appendChild(bc); div.appendChild(bs); div.appendChild(br); div.appendChild(fb);
   return div;
+}
+
+function showField(field){
+  const input = field.querySelector('input[type=text], select');
+  const fb = field.querySelector('.feedback');
+  const first = field.getAttribute('data-answer').split('|')[0];
+  input.value = first;
+  fb.textContent='👀'; fb.className='feedback shown';
 }
 
 function checkField(field){
@@ -421,6 +442,27 @@ document.addEventListener('click', function(e){
       resetField(field);
     }
   }
+  if(e.target.classList.contains('btn-show')){
+    const field = e.target.closest('.field, .radiofield');
+    if(field.classList.contains('radiofield')){
+      const answer = field.getAttribute('data-answer');
+      field.querySelectorAll('input[type=radio]').forEach(r=>{r.checked = (r.value===answer);});
+      const fb = field.querySelector('.feedback'); fb.textContent='👀'; fb.className='feedback shown';
+    } else {
+      showField(field);
+    }
+  }
+  if(e.target.classList.contains('btn-show-mini')){
+    const input = e.target.previousElementSibling;
+    input.value = input.getAttribute('data-answer');
+    input.style.color='var(--sky-dark)'; input.style.borderColor='var(--sky-dark)';
+  }
+  if(e.target.id==='showPassage'){
+    document.querySelectorAll('.passage-input').forEach(inp=>{
+      inp.value = inp.getAttribute('data-answer');
+      inp.style.color='var(--sky-dark)'; inp.style.borderColor='var(--sky-dark)';
+    });
+  }
   if(e.target.classList.contains('checkall')){
     const group = e.target.getAttribute('data-group');
     if(group==='s8passage'){
@@ -450,6 +492,7 @@ foods.forEach(f=>{
     <input type="text" class="ans-input">
     <div class="rowbtns">
       <button class="btn-check">✔</button>
+      <button class="btn-show">👀</button>
       <button class="btn-reset">🔄</button>
     </div>
     <div class="fb feedback"></div>`;
@@ -465,6 +508,10 @@ document.addEventListener('click', function(e){
     if(e.target.classList.contains('btn-check')){
       if(norm(input.value)===answer){fb.textContent='✅';fb.className='fb feedback ok';}
       else{fb.textContent='❌';fb.className='fb feedback bad';}
+    }
+    if(e.target.classList.contains('btn-show')){
+      input.value = item.getAttribute('data-answer');
+      fb.textContent='👀'; fb.className='fb feedback shown';
     }
     if(e.target.classList.contains('btn-reset')){
       input.value=''; fb.textContent=''; fb.className='fb feedback';
