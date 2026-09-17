@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 8: What's for lunch? — Movers Companion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFBF2;
+    --mint:#BEE8D3;
+    --mint-dark:#4FAE7C;
+    --peach:#FFD3AE;
+    --peach-dark:#EE8C4A;
+    --butter:#FFE8A3;
+    --butter-dark:#E3AC1C;
+    --sky:#AEE1F0;
+    --sky-dark:#2E9CC2;
+    --coral:#FF7F5C;
+    --ink:#3D3A34;
+    --ink-light:#847F73;
+    --white:#FFFFFF;
+    --ok:#3E9B5C;
+    --bad:#E15A4D;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Nunito',sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3{font-family:'Baloo 2',cursive;margin:0 0 .3em 0;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px 80px;}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(160deg,var(--butter) 0%, var(--peach) 55%, var(--mint) 100%);
+    border-radius:0 0 40px 40px;
+    padding:48px 20px 40px;
+    text-align:center;
+    margin-bottom:28px;
+  }
+  .hero .plate{font-size:52px;display:block;margin-bottom:6px;}
+  .hero h1{font-size:2.1rem;color:var(--ink);}
+  .hero p{font-size:1.05rem;color:#5a564c;max-width:520px;margin:8px auto 0;}
+  .navpills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;}
+  .navpills a{
+    background:var(--white);
+    border-radius:999px;
+    padding:7px 14px;
+    font-size:.85rem;
+    font-weight:700;
+    text-decoration:none;
+    color:var(--ink);
+    box-shadow:0 2px 0 rgba(0,0,0,.06);
+  }
+
+  /* SECTION */
+  section{margin-bottom:44px;}
+  .tag{
+    display:inline-block;
+    font-family:'Nunito',sans-serif;
+    font-weight:800;
+    font-size:.78rem;
+    padding:5px 12px;
+    border-radius:999px;
+    margin-bottom:10px;
+  }
+  .tag.words{background:var(--butter);color:#7a5a00;}
+  .tag.reading{background:var(--mint);color:#1f6b45;}
+  .tag.grammar{background:var(--sky);color:#155a72;}
+  .tag.practice{background:var(--peach);color:#8a3f0f;}
+
+  .card{
+    background:var(--white);
+    border-radius:22px;
+    padding:22px 22px 20px;
+    box-shadow:0 3px 0 rgba(0,0,0,.05), 0 10px 24px rgba(61,58,52,.05);
+    margin-bottom:16px;
+  }
+  .instructions{color:var(--ink-light);font-weight:600;margin-bottom:14px;}
+
+  /* FIELD ROWS */
+  .field{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px;
+    padding:9px 0;
+    border-bottom:1px dashed #EDE7DA;
+  }
+  .field:last-child{border-bottom:none;}
+  .field .qtext{flex:1 1 260px;font-weight:700;}
+  .field .qtext b{color:var(--coral);}
+  .field input[type=text], .field select{
+    font-family:'Nunito',sans-serif;
+    font-weight:700;
+    font-size:.95rem;
+    padding:6px 10px;
+    border:2px solid #EDE7DA;
+    border-radius:10px;
+    min-width:120px;
+    background:#FFFDF8;
+  }
+  .field input[type=text]:focus, .field select:focus{outline:none;border-color:var(--sky-dark);}
+  .btn-check, .btn-reset{
+    font-family:'Nunito',sans-serif;
+    font-weight:800;
+    font-size:.82rem;
+    border:none;
+    border-radius:999px;
+    padding:7px 12px;
+    cursor:pointer;
+  }
+  .btn-check{background:var(--mint-dark);color:white;}
+  .btn-check:hover{background:#3f9268;}
+  .btn-reset{background:#F2EFE7;color:var(--ink);}
+  .btn-reset:hover{background:#E7E2D5;}
+  .feedback{font-weight:800;font-size:1.05rem;min-width:22px;text-align:center;}
+  .feedback.ok{color:var(--ok);}
+  .feedback.bad{color:var(--bad);}
+  .revealed{font-size:.8rem;color:var(--bad);font-weight:700;flex-basis:100%;margin-top:-4px;}
+
+  /* WORD BANK */
+  .wordbank{
+    display:flex;flex-wrap:wrap;gap:8px;
+    background:#FFFDF3;border:2px dashed var(--butter-dark);
+    border-radius:14px;padding:12px 14px;margin-bottom:16px;font-weight:700;
+  }
+  .wordbank span{background:var(--white);border-radius:8px;padding:3px 9px;}
+
+  /* FOOD GRID (Words section) */
+  .foodgrid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+    gap:14px;
+    margin-bottom:6px;
+  }
+  .fooditem{background:#FFFDF8;border-radius:16px;padding:12px;text-align:center;border:2px solid #F3EEE1;}
+  .fooditem .emoji{font-size:2rem;display:block;margin-bottom:4px;}
+  .fooditem .num{font-weight:800;color:var(--ink-light);font-size:.8rem;}
+  .fooditem input{width:100%;margin-top:6px;text-align:center;}
+  .fooditem .rowbtns{display:flex;gap:5px;justify-content:center;margin-top:6px;}
+  .fooditem .fb{margin-top:4px;}
+
+  /* PASSAGE (reading style) */
+  .passage{
+    background:#FFFDF6;border-left:5px solid var(--sky-dark);
+    padding:14px 16px;border-radius:0 14px 14px 0;margin-bottom:16px;font-size:.98rem;
+  }
+  .passage .blank{
+    display:inline-block;min-width:90px;border-bottom:2px solid var(--ink-light);
+    text-align:center;font-weight:800;color:var(--coral);
+  }
+
+  .checkall{
+    display:block;margin:14px auto 0;
+    background:var(--coral);color:white;font-family:'Baloo 2',cursive;
+    font-weight:700;font-size:1rem;border:none;border-radius:999px;
+    padding:10px 26px;cursor:pointer;
+  }
+  .checkall:hover{background:#e56947;}
+
+  .radiofield label{display:flex;align-items:center;gap:8px;font-weight:700;padding:4px 0;cursor:pointer;}
+
+  footer{text-align:center;color:var(--ink-light);font-size:.85rem;padding:30px 0 10px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="plate">🍱</span>
+  <h1>Unit 8: What's for lunch?</h1>
+  <p>Companion interactivo del libro Movers — practica en clase o en casa, actividad por actividad.</p>
+  <div class="navpills">
+    <a href="#s1">🍝 Words</a>
+    <a href="#s2">🥕 Reading</a>
+    <a href="#s3">🍏 a/an/some</a>
+    <a href="#s4">🧃 How much/many</a>
+    <a href="#s5">🧹 have to</a>
+    <a href="#s6">📖 R&amp;W Part 1</a>
+    <a href="#s7">🎂 Listening</a>
+    <a href="#s8">📚 R&amp;W Part 3</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- SECTION 1: WORDS -->
+<section id="s1">
+  <span class="tag words">📘 Book p.64 · Words · Activity 1</span>
+  <h2>Food words</h2>
+  <div class="card">
+    <p class="instructions">Look at the food below. Write the correct word for each one. Number 1 is done for you.</p>
+    <div class="wordbank"><span>cheese</span><span>chicken</span><span>milk</span><span>pasta</span><span>coffee</span><span>salad</span><span>tea</span><span>water</span><span>soup</span><span>sandwiches</span><span>vegetables</span><span>noodles</span></div>
+    <div class="foodgrid" id="grid1">
+      <div class="fooditem"><span class="num">1</span><span class="emoji">🍝</span>
+        <input type="text" value="pasta" disabled style="background:#F0F7F1;color:var(--ok);font-weight:800;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="tag words">📘 Book p.64 · Words · Activity 2</span>
+  <h2>What have they got?</h2>
+  <div class="card">
+    <p class="instructions">Choose the correct container for each sentence.</p>
+    <div id="grid2"></div>
+    <button class="checkall" data-group="grid2">Check ✔ all</button>
+  </div>
+</section>
+
+<!-- SECTION 2: READING & SPEAKING -->
+<section id="s2">
+  <span class="tag reading">📘 Book p.65 · Reading &amp; Speaking · Activity 1</span>
+  <h2>Sort the food</h2>
+  <div class="card">
+    <p class="instructions">Choose the correct group for each word.</p>
+    <div id="grid3"></div>
+    <button class="checkall" data-group="grid3">Check ✔ all</button>
+  </div>
+</section>
+
+<section>
+  <span class="tag reading">📘 Book p.65 · Reading &amp; Speaking · Activity 2</span>
+  <h2>What is it?</h2>
+  <div class="card">
+    <p class="instructions">Read the clue and write the answer.</p>
+    <div id="grid4"></div>
+    <button class="checkall" data-group="grid4">Check ✔ all</button>
+  </div>
+</section>
+
+<section>
+  <span class="tag reading">📘 Book p.65 · Reading &amp; Speaking · Activity 3</span>
+  <h2>Ask and answer</h2>
+  <div class="card">
+    <p class="instructions">Talk to your partner. There's no single correct answer — this one is just for speaking practice!</p>
+    <ul style="font-weight:700;">
+      <li>What's your favourite food for lunch?</li>
+      <li>Do you prefer tea or juice?</li>
+      <li>Which vegetables do you like?</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 3: GRAMMAR a/an/some -->
+<section id="s3">
+  <span class="tag grammar">📘 Book p.66 · Story · Activity 2</span>
+  <h2>a, an or some?</h2>
+  <div class="card">
+    <p class="instructions">Complete each sentence with <b>a</b>, <b>an</b> or <b>some</b>.</p>
+    <div id="grid5"></div>
+    <button class="checkall" data-group="grid5">Check ✔ all</button>
+    <p class="instructions" style="margin-top:14px;">Which two words on this list are <b>uncountable</b>?</p>
+    <div class="field" data-answer="lemonade,chocolate">
+      <span class="qtext">Answer:</span>
+      <input type="text" class="ans-input" placeholder="word 1, word 2">
+      <button class="btn-check">✔ Check</button>
+      <button class="btn-reset">🔄 Try again</button>
+      <span class="feedback"></span>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: HOW MUCH / HOW MANY -->
+<section id="s4">
+  <span class="tag grammar">📘 Book p.67 · Language Practice · Activity 3</span>
+  <h2>How much or how many?</h2>
+  <div class="card">
+    <p class="instructions">Look at the picnic basket: apples 🍎🍎🍎🍎🍎, one bottle of juice 🧃, eight sandwiches 🥪 and lots of cheese 🧀. Complete the questions with <b>much</b> or <b>many</b>.</p>
+    <div id="grid6"></div>
+    <button class="checkall" data-group="grid6">Check ✔ all</button>
+  </div>
+</section>
+
+<!-- SECTION 5: have to / has to -->
+<section id="s5">
+  <span class="tag grammar">📘 Book p.68 · Language Practice · Activity 3</span>
+  <h2>What do they have to do?</h2>
+  <div class="card">
+    <p class="instructions">Complete each sentence with <b>have to</b> or <b>has to</b>.</p>
+    <div id="grid7"></div>
+    <button class="checkall" data-group="grid7">Check ✔ all</button>
+  </div>
+</section>
+
+<!-- SECTION 6: MOVERS PRACTICE TEST — R&W PART 1 -->
+<section id="s6">
+  <span class="tag practice">📘 Movers Practice Test · Reading &amp; Writing, Part 1</span>
+  <h2>Look and read</h2>
+  <div class="card">
+    <p class="instructions">Choose the correct word from the box and write it on the line.</p>
+    <div class="wordbank"><span>a rabbit</span><span>ice cream</span><span>a lion</span><span>a park</span><span>cheese</span><span>a kitchen</span><span>biscuits</span><span>a duck</span></div>
+    <p class="instructions"><b>Example:</b> This animal has got a long mane and lives in hot places. It's very strong. → <i>a lion</i></p>
+    <div id="grid8"></div>
+    <button class="checkall" data-group="grid8">Check ✔ all</button>
+  </div>
+</section>
+
+<!-- SECTION 7: LISTENING PART 2 -->
+<section id="s7">
+  <span class="tag practice">📘 Movers Practice Test · Listening, Part 2 (reading version)</span>
+  <h2>Amy's picnic</h2>
+  <div class="card">
+    <p class="instructions">We don't have the audio here, so read the text instead and complete the notes.</p>
+    <div class="passage">
+      Hi! I'm Amy. On <b>Saturday</b> I'm having a picnic in the park. I live at number <b>12</b>, on <b>Green Street</b>. For food, we're bringing sandwiches and a big chocolate cake. Six children are coming, and three grown-ups are coming too: my mum, my dad and my uncle.
+    </div>
+    <div id="grid9"></div>
+    <button class="checkall" data-group="grid9">Check ✔ all</button>
+  </div>
+</section>
+
+<!-- SECTION 8: R&W PART 3 -->
+<section id="s8">
+  <span class="tag practice">📘 Movers Practice Test · Reading &amp; Writing, Part 3</span>
+  <h2>Tom's Saturday</h2>
+  <div class="card">
+    <p class="instructions">Read the story. Choose a word from the box and write it next to numbers 1–5.</p>
+    <div class="wordbank"><span>park</span><span>phoned</span><span>ran</span><span>glass</span><span>balcony</span><span>laughed</span><span>house</span><span>downstairs</span></div>
+    <div class="passage">
+      My name is Tom. On Saturday I went to the <span class="blank">park</span> because I wanted to play football. At eleven o'clock, my dad
+      (1) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="phoned"> me. He wanted me to come home for lunch. I
+      (2) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="ran"> home quickly. My little sister was in the garden. I gave her a
+      (3) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="glass"> of lemonade because she was hot. Then she asked me to make her a sandwich. We ate lunch on the
+      (4) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="balcony"> because it was sunny. Later, my friend Ana came to visit. She told a funny joke and I
+      (5) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="laughed"> a lot!
+    </div>
+    <button class="checkall" data-group="s8passage" id="checkPassage">Check ✔ all</button>
+    <p class="instructions" style="margin-top:16px;">(6) Now choose the best title for the story.</p>
+    <div class="radiofield" data-answer="Tom's busy Saturday">
+      <label><input type="radio" name="title8" value="A day in the garden"> A day in the garden</label>
+      <label><input type="radio" name="title8" value="Tom's busy Saturday"> Tom's busy Saturday</label>
+      <label><input type="radio" name="title8" value="The boy who laughed"> The boy who laughed</label>
+      <div style="margin-top:6px;">
+        <button class="btn-check">✔ Check</button>
+        <button class="btn-reset">🔄 Try again</button>
+        <span class="feedback"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer>Companion original de Unit 8, basado en los ejercicios del libro Movers · Alina Iuga</footer>
+
+<script>
+function norm(s){return (s||'').toString().trim().toLowerCase().replace(/\s+/g,' ');}
+
+function makeField(question, answer, type, options){
+  const div = document.createElement('div');
+  div.className = 'field';
+  div.setAttribute('data-answer', answer);
+  const q = document.createElement('span');
+  q.className = 'qtext';
+  q.innerHTML = question;
+  div.appendChild(q);
+  let input;
+  if(type==='select'){
+    input = document.createElement('select');
+    input.className='ans-select';
+    const blank = document.createElement('option'); blank.value=''; blank.textContent='choose...';
+    input.appendChild(blank);
+    options.forEach(o=>{const op=document.createElement('option');op.value=o;op.textContent=o;input.appendChild(op);});
+  } else {
+    input = document.createElement('input');
+    input.type='text'; input.className='ans-input';
+    input.placeholder = options && options.placeholder ? options.placeholder : '';
+  }
+  div.appendChild(input);
+  const bc = document.createElement('button'); bc.className='btn-check'; bc.textContent='✔ Check';
+  const br = document.createElement('button'); br.className='btn-reset'; br.textContent='🔄 Try again';
+  const fb = document.createElement('span'); fb.className='feedback';
+  div.appendChild(bc); div.appendChild(br); div.appendChild(fb);
+  return div;
+}
+
+function checkField(field){
+  const input = field.querySelector('input[type=text], select');
+  const fb = field.querySelector('.feedback');
+  const answers = field.getAttribute('data-answer').split('|').map(norm);
+  const val = norm(input.value);
+  if(answers.includes(val) && val!==''){
+    fb.textContent='✅'; fb.className='feedback ok';
+  } else {
+    fb.textContent='❌'; fb.className='feedback bad';
+  }
+}
+function resetField(field){
+  const input = field.querySelector('input[type=text], select');
+  input.value='';
+  const fb = field.querySelector('.feedback');
+  fb.textContent=''; fb.className='feedback';
+}
+
+document.addEventListener('click', function(e){
+  if(e.target.classList.contains('btn-check')){
+    const field = e.target.closest('.field, .radiofield');
+    if(field.classList.contains('radiofield')){
+      const answer = norm(field.getAttribute('data-answer'));
+      const checked = field.querySelector('input[type=radio]:checked');
+      const fb = field.querySelector('.feedback');
+      if(checked && norm(checked.value)===answer){fb.textContent='✅';fb.className='feedback ok';}
+      else {fb.textContent='❌';fb.className='feedback bad';}
+    } else {
+      checkField(field);
+    }
+  }
+  if(e.target.classList.contains('btn-reset')){
+    const field = e.target.closest('.field, .radiofield');
+    if(field.classList.contains('radiofield')){
+      field.querySelectorAll('input[type=radio]').forEach(r=>r.checked=false);
+      const fb = field.querySelector('.feedback'); fb.textContent=''; fb.className='feedback';
+    } else {
+      resetField(field);
+    }
+  }
+  if(e.target.classList.contains('checkall')){
+    const group = e.target.getAttribute('data-group');
+    if(group==='s8passage'){
+      document.querySelectorAll('.passage-input').forEach(inp=>{
+        const answer = norm(inp.getAttribute('data-answer'));
+        if(norm(inp.value)===answer){inp.style.color='var(--ok)';inp.style.borderColor='var(--ok)';}
+        else{inp.style.color='var(--bad)';inp.style.borderColor='var(--bad)';}
+      });
+    } else {
+      document.querySelectorAll('#'+group+' .field').forEach(checkField);
+    }
+  }
+});
+
+/* Activity: foodgrid items 2-12 */
+const foods = [
+  {n:2, emoji:'🧀', a:'cheese'}, {n:3, emoji:'🍗', a:'chicken'}, {n:4, emoji:'🥛', a:'milk'},
+  {n:5, emoji:'☕', a:'coffee'}, {n:6, emoji:'🥗', a:'salad'}, {n:7, emoji:'🍵', a:'tea'},
+  {n:8, emoji:'💧', a:'water'}, {n:9, emoji:'🍲', a:'soup'}, {n:10, emoji:'🥪', a:'sandwiches'},
+  {n:11, emoji:'🥕', a:'vegetables'}, {n:12, emoji:'🍜', a:'noodles'}
+];
+const grid1 = document.getElementById('grid1');
+foods.forEach(f=>{
+  const div = document.createElement('div');
+  div.className='fooditem';
+  div.innerHTML = `<span class="num">${f.n}</span><span class="emoji">${f.emoji}</span>
+    <input type="text" class="ans-input">
+    <div class="rowbtns">
+      <button class="btn-check">✔</button>
+      <button class="btn-reset">🔄</button>
+    </div>
+    <div class="fb feedback"></div>`;
+  div.setAttribute('data-answer', f.a);
+  grid1.appendChild(div);
+});
+document.addEventListener('click', function(e){
+  if(e.target.closest('.fooditem')){
+    const item = e.target.closest('.fooditem');
+    const input = item.querySelector('input');
+    const fb = item.querySelector('.fb');
+    const answer = norm(item.getAttribute('data-answer'));
+    if(e.target.classList.contains('btn-check')){
+      if(norm(input.value)===answer){fb.textContent='✅';fb.className='fb feedback ok';}
+      else{fb.textContent='❌';fb.className='fb feedback bad';}
+    }
+    if(e.target.classList.contains('btn-reset')){
+      input.value=''; fb.textContent=''; fb.className='fb feedback';
+    }
+  }
+});
+
+/* Activity 2: containers */
+const grid2 = document.getElementById('grid2');
+const containerOpts = ['a bowl','a glass','a bottle','a cup','a plate'];
+[
+  ['Mrs Baker has got <b>___</b> of tea.', 'a cup'],
+  ['Leo has got <b>___</b> of water.', 'a bottle'],
+  ['My grandma has got <b>___</b> of soup.', 'a bowl'],
+  ['Dad has got <b>___</b> of pasta.', 'a plate'],
+  ['Emma has got <b>___</b> of orange juice.', 'a glass']
+].forEach(([q,a])=>grid2.appendChild(makeField(q,a,'select',containerOpts)));
+
+/* Activity Sort the food */
+const grid3 = document.getElementById('grid3');
+const catOpts = ['drinks','meat','fruit','vegetables','other food'];
+[
+  ['<b>lemonade</b> →', 'drinks'], ['<b>sausages</b> →', 'meat'], ['<b>banana</b> →', 'fruit'],
+  ['<b>peas</b> →', 'vegetables'], ['<b>rice</b> →', 'other food'], ['<b>grapes</b> →', 'fruit']
+].forEach(([q,a])=>grid3.appendChild(makeField(q,a,'select',catOpts)));
+
+/* What is it? */
+const grid4 = document.getElementById('grid4');
+[
+  ['This meal is made with bread. You can put cheese, meat or vegetables inside. What is it?', 'a sandwich|sandwich'],
+  ['This orange vegetable is often eaten raw in salads. What is it?', 'a carrot|carrot'],
+  ['This hot drink is popular in the afternoon in Britain. People often add milk to it. What is it?', 'tea'],
+  ['You can carry water or juice in this. It isn\'t a cup or a glass. What is it?', 'a bottle|bottle']
+].forEach(([q,a])=>grid4.appendChild(makeField(q,a,'text')));
+
+/* a/an/some */
+const grid5 = document.getElementById('grid5');
+const artOpts = ['a','an','some'];
+[
+  ['I\'ve got <b>___</b> banana.', 'a'],
+  ['I\'ve got <b>___</b> apple.', 'an'],
+  ['I\'ve got <b>___</b> lemonade.', 'some'],
+  ['I\'ve got <b>___</b> sandwich.', 'a'],
+  ['I\'ve got <b>___</b> chocolate.', 'some'],
+  ['I\'ve got <b>___</b> orange.', 'an']
+].forEach(([q,a])=>grid5.appendChild(makeField(q,a,'select',artOpts)));
+
+/* how much/many */
+const grid6 = document.getElementById('grid6');
+const mmOpts = ['much','many'];
+[
+  ['How <b>___</b> apples have they got?', 'many'],
+  ['How <b>___</b> juice have they got?', 'much'],
+  ['How <b>___</b> sandwiches have they got?', 'many'],
+  ['How <b>___</b> cheese have they got?', 'much']
+].forEach(([q,a])=>grid6.appendChild(makeField(q,a,'select',mmOpts)));
+
+/* have to / has to */
+const grid7 = document.getElementById('grid7');
+const htOpts = ['have to','has to'];
+[
+  ['🧹 The children <b>___</b> tidy their books.', 'have to'],
+  ['🐕 Leo <b>___</b> walk the dog.', 'has to'],
+  ['🍽️ Mia and Sam <b>___</b> lay the table.', 'have to'],
+  ['🛏️ Grandpa <b>___</b> make the beds today.', 'has to']
+].forEach(([q,a])=>grid7.appendChild(makeField(q,a,'select',htOpts)));
+
+/* Movers practice R&W Part 1 */
+const grid8 = document.getElementById('grid8');
+[
+  ['1. This place has grass, trees and swings. Families often go there on Sunday.', 'a park|park'],
+  ['2. This small animal has got long ears and a short tail. It loves eating carrots.', 'a rabbit|rabbit'],
+  ['3. People often put this food in sandwiches. It can be yellow or white.', 'cheese'],
+  ['4. This is a room in a house with a cooker and a fridge.', 'a kitchen|kitchen'],
+  ['5. This is a cold sweet food. You eat it from a bowl with a spoon.', 'ice cream']
+].forEach(([q,a])=>grid8.appendChild(makeField(q,a,'text')));
+
+/* Listening note completion */
+const grid9 = document.getElementById('grid9');
+[
+  ['When? on', 'saturday'],
+  ['House number:', '12'],
+  ['Street:', 'green street|green'],
+  ['Food: sandwiches and', 'cake|chocolate cake'],
+  ['How many children?', 'six|6'],
+  ['Grown-ups: mum, dad and', 'uncle']
+].forEach(([q,a])=>grid9.appendChild(makeField(q,a,'text')));
+</script>
+</body>
+</html>
