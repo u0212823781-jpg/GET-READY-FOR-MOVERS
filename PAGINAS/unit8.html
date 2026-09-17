@@ -73,6 +73,13 @@
   .tag.reading{background:var(--mint);color:#1f6b45;}
   .tag.grammar{background:var(--sky);color:#155a72;}
   .tag.practice{background:var(--peach);color:#8a3f0f;}
+  .tag.answerkey{background:#F3D9D1;color:#8a3020;}
+
+  .keyblock{margin-bottom:20px;}
+  .keyblock h3{font-size:1.05rem;margin-bottom:4px;}
+  .keyblock .paraphrase{color:var(--ink);margin-bottom:6px;}
+  .keyblock .answers{font-weight:700;background:#FFFDF3;border-radius:10px;padding:8px 12px;margin-bottom:6px;}
+  .keyblock .explain{color:var(--ink-light);font-size:.92rem;}
 
   .card{
     background:var(--white);
@@ -135,6 +142,14 @@
   }
   .wordbank span{background:var(--white);border-radius:8px;padding:3px 9px;}
 
+  /* AUDIO */
+  .audio-box{
+    background:#EAF4FB;border:2px solid var(--sky-dark);border-radius:16px;
+    padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  }
+  .audio-box .label{font-weight:800;color:#155A72;}
+  .audio-box audio{flex:1 1 220px;}
+
   /* FOOD GRID (Words section) */
   .foodgrid{
     display:grid;
@@ -193,6 +208,8 @@
     <a href="#s6">📖 R&amp;W Part 1</a>
     <a href="#s7">🎂 Listening</a>
     <a href="#s8">📚 R&amp;W Part 3</a>
+    <a href="#s9">🔤 Revision 2</a>
+    <a href="#s10">📋 Answer Key</a>
   </div>
 </div>
 
@@ -246,18 +263,25 @@
 
 <section>
   <span class="tag reading">📘 Book p.65 · Reading &amp; Speaking · Activity 3</span>
-  <h2>Ask and answer</h2>
+  <h2>Listen and circle</h2>
   <div class="card">
-    <p class="instructions">Talk to your partner. There's no single correct answer — this one is just for speaking practice!</p>
-    <ul style="font-weight:700;">
-      <li>What's your favourite food for lunch?</li>
-      <li>Do you prefer tea or juice?</li>
-      <li>Which vegetables do you like?</li>
-    </ul>
+    <p class="instructions">Listen to the recording and choose the correct answer for each question.</p>
+    <div class="audio-box"><span class="label">🎧 Track 42</span><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_42.mp3"></audio></div>
+    <div id="grid3b"></div>
+    <button class="checkall" data-group="grid3b">Check ✔ all</button>
   </div>
 </section>
 
 <!-- SECTION 3: GRAMMAR a/an/some -->
+<section>
+  <span class="tag grammar">📘 Book p.66 · Story · Activity 1</span>
+  <h2>Listen to the story</h2>
+  <div class="card">
+    <p class="instructions">Follow the story in your book while you listen.</p>
+    <div class="audio-box"><span class="label">🎧 Track 43</span><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_43.mp3"></audio></div>
+  </div>
+</section>
+
 <section id="s3">
   <span class="tag grammar">📘 Book p.66 · Story · Activity 2</span>
   <h2>a, an or some?</h2>
@@ -290,6 +314,17 @@
 
 <!-- SECTION 5: have to / has to -->
 <section id="s5">
+  <span class="tag grammar">📘 Book p.68 · Language Practice · Activity 1</span>
+  <h2>What does Jack have to do at home?</h2>
+  <div class="card">
+    <p class="instructions">Listen and tick (✓) or cross (✗).</p>
+    <div class="audio-box"><span class="label">🎧 Track 44</span><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_44.mp3"></audio></div>
+    <div id="jackchores"></div>
+    <button class="checkall" data-group="jackchores">Check ✔ all</button>
+  </div>
+</section>
+
+<section>
   <span class="tag grammar">📘 Book p.68 · Language Practice · Activity 3</span>
   <h2>What do they have to do?</h2>
   <div class="card">
@@ -314,13 +349,11 @@
 
 <!-- SECTION 7: LISTENING PART 2 -->
 <section id="s7">
-  <span class="tag practice">📘 Movers Practice Test · Listening, Part 2 (reading version)</span>
-  <h2>Amy's picnic</h2>
+  <span class="tag practice">📘 Movers Practice Test · Listening, Part 2</span>
+  <h2>My birthday party</h2>
   <div class="card">
-    <p class="instructions">We don't have the audio here, so read the text instead and complete the notes.</p>
-    <div class="passage">
-      Hi! I'm Amy. On <b>Saturday</b> I'm having a picnic in the park. I live at number <b>12</b>, on <b>Green Street</b>. For food, we're bringing sandwiches and a big chocolate cake. Six children are coming, and three grown-ups are coming too: my mum, my dad and my uncle.
-    </div>
+    <p class="instructions">Listen and write. There is one example.</p>
+    <div class="audio-box"><span class="label">🎧 Track 45</span><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_45.mp3"></audio></div>
     <div id="grid9"></div>
     <button class="checkall" data-group="grid9">Check ✔ all</button>
   </div>
@@ -355,6 +388,163 @@
         <span class="feedback"></span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SECTION 9: REVISION 2 & SPEAKING PREP -->
+<section id="s9">
+  <span class="tag practice">📘 Revision 2 · Activity 2</span>
+  <h2>Listen and complete the question</h2>
+  <div class="card">
+    <p class="instructions">Listen to the recording. It spells out a hidden question, letter by letter. Write the full question, then write your own answer.</p>
+    <div class="audio-box"><span class="label">🎧 Track 46</span><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_46.mp3"></audio></div>
+    <div id="grid10"></div>
+    <button class="checkall" data-group="grid10">Check ✔ all</button>
+    <p class="instructions" style="margin-top:14px;">My answer: _______________________________________________</p>
+  </div>
+</section>
+
+<section>
+  <span class="tag practice">📘 Movers Speaking preparation · Activity 1</span>
+  <h2>Spot the differences</h2>
+  <div class="card">
+    <p class="instructions">Listen and complete the sentences about the two pictures.</p>
+    <div class="audio-box"><span class="label">🎧 Track 47</span><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_47.mp3"></audio></div>
+    <div id="grid11"></div>
+    <button class="checkall" data-group="grid11">Check ✔ all</button>
+  </div>
+</section>
+
+<section>
+  <span class="tag practice">📘 Movers Speaking preparation · Activity 2</span>
+  <h2>Circle the odd one out</h2>
+  <div class="card">
+    <p class="instructions">Listen and complete the sentences.</p>
+    <div class="audio-box"><span class="label">🎧 Track 48</span><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_48.mp3"></audio></div>
+    <div id="grid12"></div>
+    <button class="checkall" data-group="grid12">Check ✔ all</button>
+  </div>
+</section>
+
+<!-- SECTION 10: ANSWER KEY FOR THE REAL BOOK -->
+<section id="s10">
+  <span class="tag answerkey">📘 For the printed book — not this platform's own exercises</span>
+  <h2>Answer key &amp; explanations</h2>
+  <div class="card">
+    <p class="instructions">These are the correct answers for the exercises in the students' printed book (pages 64–71), with a simple explanation of the rule behind each one — so you can correct their books directly. We can't reprint the book's own questions or pictures here, only the answers and the reasoning.</p>
+
+    <div class="keyblock">
+      <h3>Lesson 1 (SB p.64) — Words, Activity 1</h3>
+      <p class="paraphrase">📝 Look at the picture and write the food word for each number.</p>
+      <div class="answers">1 pasta · 2 vegetables · 3 milk · 4 noodles · 5 water · 6 sandwiches · 7 soup · 8 salad · 9 tea · 10 chicken · 11 cheese · 12 coffee</div>
+      <div class="explain">Each number matches a food item in the picture. Look carefully at the container and colour to tell similar items apart (e.g. tea and coffee are both in a cup).</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Lesson 1 (SB p.64) — Words, Activity 2</h3>
+      <p class="paraphrase">📝 Match each person to what they've got, then complete the sentence.</p>
+      <div class="answers">The man has got a bottle of water. · The girl has got a plate of pasta. · The woman has got a cup of tea. · The boy has got a glass of orange juice. · There is a bowl of soup.</div>
+      <div class="explain">Match each container word (bowl/glass/bottle/cup/plate) to its shape in the picture — a bottle is for drinks you carry, a bowl is for soup, etc.</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Lesson 2 (SB p.65) — Reading &amp; Speaking, Activity 1</h3>
+      <p class="paraphrase">📝 Put each word in the right group: drinks, meat, fruit, vegetables or other food.</p>
+      <div class="answers">Drinks: tea, coffee, milk, lemonade, water, hot chocolate, cola · Meat: chicken, a sausage · Fruit: orange, apple, lemon, watermelon, pear, grapes, strawberries, cherries, mango, lime · Vegetables: peas, potatoes, tomatoes, cucumber, beans, onions, peppers · Other food: butter, cheese, soup, sandwiches, crisps, cake, biscuits, ice cream</div>
+      <div class="explain">These are suggested answers — the book accepts any reasonable word that fits the category, this is just a starting list.</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Lesson 2 (SB p.65) — Reading &amp; Speaking, Activity 2</h3>
+      <p class="paraphrase">📝 Read the clue and complete the missing word.</p>
+      <div class="answers">1 bread → sandwich · 2 vegetable → carrot · 3 drink → coffee · 4 juice → bottle</div>
+      <div class="explain">Each gapped definition already gives the first letter of the missing word as a clue — read the whole sentence first to guess the item, then check the letter matches.</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Lesson 2 (SB p.65) — Reading &amp; Speaking, Activity 3 🎧</h3>
+      <p class="paraphrase">📝 Listen to the recording and circle the correct answer.</p>
+      <div class="answers">1 sausages, egg and milk · 2 juice and tea · 3 peas</div>
+      <div class="explain">This one has real audio (Track 42) — do it as the interactive "Listen and circle" exercise further up this page.</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Lesson 3 (SB p.66) — Story, Activity 1 🎧</h3>
+      <p class="paraphrase">📝 Listen to the story and follow it in the book, then act it out with a partner.</p>
+      <div class="answers">No written answers — it's a listen-and-act story.</div>
+      <div class="explain">Real audio (Track 43) — use the "Listen to the story" player further up this page.</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Lesson 3 (SB p.66) — Story, Activity 2</h3>
+      <p class="paraphrase">📝 Complete each sentence with a, an or some.</p>
+      <div class="answers">1 an · 2 some · 3 some · 4 a · 5 some · 6 some &nbsp;|&nbsp; Uncountable nouns: lemonade, chocolate</div>
+      <div class="explain">Use <b>an</b> before a vowel sound, <b>a</b> before a consonant sound, and <b>some</b> when the food is plural or uncountable (you can't count it as one unit — like lemonade or chocolate).</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Lesson 4 (SB p.67) — Language practice, Activity 1</h3>
+      <p class="paraphrase">📝 Find the 5 differences between the two pictures and complete the sentences.</p>
+      <div class="answers">1 cakes · 2 sandwiches · 3 juice · 4 chocolate · 5 presents</div>
+      <div class="explain">Compare the two pictures item by item — these are the five things that changed between "before" and "after" the party.</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Lesson 4 (SB p.67) — Language practice, Activity 3</h3>
+      <p class="paraphrase">📝 Complete the questions with how much or how many.</p>
+      <div class="answers">1 water · 2 apples · 3 cheese · 4 bananas</div>
+      <div class="explain">Use <b>how much</b> with uncountable nouns (water, cheese) and <b>how many</b> with countable nouns in the plural (apples, bananas).</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Lesson 5 (SB p.68) — Language practice, Activity 1 🎧</h3>
+      <p class="paraphrase">📝 Listen and tick (✓) or cross (✗) what Jack has to do at home.</p>
+      <div class="answers">Has to: clean bedroom, cook dinner, eat fruit &amp; vegetables, homework · Doesn't have to: walk the dog, shopping, clean windows, wash car</div>
+      <div class="explain">Real audio (Track 44) — use the "What does Jack have to do at home?" exercise further up this page.</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Lesson 5 (SB p.68) — Language practice, Activity 3</h3>
+      <p class="paraphrase">📝 Look at the pictures and write what they have to do, using have to or has to.</p>
+      <div class="answers">1 The children have to say the alphabet. · 2 The boy has to carry a big bag. · 3 The children have to sit on the floor. · 4 The girl has to feed the fish. · 5 The children have to water the plants. · 6 The children have to go outside.</div>
+      <div class="explain">Use <b>has to</b> only with he/she/it (a single boy or girl); everyone else (the children) uses <b>have to</b>.</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Movers practice test — Reading &amp; Writing, Part 1</h3>
+      <p class="paraphrase">📝 Read each clue and write the correct word from the box.</p>
+      <div class="answers">1 a garden · 2 a horse · 3 cheese · 4 a kitchen · 5 ice cream</div>
+      <div class="explain">Each clue describes the item without naming it — look for key details (where it is, what it's used for, what it looks like) to match it to a word in the box.</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Movers practice test — Reading &amp; Writing, Part 3</h3>
+      <p class="paraphrase">📝 Read the story and complete the gaps with a word from the box, then choose the best title.</p>
+      <div class="answers">1 phoned · 2 ran · 3 glass · 4 balcony · 5 downstairs &nbsp;|&nbsp; Best title: Lucy's busy day</div>
+      <div class="explain">Read the whole story first to understand what happens, then choose the word from the box that makes sense grammatically and logically in each gap.</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Revision 2 — Activity 2 🎧</h3>
+      <p class="paraphrase">📝 Listen to the recording spelling out a hidden question, letter by letter, then complete it.</p>
+      <div class="answers">What food do you like best?</div>
+      <div class="explain">Real audio (Track 46) — use the "Listen and complete the question" exercise further up this page.</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Movers Speaking preparation — Activity 1 🎧</h3>
+      <p class="paraphrase">📝 Listen and complete the sentences about the differences between two pictures.</p>
+      <div class="answers">park → swimming pool · three cars → four cars · skipping → running · handbag → flowers · green door → red door</div>
+      <div class="explain">Real audio (Track 47) — use the "Spot the differences" exercise further up this page.</div>
+    </div>
+
+    <div class="keyblock">
+      <h3>Movers Speaking preparation — Activity 2 🎧</h3>
+      <p class="paraphrase">📝 Listen and complete the sentences to say which picture is the odd one out.</p>
+      <div class="answers">1 clothes · 2 climbing / roller skating · 3 food · 4 in / on (the cupboard)</div>
+      <div class="explain">Real audio (Track 48) — use the "Circle the odd one out" exercise further up this page.</div>
+    </div>
+
   </div>
 </section>
 
@@ -592,13 +782,61 @@ const grid8 = document.getElementById('grid8');
 /* Listening note completion */
 const grid9 = document.getElementById('grid9');
 [
-  ['When? on', 'saturday'],
-  ['House number:', '12'],
-  ['Street:', 'green street|green'],
-  ['Food: sandwiches and', 'cake|chocolate cake'],
-  ['How many children?', 'six|6'],
-  ['Grown-ups: mum, dad and', 'uncle']
+  ['When? on', 'monday'],
+  ['House number:', '76'],
+  ['Street:', 'sunny street|sunny'],
+  ['Food: sandwiches and', 'cake'],
+  ['How many children?', 'thirteen|13'],
+  ['Grown-ups: mum, dad and', 'grandpa']
 ].forEach(([q,a])=>grid9.appendChild(makeField(q,a,'text')));
+
+/* Listen and circle — Track 42 */
+const grid3b = document.getElementById('grid3b');
+const mcqOpts1 = ['cereal and toast','sausages, egg and milk','pancakes and juice'];
+const mcqOpts2 = ['milk and water','juice and tea','coffee and cola'];
+const mcqOpts3 = ['carrots','peas','broccoli'];
+[
+  ['1. What did the child have for breakfast?', mcqOpts1, 'sausages, egg and milk'],
+  ['2. Which drinks does the child like best?', mcqOpts2, 'juice and tea'],
+  ["3. What's the child's favourite vegetable?", mcqOpts3, 'peas']
+].forEach(([q,opts,a])=>grid3b.appendChild(makeField(q,a,'select',opts)));
+
+/* Jack's chores — Track 44 */
+const jackchores = document.getElementById('jackchores');
+const tcOpts = ['✓ has to','✗ doesn\'t have to'];
+[
+  ['clean his bedroom', "✓ has to"],
+  ['take the dog for a walk', "✗ doesn't have to"],
+  ['do the shopping', "✗ doesn't have to"],
+  ['cook the dinner', "✓ has to"],
+  ['clean the windows', "✗ doesn't have to"],
+  ['wash the car', "✗ doesn't have to"],
+  ['eat fruit and vegetables', "✓ has to"],
+  ['do homework', "✓ has to"]
+].forEach(([q,a])=>jackchores.appendChild(makeField(q,a,'select',tcOpts)));
+
+/* Coded question — Track 46 */
+const grid10 = document.getElementById('grid10');
+grid10.appendChild(makeField('Full question:', 'What food do you like best?', 'text'));
+
+/* Spot the differences — Track 47 */
+const grid11 = document.getElementById('grid11');
+[
+  ["In Picture A, there's a park, but in Picture B, there's a ______.", 'swimming pool'],
+  ['Here, there are three cars, but here there are ______.', 'four'],
+  ['In this picture the boy is skipping, but in this one he\'s ______.', 'running'],
+  ['Here, the woman has got a handbag, but here she\'s got ______.', 'flowers'],
+  ['This door is green, but this one is ______.', 'red']
+].forEach(([q,a])=>grid11.appendChild(makeField(q,a,'text')));
+
+/* Odd one out — Track 48 */
+const grid12 = document.getElementById('grid12');
+[
+  ['1. These are all ______, but this isn\'t.', 'clothes'],
+  ["2. In these pictures they're all climbing, but in this one they're ______.", 'skating|roller skating'],
+  ['3. These are all ______, but this isn\'t.', 'food'],
+  ['4. These are all in the cupboard, but this one is ______ it.', 'on']
+].forEach(([q,a])=>grid12.appendChild(makeField(q,a,'text')));
 </script>
 </body>
 </html>
