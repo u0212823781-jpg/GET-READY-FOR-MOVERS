@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 12: In the countryside — Answer Key</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFBF2;
+    --mint:#BEE8D3; --mint-dark:#4FAE7C;
+    --peach:#FFD3AE; --peach-dark:#EE8C4A;
+    --butter:#FFE8A3; --butter-dark:#E3AC1C;
+    --sky:#AEE1F0; --sky-dark:#2E9CC2;
+    --coral:#FF7F5C;
+    --ink:#3D3A34; --ink-light:#847F73;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Nunito',sans-serif;line-height:1.5;}
+  h1,h2,h3{font-family:'Baloo 2',cursive;margin:0 0 .3em 0;}
+  .wrap{max-width:780px;margin:0 auto;padding:0 20px 80px;}
+
+  .hero{
+    background:linear-gradient(160deg,var(--mint) 0%, var(--sky) 55%, var(--peach) 100%);
+    border-radius:0 0 40px 40px;padding:46px 20px 38px;text-align:center;margin-bottom:26px;
+  }
+  .hero .plate{font-size:50px;display:block;margin-bottom:6px;}
+  .hero h1{font-size:2rem;color:var(--ink);}
+  .hero p{font-size:1rem;color:#5a564c;max-width:540px;margin:8px auto 0;}
+  .navpills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;}
+  .navpills a{background:var(--white);border-radius:999px;padding:7px 13px;font-size:.8rem;font-weight:700;text-decoration:none;color:var(--ink);box-shadow:0 2px 0 rgba(0,0,0,.06);}
+
+  .lesson{margin-bottom:38px;}
+  .lesson-title{
+    display:flex;align-items:center;gap:10px;margin-bottom:14px;
+    padding-bottom:8px;border-bottom:3px solid var(--butter);
+  }
+  .lesson-title .num{
+    background:var(--coral);color:white;font-family:'Baloo 2',cursive;font-weight:700;
+    width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;
+  }
+  .lesson-title h2{font-size:1.25rem;}
+  .lesson-title .pageref{font-size:.8rem;color:var(--ink-light);font-weight:700;}
+
+  .activity{
+    background:var(--white);border-radius:20px;padding:18px 20px;margin-bottom:14px;
+    box-shadow:0 3px 0 rgba(0,0,0,.05), 0 8px 20px rgba(61,58,52,.05);
+  }
+  .activity .eyebrow{font-weight:800;font-size:.78rem;color:var(--ink-light);margin-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .activity .eyebrow .audiotag{background:var(--sky);color:#155A72;border-radius:999px;padding:2px 9px;font-weight:800;}
+  .activity .statement{font-weight:700;font-size:1rem;margin-bottom:10px;}
+
+  .audio-box{
+    background:#EAF4FB;border:2px solid var(--sky-dark);border-radius:14px;
+    padding:10px 14px;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  }
+  .audio-box audio{flex:1 1 220px;}
+
+  .btn-reveal{
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;
+    background:var(--mint-dark);color:white;border:none;border-radius:999px;
+    padding:8px 16px;cursor:pointer;
+  }
+  .btn-reveal:hover{background:#3f9268;}
+  .btn-reveal.on{background:#E7E2D5;color:var(--ink);}
+
+  .answerbox{
+    display:none;margin-top:12px;background:#FFFDF3;border:2px dashed var(--butter-dark);
+    border-radius:14px;padding:12px 16px;
+  }
+  .answerbox.show{display:block;}
+  .answerbox .answers{font-weight:800;color:#155A2E;margin-bottom:6px;}
+  .answerbox .explain{color:var(--ink-light);font-size:.9rem;}
+
+  .grammar-table{width:100%;border-collapse:collapse;margin:2px 0 12px;}
+  .grammar-table th{background:var(--sky);color:#155A72;padding:6px 8px;border:1px solid #bfe3f0;font-size:.82rem;text-align:left;}
+  .grammar-table td{padding:6px 8px;border:1px solid #d8ecf5;vertical-align:top;font-size:.86rem;}
+  .grammar-table td.word{font-weight:800;color:#155A72;white-space:nowrap;}
+
+  footer{text-align:center;color:var(--ink-light);font-size:.85rem;padding:30px 0 10px;}
+
+  .sitenav{
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    padding:10px 20px;background:var(--white);
+    box-shadow:0 2px 8px rgba(0,0,0,.07);
+    position:sticky;top:0;z-index:50;
+  }
+  .sitenav a{
+    text-decoration:none;font-weight:800;font-size:.82rem;color:var(--ink);
+    background:#F2EFE7;padding:6px 12px;border-radius:999px;white-space:nowrap;
+  }
+  .sitenav a.home{background:var(--coral);color:white;}
+  .sitenav a.active{background:var(--mint-dark);color:white;}
+
+  .audio-fallback{font-size:.78rem;color:var(--ink-light);}
+  .audio-fallback a{color:var(--sky-dark);font-weight:700;}
+  .audio-error{display:none;color:#b3392c;font-size:.8rem;font-weight:700;margin-top:4px;}
+</style>
+</head>
+<body>
+
+<nav class="sitenav">
+  <a class="home" href="../index.html">🏠 Home</a>
+  <a href="introduction.html" data-page="introduction">👋 Introduction</a>
+  <a href="unit1.html" data-page="unit1">🌳 Unit 1</a>
+  <a href="unit2.html" data-page="unit2">📅 Unit 2</a>
+  <a href="unit3.html" data-page="unit3">🏙️ Unit 3</a>
+  <a href="unit4.html" data-page="unit4">🏠 Unit 4</a>
+  <a href="unit8.html" data-page="unit8">🍱 Unit 8</a>
+  <a href="unit9.html" data-page="unit9">🐘 Unit 9</a>
+  <a href="unit10.html" data-page="unit10">🌦️ Unit 10</a>
+  <a href="unit11.html" data-page="unit11">🤒 Unit 11</a>
+  <a href="unit12.html" data-page="unit12">🌄 Unit 12</a>
+</nav>
+
+<div class="hero">
+  <span class="plate">🌄🚜</span>
+  <h1>Unit 12: In the countryside</h1>
+  <p>Answer key for the printed book — page references, simple explanations and real audio, activity by activity. Includes Revision 3 and Movers Speaking preparation (Term 3).</p>
+  <div class="navpills">
+    <a href="#l1">Lesson 1</a>
+    <a href="#l2">Lesson 2</a>
+    <a href="#l3">Lesson 3</a>
+    <a href="#l4">Lesson 4</a>
+    <a href="#l5">Lesson 5</a>
+    <a href="#mpt">Practice test</a>
+    <a href="#rev">Revision 3</a>
+    <a href="#sp">Speaking prep</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- LESSON 1 -->
+<div class="lesson" id="l1">
+  <div class="lesson-title"><span class="num">1</span><h2>Words</h2><span class="pageref">SB p.100</span></div>
+
+  <div class="activity" data-answers="grass 6 · river 9 · field 4 · waterfall 2 · mountain 1 · farm 11 · lake 3 · forest 12 · leaf 10 · rock 8 · road 5 · sky 7" data-explain="Look at the picture of the countryside and write the correct number next to each natural feature word.">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">✏️ Write the numbers.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 f · 2 c · 3 a · 4 b · 5 g · 6 e · 7 d" data-explain="Look at the picture, read the sentence halves and draw lines to make complete sentences about what you see.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🔗 Look, read and draw lines.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 2 -->
+<div class="lesson" id="l2">
+  <div class="lesson-title"><span class="num">2</span><h2>Reading &amp; Speaking</h2><span class="pageref">SB p.101</span></div>
+
+  <div class="activity" data-answers="Ticked (✓): boat, bike, plane, train, lorry, tractor   ·   Crossed (✗): helicopter, bus, car, motorbike" data-explain="Look at the picture from Lesson 1 and tick the means of transport that appear in it, then cross the ones that don't.">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">✅ Which things can you see in the picture on page 100? Tick and cross.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open drawing activity — no fixed answer (depends on each child's drawing based on the instructions)." data-explain="Read the sentences with instructions and draw or colour the missing items in the picture.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🎨 Read and complete the picture. Follow the instructions.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 country · 2 no · 3 ride bike and walk · 4 walk, bike" data-explain="Transcript summary: a child prefers the countryside to the town; there aren't mountains near their home, though they've seen mountains on holiday; they go for walks and bike rides in the countryside, and get to school by walking or cycling, not by car.">
+    <div class="eyebrow">Activity 3 <span class="audiotag">🎧 Track 65</span></div>
+    <div class="statement">🎧 Listen and circle. Ask and answer.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_65.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 3 -->
+<div class="lesson" id="l3">
+  <div class="lesson-title"><span class="num">3</span><h2>Story</h2><span class="pageref">SB p.102</span></div>
+
+  <div class="activity" data-answers="No written answers — it's a listen-and-act story." data-explain="Play the audio and follow the illustrated story in the Student's Book, then act it out with a partner.">
+    <div class="eyebrow">Activity 1 <span class="audiotag">🎧 Track 66</span></div>
+    <div class="statement">🎧 Listen and read. Then act.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_66.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 A · 2 B · 3 B · 4 A · 5 A · 6 B" data-explain="Read each sentence using indefinite pronouns (something/everything/nothing or someone/everyone/no one) and decide which picture, A or B, it describes.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">📖 Read and write A or B.</div>
+    <table class="grammar-table">
+      <tr><th>Things</th><th>People</th></tr>
+      <tr><td class="word">something / everything / nothing</td><td>someone / everyone / no one</td></tr>
+    </table>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open activity — no fixed answers (personal translation)." data-explain="Write these words in your own language and say whether we use each one to talk about people or things.">
+    <div class="eyebrow">Activity 3</div>
+    <div class="statement">🌍 Write these words in your language.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 4 -->
+<div class="lesson" id="l4">
+  <div class="lesson-title"><span class="num">4</span><h2>Language practice</h2><span class="pageref">SB p.103</span></div>
+
+  <div class="activity" data-answers="Order (left to right): 5, 2, 6, 1, 4, 3" data-explain="Transcript summary: Jack tells Daisy about his day in the countryside — they cleaned the kitchen, then walked in the forest and had a picnic; it started to rain so they stood under a tree; a bird sang and Jack took a photo; the rain stopped and they walked up a mountain; finally, tired, they caught a bus home.">
+    <div class="eyebrow">Activity 1 <span class="audiotag">🎧 Track 67</span></div>
+    <div class="statement">🎧 Listen and write the numbers.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_67.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 b · 2 a · 3 b · 4 a · 5 a · 6 b" data-explain="Look at the pictures, read each question and circle the correct answer, a or b.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">📖 Look at the pictures. Read the questions and circle a or b.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open speaking activity — no fixed written answers." data-explain="Cover the text from Activity 2 and use only the pictures from Activity 1 to tell the story of Jack's trip, in your own words.">
+    <div class="eyebrow">Activity 3</div>
+    <div class="statement">🗣️ Cover the text above and look at the pictures. Tell the story.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 5 -->
+<div class="lesson" id="l5">
+  <div class="lesson-title"><span class="num">5</span><h2>Language practice</h2><span class="pageref">SB p.104</span></div>
+
+  <div class="activity" data-answers="1 afraid · 2 blonde · 3 next to · 4 Goodbye! · 5 one more" data-explain="Look at the pictures and speech bubbles, and replace the word in red with a word from the box that means the same (there are four extra words you won't need).">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">🔄 Replace the red words with words that mean the same.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open speaking activity — no fixed written answers." data-explain="Complete the second speech bubble, then use your answers from Activity 1 to ask and answer about what the words mean.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🗣️ Ask and answer.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open speaking activity — no fixed written answers." data-explain="Pair speaking activity with a photocopiable worksheet (Teacher's Book, page 134): each child writes a tricky word in their own language, then plays a matching-card game with a partner.">
+    <div class="eyebrow">Activity 3</div>
+    <div class="statement">🃏 Do the speaking activity.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- MOVERS PRACTICE TEST -->
+<div class="lesson" id="mpt">
+  <div class="lesson-title"><span class="num">✓</span><h2>Movers practice test</h2><span class="pageref">CB p.105–107</span></div>
+
+  <div class="activity" data-answers="1 a bat · 2 a watermelon · 3 a tomato · 4 a field · 5 a comic" data-explain="Read each definition and match it to the correct picture, then copy the word onto the line.">
+    <div class="eyebrow">Reading &amp; Writing, Part 1</div>
+    <div class="statement">📖 Look and read. Choose the correct words and write them on the lines.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 Jim (drawing flowers, sitting on the grass) · 2 Jane (straight fair hair) · 3 Peter (filming the rabbits with a camera) · 4 Vicky (writing, blue trousers) · 5 Fred (spider on his shoulder)" data-explain="Transcript summary: a group of friends are working outside with their teacher — Jim is sitting on the grass drawing flowers; Jane has long straight fair hair; Peter is filming rabbits with a camera; Vicky is writing in a book wearing blue trousers; and Fred, who loves spiders, has one on his shoulder.">
+    <div class="eyebrow">Listening, Part 1 <span class="audiotag">🎧 Track 68</span></div>
+    <div class="statement">🎧 Listen and draw lines. There is one example.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_68.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 A · 2 C · 3 C · 4 B · 5 C · 6 A" data-explain="Read the whole conversation between Paul and his friend Julia first, then choose the option that best completes each gap.">
+    <div class="eyebrow">Reading &amp; Writing, Part 2</div>
+    <div class="statement">📝 Read the text and choose the best answer. Paul is talking to his friend, Julia.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- REVISION 3 -->
+<div class="lesson" id="rev">
+  <div class="lesson-title"><span class="num">↻</span><h2>Revision 3</h2><span class="pageref">CB p.108–110</span></div>
+  <p style="color:var(--ink-light);font-size:.9rem;margin-top:-8px;">Revising vocabulary, grammar and skills from Introduction to Unit 12.</p>
+
+  <div class="activity" data-answers="1 bear · 2 fly · 3 giraffe · 4 hippo · 5 lion · 6 parrot · 7 kangaroo · 8 bat" data-explain="Look at the picture and complete the text with the correct animal words.">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">✏️ Write the animal words.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open writing activity — no fixed answers (personal lists)." data-explain="Think of three words for each question and write them down — a personal vocabulary review.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">✏️ Think and write.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Order: 1 f · 2 b · 3 c · 4 d · 5 a · 6 e   —   Names: 1 Mary · 2 Jim · 3 Fred · 4 Vicky · 5 Peter · 6 Jane" data-explain="Transcript summary: Mary is cold in the snow with no coat; Jim has a headache and a temperature and needs to go home; Fred hasn't got a ticket for the swimming pool bus; Vicky's kittens are hungry; Peter is hot and has juice but no glass; Jane wants to see the dolphins and needs a pen to write her name.">
+    <div class="eyebrow">Activity 3 <span class="audiotag">🎧 Track 69</span></div>
+    <div class="statement">🎧 Listen and number. Then listen again and write the names.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_69.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 c · 2 b · 3 e · 4 a · 5 f · 6 d" data-explain="Match each question from Activity 3 to its correct answer.">
+    <div class="eyebrow">Activity 4</div>
+    <div class="statement">🔗 Read the questions and answers. Draw lines.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 forest · 2 toothache · 3 stomach · 4 panda · 5 dolphin · 6 kangaroo · 7 rainbow · 8 bowl" data-explain="Read each definition, write the correct word by copying the letters you need, and cross out the extra letters you don't use.">
+    <div class="eyebrow">Activity 5</div>
+    <div class="statement">✏️ Write the words and cross out the letters.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="What was the weather like on your birthday?" data-explain="Circle the letters that weren't crossed out in Activity 5, put them together to form a question, then ask and answer it with a partner.">
+    <div class="eyebrow">Activity 6</div>
+    <div class="statement">🔤 Circle the letters that aren't crossed out and write the question. Then ask and answer.</div>
+    <button class="btn-reveal">👀 Show answer</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- SPEAKING PREP -->
+<div class="lesson" id="sp">
+  <div class="lesson-title"><span class="num">🗣</span><h2>Movers Speaking preparation</h2><span class="pageref">CB p.111</span></div>
+  <p style="color:var(--ink-light);font-size:.9rem;margin-top:-8px;">Revision from Introduction to Unit 12 — final Speaking Test preparation.</p>
+
+  <div class="activity" data-answers="Suggested: sad, running, shop, sitting, closed, buying, living room, watching, cinema, raining, DVD" data-explain="Look at the pictures that will tell a story and circle the words you think will appear in it.">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">🔍 Look at the pictures. Circle the words that you think will be in the story.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="2, 1, 4, 3" data-explain="Transcript summary: two children arrive at the cinema to find it closed and feel sad; it starts raining and they run; they go to a shop where the girl buys a DVD; then they sit in a living room watching it together.">
+    <div class="eyebrow">Activity 2 <span class="audiotag">🎧 Track 70</span></div>
+    <div class="statement">🎧 Listen and order the pictures in Activity 1. Tell the story.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_70.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 These are water, but this is a market. · 2 These are drinks, but this isn't. · 3 These are birds, but this isn't. · 4 In these pictures it's sunny/hot, but in this one it's snowing/cold." data-explain="Look at each set of pictures, find the odd one out, and complete the sentence explaining why.">
+    <div class="eyebrow">Activity 3</div>
+    <div class="statement">🔍 Circle the odd one out. Complete the sentences and write the letters.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+</div>
+
+<footer>Unit 12 Answer Key · Get Ready for Movers · Alina Iuga</footer>
+
+<script>
+document.querySelectorAll('.sitenav a[data-page]').forEach(function(a){
+  if(location.pathname.endsWith(a.getAttribute('href'))) a.classList.add('active');
+});
+document.querySelectorAll('.audio-box audio').forEach(function(a){
+  const box = a.closest('.audio-box');
+  const src = a.getAttribute('src');
+  const fb = document.createElement('div');
+  fb.className = 'audio-fallback';
+  fb.innerHTML = '🔗 <a href="'+src+'" target="_blank">Open audio file directly</a>';
+  box.appendChild(fb);
+  const err = document.createElement('div');
+  err.className = 'audio-error';
+  err.textContent = "⚠️ Couldn't load this audio — check the file is in AUDIOS/ with this exact name.";
+  box.appendChild(err);
+  a.addEventListener('error', function(){ err.style.display = 'block'; });
+});
+document.querySelectorAll('.activity').forEach(function(card){
+  const btn = card.querySelector('.btn-reveal');
+  const box = card.querySelector('.answerbox');
+  const showLabel = btn.textContent;
+  if(card.hasAttribute('data-answers')){
+    box.querySelector('.answers').textContent = '✅ ' + card.getAttribute('data-answers');
+  }
+  box.querySelector('.explain').textContent = card.getAttribute('data-explain');
+  btn.addEventListener('click', function(){
+    const isOn = box.classList.toggle('show');
+    btn.classList.toggle('on', isOn);
+    btn.textContent = isOn ? '🙈 Hide' : showLabel;
+  });
+});
+</script>
+</body>
+</html>
