@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vocabulary Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#F3F1FE; --navy2:#FFFFFF; --navy3:#EEEAFB;
+    --violet:#7C6AE8; --violet-dim:#B5AAF2;
+    --teal:#12A594; --gold:#C9840F; --pink:#D93C79;
+    --ink:#2B2555; --ink-dim:#6E6795; --line:#DDD6F7;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 15% -10%, #E3DCFF 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 5%, #D8F5F0 0%, transparent 45%),
+      var(--navy);
+    color:var(--ink);font-family:'Work Sans',sans-serif;line-height:1.5;min-height:100vh;
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px 90px;}
+
+  .sitenav{display:flex;align-items:center;gap:8px;padding:10px 20px;background:var(--navy2);
+    box-shadow:0 2px 8px rgba(43,37,85,.06);position:sticky;top:0;z-index:50;}
+  .sitenav a{text-decoration:none;font-weight:800;font-size:.82rem;color:var(--ink);
+    background:var(--navy3);padding:6px 14px;border-radius:999px;font-family:'Fredoka',sans-serif;}
+
+  .hero{padding:44px 20px 24px;text-align:center;}
+  .hero-emoji{font-size:50px;display:block;margin-bottom:8px;}
+  .hero h1{font-size:clamp(1.7rem,5vw,2.4rem);}
+  .hero p{color:var(--ink-dim);max-width:540px;margin:10px auto 0;}
+
+  .groups{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:24px 0 8px;}
+  .group-btn{font-family:'Fredoka';font-weight:600;font-size:.88rem;background:var(--navy2);
+    color:var(--ink-dim);border:2px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer;transition:.15s;}
+  .group-btn:hover{border-color:var(--violet-dim);color:var(--ink);}
+  .group-btn.active{background:var(--violet);border-color:var(--violet);color:#fff;}
+
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:18px 0 26px;}
+  .tab-btn{font-family:'Fredoka';font-weight:600;font-size:.9rem;background:var(--navy3);
+    color:var(--ink-dim);border:2px solid transparent;border-radius:999px;padding:8px 16px;cursor:pointer;transition:.15s;}
+  .tab-btn:hover{color:var(--ink);}
+  .tab-btn.active{background:var(--teal);color:#fff;}
+
+  .panel{display:none;} .panel.active{display:block;animation:fadein .25s ease;}
+  @keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .card{background:var(--navy2);border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:16px;
+    box-shadow:0 4px 0 rgba(124,106,232,.06), 0 14px 30px rgba(43,37,85,.08);}
+
+  .search-box{display:flex;align-items:center;gap:10px;background:var(--navy3);border:2px solid var(--line);
+    border-radius:14px;padding:10px 16px;margin-bottom:18px;}
+  .search-box input{background:transparent;border:none;outline:none;color:var(--ink);font-size:1rem;width:100%;}
+  table.vtable{width:100%;border-collapse:collapse;}
+  table.vtable th{text-align:left;font-family:'Fredoka';font-weight:600;font-size:.8rem;color:var(--teal);padding:8px 10px;border-bottom:2px solid var(--line);}
+  table.vtable td{padding:8px 10px;border-bottom:1px solid var(--line);font-size:.92rem;}
+  table.vtable td.w{font-weight:600;} table.vtable td.tag{color:var(--violet-dim);font-size:.8rem;}
+  table.vtable td.m{color:var(--ink-dim);} table.vtable tr.hidden{display:none;}
+
+  .fc-wrap{display:flex;flex-direction:column;align-items:center;gap:18px;}
+  .fc-progress{color:var(--ink-dim);font-size:.85rem;font-weight:600;}
+  .flashcard{width:100%;max-width:380px;height:210px;perspective:1200px;cursor:pointer;}
+  .flashcard-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d;}
+  .flashcard.flipped .flashcard-inner{transform:rotateY(180deg);}
+  .fc-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:22px;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;padding:20px;text-align:center;
+    box-shadow:0 4px 0 rgba(124,106,232,.06),0 14px 26px rgba(43,37,85,.10);}
+  .fc-front{background:linear-gradient(160deg,#EAE3FF 0%,#D6C9FF 100%);color:#2B2555;border:1px solid #D3C6FA;}
+  .fc-back{background:linear-gradient(160deg,#DAF9F1 0%,#BEEFE2 100%);color:#0B4A40;border:1px solid #A9E4D6;transform:rotateY(180deg);}
+  .fc-face .label{font-size:.72rem;font-weight:700;opacity:.6;margin-bottom:8px;}
+  .fc-face .word{font-family:'Fredoka';font-weight:700;font-size:1.7rem;}
+  .fc-face .tag{font-size:.85rem;opacity:.65;margin-top:2px;}
+  .fc-controls{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+
+  .btn{font-family:'Fredoka';font-weight:600;font-size:.9rem;border:none;border-radius:999px;padding:10px 20px;cursor:pointer;transition:.15s;}
+  .btn-primary{background:var(--violet);color:#fff;} .btn-primary:hover{background:#6C5CE0;}
+  .btn-ghost{background:transparent;border:2px solid var(--line);color:var(--ink-dim);}
+  .btn-ghost:hover{border-color:var(--violet-dim);color:var(--ink);}
+  .btn-teal{background:var(--teal);color:#fff;} .btn-teal:hover{background:#0E8577;}
+
+  .match-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px;}
+  .match-stats{display:flex;gap:16px;font-size:.85rem;color:var(--ink-dim);font-weight:600;}
+  .match-stats b{color:var(--gold);}
+  .match-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  @media(max-width:600px){.match-grid{grid-template-columns:repeat(3,1fr);}}
+  .match-tile{background:var(--navy3);border:2px solid var(--line);border-radius:14px;padding:14px 8px;text-align:center;
+    cursor:pointer;font-weight:600;font-size:.88rem;min-height:56px;display:flex;align-items:center;justify-content:center;
+    transition:.12s;user-select:none;}
+  .match-tile:hover{border-color:var(--violet-dim);}
+  .match-tile.selected{border-color:var(--violet);background:#E7E1FC;}
+  .match-tile.correct{border-color:var(--teal);background:#DDF6F1;color:#0E8577;cursor:default;}
+  .match-tile.wrong{border-color:var(--pink);background:#FBE1EC;animation:shake .3s;}
+  @keyframes shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+  .match-win{text-align:center;padding:26px 10px;} .match-win .big{font-size:2.2rem;}
+
+  .quiz-progress{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:.85rem;color:var(--ink-dim);font-weight:600;}
+  .quiz-bar{height:6px;background:var(--navy3);border-radius:999px;overflow:hidden;margin-bottom:18px;}
+  .quiz-bar-fill{height:100%;background:var(--teal);transition:width .3s;}
+  .quiz-question{font-family:'Fredoka';font-size:1.15rem;margin-bottom:16px;text-align:center;}
+  .quiz-question .vb{color:var(--gold);}
+  .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  @media(max-width:520px){.quiz-options{grid-template-columns:1fr;}}
+  .quiz-opt{background:var(--navy3);border:2px solid var(--line);border-radius:14px;padding:13px;text-align:center;
+    font-weight:600;cursor:pointer;font-size:.96rem;transition:.12s;}
+  .quiz-opt:hover{border-color:var(--violet-dim);}
+  .quiz-opt.correct{border-color:var(--teal);background:#DDF6F1;color:#0E8577;}
+  .quiz-opt.wrong{border-color:var(--pink);background:#FBE1EC;color:#C81B5B;}
+  .quiz-opt.disabled{pointer-events:none;opacity:.55;}
+  .quiz-result{text-align:center;padding:26px 10px;} .quiz-result .score{font-family:'Fredoka';font-size:2.3rem;color:var(--gold);}
+
+  .bee-clue{font-size:1.1rem;text-align:center;margin-bottom:8px;}
+  .bee-tag{text-align:center;color:var(--ink-dim);font-size:.82rem;margin-bottom:16px;}
+  .bee-listen{display:flex;justify-content:center;margin-bottom:18px;}
+  .bee-input-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px;}
+  .bee-input-row input{background:var(--navy3);border:2px solid var(--line);border-radius:12px;padding:12px 16px;
+    color:var(--ink);font-size:1.05rem;text-align:center;width:220px;outline:none;}
+  .bee-input-row input:focus{border-color:var(--violet);}
+  .bee-feedback{text-align:center;font-weight:600;min-height:26px;margin-bottom:10px;}
+  .bee-feedback.ok{color:var(--teal);} .bee-feedback.bad{color:var(--pink);}
+  .bee-controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+  .bee-progress{text-align:center;color:var(--ink-dim);font-size:.85rem;font-weight:600;margin-bottom:6px;}
+
+  footer{text-align:center;color:var(--ink-dim);font-size:.82rem;padding:30px 0 10px;}
+</style>
+</head>
+<body>
+
+<nav class="sitenav"><a href="../index.html">🏠 Home</a></nav>
+
+<div class="hero">
+  <span class="hero-emoji">📗✏️</span>
+  <h1>Vocabulary Practice</h1>
+  <p>Practise the Movers wordlist by unit — check the table, or practise with flashcards, matching, a quiz and the spelling bee.</p>
+</div>
+
+<div class="wrap">
+
+  <div class="groups" id="groupSelector"></div>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="table">📖 Table</button>
+    <button class="tab-btn" data-tab="flash">🃏 Flashcards</button>
+    <button class="tab-btn" data-tab="match">🧩 Match</button>
+    <button class="tab-btn" data-tab="quiz">❓ Quiz</button>
+    <button class="tab-btn" data-tab="bee">🐝 Spelling Bee</button>
+  </div>
+
+  <div class="panel active" id="panel-table">
+    <div class="card">
+      <div class="search-box"><span>🔍</span><input type="text" id="searchInput" placeholder="Search in English or Spanish..."></div>
+      <table class="vtable"><thead><tr><th>Word</th><th>Meaning</th></tr></thead><tbody id="tableBody"></tbody></table>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-flash">
+    <div class="card fc-wrap">
+      <div class="fc-progress" id="fcProgress"></div>
+      <div class="flashcard" id="flashcard">
+        <div class="flashcard-inner">
+          <div class="fc-face fc-front"><div class="label">ENGLISH</div><div class="word" id="fcFront"></div><div class="tag" id="fcFrontTag"></div></div>
+          <div class="fc-face fc-back"><div class="label">MEANING</div><div class="word" id="fcBack"></div></div>
+        </div>
+      </div>
+      <div class="fc-controls">
+        <button class="btn btn-ghost" id="fcPrev">⬅ Previous</button>
+        <button class="btn btn-teal" id="fcShuffle">🔀 Shuffle</button>
+        <button class="btn btn-primary" id="fcNext">Next ➡</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-match">
+    <div class="card">
+      <div class="match-head">
+        <div class="match-stats"><span>Tries: <b id="matchTries">0</b></span><span>Pairs: <b id="matchFound">0</b>/<b id="matchTotal">8</b></span></div>
+        <button class="btn btn-primary" id="matchNew">🔁 New game</button>
+      </div>
+      <div class="match-grid" id="matchGrid"></div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-quiz">
+    <div class="card" id="quizCard">
+      <div class="quiz-progress"><span id="quizCounter"></span><span>Score: <b id="quizScore" style="color:var(--gold)">0</b></span></div>
+      <div class="quiz-bar"><div class="quiz-bar-fill" id="quizBarFill" style="width:0%"></div></div>
+      <div class="quiz-question" id="quizQuestion"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-bee">
+    <div class="card">
+      <div class="bee-progress" id="beeProgress"></div>
+      <div class="bee-clue" id="beeClue"></div>
+      <div class="bee-tag" id="beeTag"></div>
+      <div class="bee-listen"><button class="btn btn-teal" id="beeListen">🔊 Listen</button></div>
+      <div class="bee-input-row">
+        <input type="text" id="beeInput" placeholder="type the word..." autocomplete="off">
+        <button class="btn btn-primary" id="beeCheck">Check</button>
+      </div>
+      <div class="bee-feedback" id="beeFeedback"></div>
+      <div class="bee-controls">
+        <button class="btn btn-ghost" id="beeNext" style="display:none;">Next ➡</button>
+        <button class="btn btn-teal" id="beeRestart" style="display:none;">🔁 Try again</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>Vocabulary Practice · Get Ready for Movers · Alina Iuga</footer>
+
+<script>
+const GROUPS = [
+{id:'intro', title:'Introduction', subtitle:'Where do you live?', icon:'👋', words:[
+  {w:"address", m:"dirección"},{w:"basement", m:"sótano"},{w:"dress up", m:"disfrazarse"},
+  {w:"eighty", m:"ochenta"},{w:"fifty", m:"cincuenta"},{w:"first", m:"primero/a"},
+  {w:"forty", m:"cuarenta"},{w:"fourth", m:"cuarto/a"},{w:"ground floor", m:"planta baja"},
+  {w:"ninety", m:"noventa"},{w:"one hundred", m:"cien"},{w:"second", m:"segundo/a"},
+  {w:"seventy", m:"setenta"},{w:"sixty", m:"sesenta"},{w:"third", m:"tercero/a"},{w:"thirty", m:"treinta"},
+]},
+{id:'u1', title:'Unit 1', subtitle:'At the park', icon:'🌳', words:[
+  {w:"a pair of", m:"un par de"},{w:"all right", m:"de acuerdo, bien"},{w:"be good at", m:"se te da bien"},
+  {w:"careful", m:"cuidadoso/a"},{w:"carry", m:"llevar, cargar"},{w:"climb", m:"trepar, escalar"},
+  {w:"coat", m:"abrigo"},{w:"cry", m:"llorar"},{w:"dance", m:"bailar"},{w:"down", m:"abajo"},
+  {w:"fall", m:"caerse"},{w:"fish", tag:"v", m:"pescar"},{w:"help", m:"ayudar"},{w:"hide", m:"esconder(se)"},
+  {w:"hop", m:"saltar a la pata coja"},{w:"laugh", m:"reír(se)"},{w:"scarf", m:"bufanda"},{w:"skate", m:"patinar"},
+  {w:"skip", m:"saltar a la comba"},{w:"sweater", m:"jersey"},{w:"tall", m:"alto/a"},{w:"than", m:"que (comparativo)"},
+  {w:"who", tag:"pron", m:"quién"},
+]},
+{id:'u2', title:'Unit 2', subtitle:'A busy week', icon:'📅', words:[
+  {w:"always", m:"siempre"},{w:"at", tag:"prep. of time", m:"a (las...)"},{w:"call", m:"llamar"},
+  {w:"CD", m:"CD"},{w:"cook", m:"cocinar"},{w:"drive", tag:"n", m:"paseo en coche"},{w:"DVD", m:"DVD"},
+  {w:"email", tag:"n, v", m:"correo electrónico / enviar un email"},{w:"every", m:"cada"},
+  {w:"film", tag:"US movie", m:"película"},{w:"Friday", m:"viernes"},{w:"go shopping", m:"ir de compras"},
+  {w:"homework", m:"deberes"},{w:"How / What about ...?", refOnly:true, m:"¿qué tal si...?"},
+  {w:"How often?", refOnly:true, m:"¿con qué frecuencia?"},{w:"idea", m:"idea"},{w:"internet", m:"internet"},
+  {w:"Monday", m:"lunes"},{w:"music", m:"música"},{w:"never", m:"nunca"},{w:"often", m:"a menudo"},
+  {w:"ride", tag:"n", m:"paseo (bici, caballo...)"},{w:"sail", m:"navegar"},{w:"Saturday", m:"sábado"},
+  {w:"Shall I ...?", refOnly:true, m:"¿quieres que...?"},{w:"sometimes", m:"a veces"},{w:"Sunday", m:"domingo"},
+  {w:"swim", tag:"n", m:"baño, nado"},{w:"text", tag:"n, v", m:"mensaje / enviar un mensaje"},{w:"thing", m:"cosa"},
+  {w:"Thursday", m:"jueves"},{w:"Tuesday", m:"martes"},{w:"walk", tag:"n", m:"paseo"},{w:"wash", m:"lavar"},
+  {w:"website", m:"página web"},{w:"Wednesday", m:"miércoles"},{w:"week", m:"semana"},{w:"weekend", m:"fin de semana"},
+  {w:"When?", refOnly:true, m:"¿cuándo?"},{w:"Who?", refOnly:true, m:"¿quién?"},
+]},
+{id:'u3', title:'Unit 3', subtitle:'In the town', icon:'🏙️', words:[
+  {w:"above", m:"encima de"},{w:"afraid", m:"asustado/a"},{w:"after", m:"después de"},
+  {w:"band", tag:"e.g. rock band", m:"grupo (de música)"},{w:"be called", m:"llamarse"},{w:"below", m:"debajo de"},
+  {w:"bus station", m:"estación de autobuses"},{w:"busy", m:"ocupado/a"},{w:"buy", m:"comprar"},{w:"café", m:"cafetería"},
+  {w:"catch", tag:"e.g. a bus", m:"coger (un autobús)"},{w:"cold", m:"frío/a"},{w:"Excuse me.", refOnly:true, m:"disculpe"},
+  {w:"hospital", m:"hospital"},{w:"hot", m:"caliente, caluroso/a"},{w:"last", m:"último/a, pasado/a"},
+  {w:"library", m:"biblioteca"},{w:"market", m:"mercado"},{w:"near", m:"cerca de"},{w:"opposite", m:"enfrente de"},
+  {w:"present", m:"regalo"},{w:"roof", m:"tejado"},{w:"shopping centre", m:"centro comercial"},
+  {w:"sports centre", m:"polideportivo"},{w:"square", m:"plaza"},{w:"station", m:"estación"},
+  {w:"supermarket", m:"supermercado"},{w:"surprised", m:"sorprendido/a"},{w:"then", m:"entonces, luego"},
+  {w:"tired", m:"cansado/a"},{w:"town centre", m:"centro de la ciudad"},{w:"town", m:"ciudad, pueblo"},
+  {w:"wet", m:"mojado/a"},{w:"Why ...?", refOnly:true, m:"¿por qué...?"},{w:"yesterday", m:"ayer"},
+]},
+{id:'u4', title:'Unit 4', subtitle:'At home', icon:'🏠', words:[
+  {w:"any", m:"alguno/a"},{w:"bat", m:"murciélago / bate"},{w:"blanket", m:"manta"},{w:"cage", m:"jaula"},
+  {w:"CD player", m:"reproductor de CD"},{w:"comic", tag:"book", m:"cómic"},{w:"downstairs", m:"abajo (planta de abajo)"},
+  {w:"drop", m:"dejar caer"},{w:"DVD player", m:"reproductor de DVD"},{w:"fan", m:"ventilador / abanico"},
+  {w:"get dressed", m:"vestirse"},{w:"get up", m:"levantarse"},{w:"ground", m:"suelo"},{w:"inside", m:"dentro"},
+  {w:"look for", m:"buscar"},{w:"lose", m:"perder"},{w:"map", m:"mapa"},{w:"outside", m:"fuera"},
+  {w:"plant", tag:"n, v", m:"planta / plantar"},{w:"round", tag:"adj", m:"redondo/a"},{w:"shop", tag:"v", m:"comprar, ir de tiendas"},
+  {w:"shout", m:"gritar"},{w:"shower", m:"ducha"},{w:"think", m:"pensar"},{w:"toothbrush", m:"cepillo de dientes"},
+  {w:"towel", m:"toalla"},{w:"upstairs", m:"arriba (planta de arriba)"},{w:"wake up", m:"despertar(se)"},{w:"world", m:"mundo"},
+]},
+{id:'u5', title:'Unit 5', subtitle:"Let's go on holiday!", icon:'🏖️', words:[
+  {w:"awake", m:"despierto/a"},{w:"balcony", m:"balcón"},{w:"bank", m:"banco (dinero)"},
+  {w:"bus stop", m:"parada de autobús"},{w:"cinema", m:"cine"},{w:"get off", m:"bajarse (de un autobús, tren...)"},
+  {w:"get on", m:"subirse (a un autobús, tren...)"},{w:"get undressed", m:"desvestirse"},{w:"holiday", m:"vacaciones"},
+  {w:"lift", tag:"US elevator", m:"ascensor"},{w:"message", m:"mensaje"},{w:"pool", tag:"swimming", m:"piscina"},
+  {w:"seat", m:"asiento"},{w:"stairs", m:"escalera(s)"},{w:"ticket", m:"billete, entrada"},{w:"wait", m:"esperar"},
+  {w:"which", tag:"pron", m:"cuál"},
+]},
+{id:'u6', title:'Unit 6', subtitle:'My favourite book', icon:'📚', words:[
+  {w:"all", m:"todo/a/os/as"},{w:"bad", m:"malo/a"},{w:"because", m:"porque"},{w:"best", m:"mejor (superlativo)"},
+  {w:"better", m:"mejor (comparativo)"},{w:"boring", m:"aburrido/a"},{w:"both", m:"ambos/as"},{w:"city", m:"ciudad"},
+  {w:"clown", m:"payaso/a"},{w:"difficult", m:"difícil"},{w:"doctor", m:"médico/a"},{w:"driver", m:"conductor/a"},
+  {w:"easy", m:"fácil"},{w:"exciting", m:"emocionante"},{w:"famous", m:"famoso/a"},{w:"farm", m:"granja"},
+  {w:"farmer", m:"granjero/a"},{w:"How ...?", refOnly:true, m:"¿cómo...?"},{w:"invite", m:"invitar"},{w:"island", m:"isla"},
+  {w:"jungle", m:"selva"},{w:"kind", tag:"n", m:"tipo, clase"},{w:"mistake", m:"error"},{w:"more", m:"más"},
+  {w:"most", m:"la mayoría, lo más"},{w:"nurse", m:"enfermero/a"},{w:"pirate", m:"pirata"},{w:"place", tag:"n", m:"lugar"},
+  {w:"terrible", m:"terrible"},{w:"treasure", m:"tesoro"},{w:"video", m:"vídeo"},{w:"village", m:"pueblo, aldea"},
+  {w:"work", tag:"n, v", m:"trabajo / trabajar"},{w:"worse", m:"peor (comparativo)"},{w:"worst", m:"peor (superlativo)"},
+  {w:"would", refOnly:true, m:"(verbo modal, condicional)"},{w:"Would you like ...?", refOnly:true, m:"¿te gustaría...?"},
+]},
+{id:'u7', title:'Unit 7', subtitle:'This is my family', icon:'👨\u200d👩\u200d👧\u200d👦', words:[
+  {w:"age", m:"edad"},{w:"aunt", m:"tía"},{w:"badly", m:"mal (adverbio)"},{w:"beard", m:"barba"},
+  {w:"blonde", m:"rubio/a"},{w:"circle", m:"círculo"},{w:"could", tag:"past of 'can'", m:"podía, pude"},
+  {w:"curly", m:"rizado/a"},{w:"daughter", m:"hija"},{w:"fair", m:"claro/a (pelo)"},
+  {w:"grandchildren", m:"nietos/as"},{w:"granddaughter", m:"nieta"},{w:"grandparent", m:"abuelo/a"},
+  {w:"grandson", m:"nieto"},{w:"grown-up", m:"adulto/a"},{w:"loudly", m:"alto, ruidosamente"},{w:"loud", m:"alto/a, ruidoso/a"},
+  {w:"moustache", m:"bigote"},{w:"parent", m:"padre/madre"},{w:"quick", m:"rápido/a"},{w:"quickly", m:"rápidamente"},
+  {w:"quiet", m:"callado/a, silencioso/a"},{w:"quietly", m:"en silencio"},{w:"slow", m:"lento/a"},{w:"slowly", m:"lentamente"},
+  {w:"son", m:"hijo"},{w:"straight", m:"liso/a (pelo)"},{w:"uncle", m:"tío"},{w:"well", tag:"adv", m:"bien"},
+]},
+{id:'u8', title:'Unit 8', subtitle:"What's for lunch?", icon:'🍱', words:[
+  {w:"before", m:"antes de"},{w:"bottle", m:"botella"},{w:"bowl", m:"cuenco, bol"},
+  {w:"break", tag:"e.g. lunch break", m:"descanso"},{w:"cheese", m:"queso"},{w:"coffee", m:"café"},
+  {w:"cup", m:"taza"},{w:"glass", m:"vaso"},{w:"have got to", m:"tener que"},{w:"how much", m:"cuánto/a"},
+  {w:"hungry", m:"hambriento/a"},{w:"only", m:"solo, solamente"},{w:"party", m:"fiesta"},{w:"pasta", m:"pasta"},
+  {w:"plate", m:"plato"},{w:"salad", m:"ensalada"},{w:"sandwich", m:"sándwich, bocadillo"},{w:"soup", m:"sopa"},
+  {w:"tea", m:"té"},{w:"thirsty", m:"sediento/a"},{w:"vegetable", m:"verdura"},
+]},
+{id:'u9', title:'Unit 9', subtitle:'Do you like animals?', icon:'🐘', words:[
+  {w:"bat", m:"murciélago"},{w:"bear", m:"oso"},{w:"change", tag:"v", m:"cambiar"},{w:"difference", m:"diferencia"},
+  {w:"dolphin", m:"delfín"},{w:"fly", m:"mosca"},{w:"frightened", m:"asustado/a"},{w:"into", m:"dentro de, en"},
+  {w:"kangaroo", m:"canguro"},{w:"kitten", m:"gatito"},{w:"lion", m:"león"},{w:"must", m:"deber (obligación)"},
+  {w:"noise", m:"ruido"},{w:"off", m:"fuera, apagado"},{w:"onto", m:"sobre, encima de"},{w:"out of", m:"fuera de"},
+  {w:"panda", m:"panda"},{w:"parrot", m:"loro"},{w:"pet", m:"mascota"},{w:"puppy", m:"cachorro"},
+  {w:"rabbit", m:"conejo"},{w:"shark", m:"tiburón"},{w:"up", m:"arriba"},{w:"whale", m:"ballena"},{w:"wrong", m:"incorrecto/a, mal"},
+]},
+{id:'u10', title:'Unit 10', subtitle:'The weather', icon:'🌦️', words:[
+  {w:"bring", m:"traer"},{w:"cloud", m:"nube"},{w:"cloudy", m:"nublado/a"},{w:"dream", m:"sueño"},
+  {w:"in", m:"en (dentro de)"},{w:"moon", m:"luna"},{w:"picnic", m:"picnic"},{w:"put on", m:"ponerse (ropa)"},
+  {w:"rain", tag:"n, v", m:"lluvia / llover"},{w:"rainbow", m:"arcoíris"},{w:"snow", tag:"n, v", m:"nieve / nevar"},
+  {w:"star", m:"estrella"},{w:"sunny", m:"soleado/a"},{w:"take", m:"coger, llevar"},{w:"take off", m:"quitarse (ropa)"},
+  {w:"weather", m:"tiempo (meteorológico)"},{w:"What is/was the weather like?", refOnly:true, m:"¿qué tiempo hace/hacía?"},
+  {w:"wind", m:"viento"},{w:"windy", m:"ventoso/a"},
+]},
+{id:'u11', title:'Unit 11', subtitle:"What's the matter?", icon:'🤒', words:[
+  {w:"all right", tag:"adj", m:"bien (de salud)"},{w:"back", m:"espalda"},{w:"clever", m:"listo/a, inteligente"},
+  {w:"cold", tag:"n", m:"resfriado"},{w:"cough", m:"tos"},{w:"different", m:"diferente"},{w:"dry", m:"seco/a"},
+  {w:"earache", m:"dolor de oído"},{w:"fat", m:"gordo/a"},{w:"fine", m:"bien"},{w:"headache", m:"dolor de cabeza"},
+  {w:"hurt", m:"doler, hacer daño"},{w:"kick", tag:"n", m:"patada"},{w:"naughty", m:"travieso/a"},{w:"neck", m:"cuello"},
+  {w:"need", m:"necesitar"},{w:"pretty", m:"bonito/a"},{w:"shoulder", m:"hombro"},{w:"stomach-ache", m:"dolor de estómago"},
+  {w:"stomach", m:"estómago"},{w:"strong", m:"fuerte"},{w:"temperature", m:"fiebre, temperatura"},{w:"thin", m:"delgado/a"},
+  {w:"tooth/teeth", m:"diente/dientes"},{w:"toothache", m:"dolor de muelas"},{w:"weak", m:"débil"},
+  {w:"What's the matter?", refOnly:true, m:"¿qué te pasa?"},
+]},
+{id:'u12', title:'Unit 12', subtitle:'In the countryside', icon:'🌄', words:[
+  {w:"another", m:"otro/a"},{w:"bottom", m:"fondo, parte de abajo"},{w:"by", m:"en (medio de transporte), junto a"},
+  {w:"carefully", m:"con cuidado"},{w:"centre", m:"centro"},{w:"Come on!", refOnly:true, m:"¡Vamos!"},
+  {w:"countryside", m:"campo"},{w:"everyone", m:"todo el mundo"},{w:"everything", m:"todo"},{w:"field", m:"campo (de cultivo)"},
+  {w:"forest", m:"bosque"},{w:"grass", m:"hierba"},{w:"lake", m:"lago"},{w:"leaf/leaves", m:"hoja/hojas"},
+  {w:"mean", tag:"v", m:"significar"},{w:"mountain", m:"montaña"},{w:"move", m:"mover(se)"},{w:"no one", m:"nadie"},
+  {w:"nothing", m:"nada"},{w:"river", m:"río"},{w:"road", m:"carretera"},{w:"rock", m:"roca"},{w:"safe", m:"seguro/a"},
+  {w:"See you!", refOnly:true, m:"¡Nos vemos!"},{w:"someone", m:"alguien"},{w:"something", m:"algo"},
+  {w:"sweet", tag:"adj", m:"dulce"},{w:"top", m:"parte de arriba, cima"},{w:"travel", m:"viajar"},{w:"trip", m:"viaje, excursión"},
+  {w:"waterfall", m:"cascada"},
+]},
+];
+
+let currentGroup = GROUPS[0];
+
+/* ---------- GROUP SELECTOR ---------- */
+const groupSelector = document.getElementById('groupSelector');
+GROUPS.forEach(g=>{
+  const btn = document.createElement('button');
+  btn.className = 'group-btn' + (g.id===currentGroup.id ? ' active' : '');
+  btn.textContent = g.icon + ' ' + g.title;
+  btn.dataset.id = g.id;
+  btn.addEventListener('click', ()=>selectGroup(g.id));
+  groupSelector.appendChild(btn);
+});
+function selectGroup(id){
+  currentGroup = GROUPS.find(g=>g.id===id);
+  document.querySelectorAll('.group-btn').forEach(b=>b.classList.toggle('active', b.dataset.id===id));
+  renderTable(); fcOrder = currentGroup.words.map((_,i)=>i); fcIndex = 0; renderFlashcard();
+  newMatchGame(); newQuiz(); newBee();
+}
+
+/* ---------- TABLE ---------- */
+const tableBody = document.getElementById('tableBody');
+function renderTable(filter=""){
+  tableBody.innerHTML = "";
+  const f = filter.trim().toLowerCase();
+  currentGroup.words.forEach(v=>{
+    const label = v.w + (v.tag ? ` (${v.tag})` : '');
+    const match = !f || v.w.toLowerCase().includes(f) || v.m.toLowerCase().includes(f);
+    const tr = document.createElement('tr');
+    if(!match) tr.classList.add('hidden');
+    tr.innerHTML = `<td class="w">${v.w}${v.tag?` <span class="tag">(${v.tag})</span>`:''}</td><td class="m">${v.m}</td>`;
+    tableBody.appendChild(tr);
+  });
+}
+renderTable();
+document.getElementById('searchInput').addEventListener('input', e=>renderTable(e.target.value));
+
+/* ---------- FLASHCARDS ---------- */
+let fcOrder = currentGroup.words.map((_,i)=>i);
+let fcIndex = 0;
+const flashcard = document.getElementById('flashcard');
+const fcFront = document.getElementById('fcFront');
+const fcFrontTag = document.getElementById('fcFrontTag');
+const fcBack = document.getElementById('fcBack');
+const fcProgress = document.getElementById('fcProgress');
+function renderFlashcard(){
+  flashcard.classList.remove('flipped');
+  const v = currentGroup.words[fcOrder[fcIndex]];
+  fcFront.textContent = v.w;
+  fcFrontTag.textContent = v.tag ? `(${v.tag})` : '';
+  fcBack.textContent = v.m;
+  fcProgress.textContent = (fcIndex+1) + " / " + currentGroup.words.length;
+}
+renderFlashcard();
+flashcard.addEventListener('click', ()=>flashcard.classList.toggle('flipped'));
+document.getElementById('fcNext').addEventListener('click', ()=>{ fcIndex=(fcIndex+1)%currentGroup.words.length; renderFlashcard(); });
+document.getElementById('fcPrev').addEventListener('click', ()=>{ fcIndex=(fcIndex-1+currentGroup.words.length)%currentGroup.words.length; renderFlashcard(); });
+document.getElementById('fcShuffle').addEventListener('click', ()=>{
+  for(let i=fcOrder.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[fcOrder[i],fcOrder[j]]=[fcOrder[j],fcOrder[i]];}
+  fcIndex=0; renderFlashcard();
+});
+
+/* ---------- MATCH ---------- */
+const matchGrid = document.getElementById('matchGrid');
+const matchTriesEl = document.getElementById('matchTries');
+const matchFoundEl = document.getElementById('matchFound');
+const matchTotalEl = document.getElementById('matchTotal');
+let matchTiles=[], matchSelected=[], matchTries=0, matchFound=0, matchLock=false, matchPairCount=8;
+function playable(){ return currentGroup.words.filter(v=>!v.refOnly); }
+function newMatchGame(){
+  matchTries=0; matchFound=0; matchSelected=[]; matchLock=false;
+  matchTriesEl.textContent=0; matchFoundEl.textContent=0;
+  const pool = [...playable()].sort(()=>Math.random()-0.5);
+  matchPairCount = Math.min(8, pool.length);
+  matchTotalEl.textContent = matchPairCount;
+  const chosen = pool.slice(0, matchPairCount);
+  let tiles=[];
+  chosen.forEach((v,i)=>{ tiles.push({key:i,text:v.w,type:'w'}); tiles.push({key:i,text:v.m,type:'m'}); });
+  tiles.sort(()=>Math.random()-0.5);
+  matchTiles = tiles; renderMatchGrid();
+}
+function renderMatchGrid(){
+  matchGrid.innerHTML="";
+  matchTiles.forEach((t,idx)=>{
+    const div=document.createElement('div'); div.className='match-tile'; div.textContent=t.text;
+    if(t.matched) div.classList.add('correct');
+    div.addEventListener('click', ()=>onTileClick(idx));
+    matchGrid.appendChild(div);
+  });
+}
+function onTileClick(idx){
+  if(matchLock) return; const t=matchTiles[idx];
+  if(t.matched || matchSelected.includes(idx)) return;
+  matchSelected.push(idx); const els=matchGrid.children; els[idx].classList.add('selected');
+  if(matchSelected.length===2){
+    matchLock=true; matchTries++; matchTriesEl.textContent=matchTries;
+    const [a,b]=matchSelected; const ta=matchTiles[a], tb=matchTiles[b];
+    if(ta.key===tb.key && ta.type!==tb.type){
+      ta.matched=true; tb.matched=true;
+      setTimeout(()=>{
+        els[a].classList.remove('selected'); els[b].classList.remove('selected');
+        els[a].classList.add('correct'); els[b].classList.add('correct');
+        matchFound++; matchFoundEl.textContent=matchFound; matchSelected=[]; matchLock=false;
+        if(matchFound===matchPairCount) setTimeout(showMatchWin,400);
+      },350);
+    } else {
+      els[a].classList.add('wrong'); els[b].classList.add('wrong');
+      setTimeout(()=>{ els[a].classList.remove('selected','wrong'); els[b].classList.remove('selected','wrong'); matchSelected=[]; matchLock=false; },600);
+    }
+  }
+}
+function showMatchWin(){
+  matchGrid.innerHTML = `<div class="match-win" style="grid-column:1/-1;"><div class="big">🎉</div>
+    <h3>Completed in ${matchTries} tries!</h3><p style="color:var(--ink-dim);">Click "New game" to play again.</p></div>`;
+}
+document.getElementById('matchNew').addEventListener('click', newMatchGame);
+
+/* ---------- QUIZ ---------- */
+let quizPool=[], quizIndex=0, quizScore=0;
+let quizQuestion, quizOptions, quizCounter, quizScoreEl, quizBarFill;
+const quizCard = document.getElementById('quizCard');
+function allWordsPool(){ return GROUPS.flatMap(g=>g.words.filter(v=>!v.refOnly)); }
+function bindQuizRefs(){
+  quizQuestion=document.getElementById('quizQuestion'); quizOptions=document.getElementById('quizOptions');
+  quizCounter=document.getElementById('quizCounter'); quizScoreEl=document.getElementById('quizScore');
+  quizBarFill=document.getElementById('quizBarFill');
+}
+bindQuizRefs();
+function newQuiz(){
+  const base = playable();
+  quizPool = [...base].sort(()=>Math.random()-0.5).slice(0, Math.min(10, base.length));
+  quizIndex=0; quizScore=0; quizScoreEl.textContent=0; renderQuizQuestion();
+}
+function renderQuizQuestion(){
+  if(quizIndex>=quizPool.length){ showQuizResult(); return; }
+  const v=quizPool[quizIndex];
+  quizCounter.textContent = `Question ${quizIndex+1}/${quizPool.length}`;
+  quizBarFill.style.width = (quizIndex/quizPool.length*100)+"%";
+  quizQuestion.innerHTML = `What does <span class="vb">${v.w}</span> mean?`;
+  const bigPool = allWordsPool();
+  let distractors = bigPool.filter(x=>x.m!==v.m).sort(()=>Math.random()-0.5).slice(0,3).map(x=>x.m);
+  let opts = [...distractors, v.m].sort(()=>Math.random()-0.5);
+  quizOptions.innerHTML="";
+  opts.forEach(opt=>{
+    const div=document.createElement('div'); div.className='quiz-opt'; div.textContent=opt;
+    div.addEventListener('click', ()=>onQuizAnswer(div, opt, v.m));
+    quizOptions.appendChild(div);
+  });
+}
+function onQuizAnswer(el, chosen, correct){
+  document.querySelectorAll('.quiz-opt').forEach(o=>o.classList.add('disabled'));
+  if(chosen===correct){ el.classList.add('correct'); quizScore++; quizScoreEl.textContent=quizScore; }
+  else { el.classList.add('wrong'); document.querySelectorAll('.quiz-opt').forEach(o=>{ if(o.textContent===correct) o.classList.add('correct'); }); }
+  setTimeout(()=>{ quizIndex++; renderQuizQuestion(); }, 900);
+}
+function showQuizResult(){
+  quizBarFill.style.width="100%";
+  quizCard.innerHTML = `<div class="quiz-result"><div class="score">${quizScore} / ${quizPool.length}</div>
+    <p>${quizScore===quizPool.length?'Perfect! 🌟':quizScore>=quizPool.length*0.7?'Well done! 👏':'Keep practicing! 💪'}</p>
+    <button class="btn btn-primary" id="quizRestart">🔁 Play again</button></div>`;
+  document.getElementById('quizRestart').addEventListener('click', ()=>{
+    quizCard.innerHTML = `<div class="quiz-progress"><span id="quizCounter"></span><span>Score: <b id="quizScore" style="color:var(--gold)">0</b></span></div>
+      <div class="quiz-bar"><div class="quiz-bar-fill" id="quizBarFill" style="width:0%"></div></div>
+      <div class="quiz-question" id="quizQuestion"></div><div class="quiz-options" id="quizOptions"></div>`;
+    bindQuizRefs(); newQuiz();
+  });
+}
+
+/* ---------- SPELLING BEE ---------- */
+let beePool=[], beeIndex=0, beeScore=0, beeAnswered=false;
+const beeClue=document.getElementById('beeClue'), beeTag=document.getElementById('beeTag');
+const beeInput=document.getElementById('beeInput'), beeFeedback=document.getElementById('beeFeedback');
+const beeProgress=document.getElementById('beeProgress'), beeCheckBtn=document.getElementById('beeCheck');
+const beeNextBtn=document.getElementById('beeNext'), beeRestartBtn=document.getElementById('beeRestart');
+const beeListenBtn=document.getElementById('beeListen');
+function normalize(s){ return s.toLowerCase().trim().replace(/[.?!]+$/,'').replace(/\s+/g,' '); }
+function newBee(){
+  const base = playable();
+  beePool = [...base].sort(()=>Math.random()-0.5).slice(0, Math.min(10, base.length));
+  beeIndex=0; beeScore=0; beeRestartBtn.style.display='none'; beeInput.style.display='inline-block';
+  beeListenBtn.style.display='inline-block'; renderBee();
+}
+function renderBee(){
+  if(beeIndex>=beePool.length){ finishBee(); return; }
+  beeAnswered=false;
+  const v=beePool[beeIndex];
+  beeProgress.textContent = `Word ${beeIndex+1}/${beePool.length} · Score: ${beeScore}`;
+  beeClue.textContent = v.m;
+  beeTag.textContent = v.tag ? `(${v.tag})` : '';
+  beeInput.value=''; beeInput.disabled=false; beeFeedback.textContent=''; beeFeedback.className='bee-feedback';
+  beeCheckBtn.style.display='inline-block'; beeNextBtn.style.display='none'; beeInput.focus();
+}
+function speak(text){
+  if(!('speechSynthesis' in window)) return;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-GB'; u.rate = 0.85;
+  window.speechSynthesis.cancel(); window.speechSynthesis.speak(u);
+}
+beeListenBtn.addEventListener('click', ()=>{ if(beePool[beeIndex]) speak(beePool[beeIndex].w); });
+function checkBee(){
+  if(beeAnswered) return;
+  const v=beePool[beeIndex]; const ok = normalize(beeInput.value)===normalize(v.w);
+  beeAnswered=true; beeInput.disabled=true; beeCheckBtn.style.display='none'; beeNextBtn.style.display='inline-block';
+  if(ok){ beeScore++; beeFeedback.textContent='✅ Correct!'; beeFeedback.className='bee-feedback ok'; }
+  else { beeFeedback.textContent=`❌ The correct spelling is "${v.w}"`; beeFeedback.className='bee-feedback bad'; }
+}
+function finishBee(){
+  beeClue.textContent=''; beeTag.textContent=''; beeProgress.textContent='';
+  beeInput.style.display='none'; beeListenBtn.style.display='none'; beeCheckBtn.style.display='none'; beeNextBtn.style.display='none';
+  beeFeedback.className='bee-feedback ok';
+  beeFeedback.innerHTML = `Final score: <b style="color:var(--gold);font-size:1.3rem;">${beeScore}/${beePool.length}</b>`;
+  beeRestartBtn.style.display='inline-block';
+}
+beeCheckBtn.addEventListener('click', checkBee);
+beeInput.addEventListener('keydown', e=>{ if(e.key==='Enter' && !beeAnswered) checkBee(); });
+beeNextBtn.addEventListener('click', ()=>{ beeIndex++; renderBee(); });
+beeRestartBtn.addEventListener('click', newBee);
+
+/* ---------- TABS ---------- */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active'); document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ---------- INIT ---------- */
+newMatchGame(); newQuiz(); newBee();
+</script>
+</body>
+</html>
