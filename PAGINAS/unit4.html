@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4: At home — Answer Key</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFBF2;
+    --mint:#BEE8D3; --mint-dark:#4FAE7C;
+    --peach:#FFD3AE; --peach-dark:#EE8C4A;
+    --butter:#FFE8A3; --butter-dark:#E3AC1C;
+    --sky:#AEE1F0; --sky-dark:#2E9CC2;
+    --coral:#FF7F5C;
+    --ink:#3D3A34; --ink-light:#847F73;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Nunito',sans-serif;line-height:1.5;}
+  h1,h2,h3{font-family:'Baloo 2',cursive;margin:0 0 .3em 0;}
+  .wrap{max-width:780px;margin:0 auto;padding:0 20px 80px;}
+
+  .hero{
+    background:linear-gradient(160deg,var(--butter) 0%, var(--mint) 55%, var(--sky) 100%);
+    border-radius:0 0 40px 40px;padding:46px 20px 38px;text-align:center;margin-bottom:26px;
+  }
+  .hero .plate{font-size:50px;display:block;margin-bottom:6px;}
+  .hero h1{font-size:2rem;color:var(--ink);}
+  .hero p{font-size:1rem;color:#5a564c;max-width:540px;margin:8px auto 0;}
+  .navpills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;}
+  .navpills a{background:var(--white);border-radius:999px;padding:7px 13px;font-size:.8rem;font-weight:700;text-decoration:none;color:var(--ink);box-shadow:0 2px 0 rgba(0,0,0,.06);}
+
+  .lesson{margin-bottom:38px;}
+  .lesson-title{
+    display:flex;align-items:center;gap:10px;margin-bottom:14px;
+    padding-bottom:8px;border-bottom:3px solid var(--butter);
+  }
+  .lesson-title .num{
+    background:var(--coral);color:white;font-family:'Baloo 2',cursive;font-weight:700;
+    width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;
+  }
+  .lesson-title h2{font-size:1.25rem;}
+  .lesson-title .pageref{font-size:.8rem;color:var(--ink-light);font-weight:700;}
+
+  .activity{
+    background:var(--white);border-radius:20px;padding:18px 20px;margin-bottom:14px;
+    box-shadow:0 3px 0 rgba(0,0,0,.05), 0 8px 20px rgba(61,58,52,.05);
+  }
+  .activity .eyebrow{font-weight:800;font-size:.78rem;color:var(--ink-light);margin-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .activity .eyebrow .audiotag{background:var(--sky);color:#155A72;border-radius:999px;padding:2px 9px;font-weight:800;}
+  .activity .statement{font-weight:700;font-size:1rem;margin-bottom:10px;}
+
+  .audio-box{
+    background:#EAF4FB;border:2px solid var(--sky-dark);border-radius:14px;
+    padding:10px 14px;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  }
+  .audio-box audio{flex:1 1 220px;}
+
+  .btn-reveal{
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;
+    background:var(--mint-dark);color:white;border:none;border-radius:999px;
+    padding:8px 16px;cursor:pointer;
+  }
+  .btn-reveal:hover{background:#3f9268;}
+  .btn-reveal.on{background:#E7E2D5;color:var(--ink);}
+
+  .answerbox{
+    display:none;margin-top:12px;background:#FFFDF3;border:2px dashed var(--butter-dark);
+    border-radius:14px;padding:12px 16px;
+  }
+  .answerbox.show{display:block;}
+  .answerbox .answers{font-weight:800;color:#155A2E;margin-bottom:6px;}
+  .answerbox .explain{color:var(--ink-light);font-size:.9rem;}
+
+  .grammar-table{width:100%;border-collapse:collapse;margin:2px 0 12px;}
+  .grammar-table th{background:var(--sky);color:#155A72;padding:6px 8px;border:1px solid #bfe3f0;font-size:.82rem;text-align:left;}
+  .grammar-table td{padding:6px 8px;border:1px solid #d8ecf5;vertical-align:top;font-size:.86rem;}
+  .grammar-table td.word{font-weight:800;color:#155A72;white-space:nowrap;}
+
+  footer{text-align:center;color:var(--ink-light);font-size:.85rem;padding:30px 0 10px;}
+
+  .sitenav{
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    padding:10px 20px;background:var(--white);
+    box-shadow:0 2px 8px rgba(0,0,0,.07);
+    position:sticky;top:0;z-index:50;
+  }
+  .sitenav a{
+    text-decoration:none;font-weight:800;font-size:.82rem;color:var(--ink);
+    background:#F2EFE7;padding:6px 12px;border-radius:999px;white-space:nowrap;
+  }
+  .sitenav a.home{background:var(--coral);color:white;}
+  .sitenav a.active{background:var(--mint-dark);color:white;}
+
+  .audio-fallback{font-size:.78rem;color:var(--ink-light);}
+  .audio-fallback a{color:var(--sky-dark);font-weight:700;}
+  .audio-error{display:none;color:#b3392c;font-size:.8rem;font-weight:700;margin-top:4px;}
+</style>
+</head>
+<body>
+
+<nav class="sitenav">
+  <a class="home" href="../index.html">🏠 Home</a>
+  <a href="introduction.html" data-page="introduction">👋 Introduction</a>
+  <a href="unit1.html" data-page="unit1">🌳 Unit 1</a>
+  <a href="unit2.html" data-page="unit2">📅 Unit 2</a>
+  <a href="unit3.html" data-page="unit3">🏙️ Unit 3</a>
+  <a href="unit4.html" data-page="unit4">🏠 Unit 4</a>
+  <a href="unit8.html" data-page="unit8">🍱 Unit 8</a>
+  <a href="unit9.html" data-page="unit9">🐘 Unit 9</a>
+  <a href="unit10.html" data-page="unit10">🌦️ Unit 10</a>
+</nav>
+
+<div class="hero">
+  <span class="plate">🏠🛋️</span>
+  <h1>Unit 4: At home</h1>
+  <p>Answer key for the printed book — page references, simple explanations and real audio, activity by activity. Includes Revision 1 and Movers Speaking preparation (Term 1).</p>
+  <div class="navpills">
+    <a href="#l1">Lesson 1</a>
+    <a href="#l2">Lesson 2</a>
+    <a href="#l3">Lesson 3</a>
+    <a href="#l4">Lesson 4</a>
+    <a href="#l5">Lesson 5</a>
+    <a href="#mpt">Practice test</a>
+    <a href="#rev">Revision 1</a>
+    <a href="#sp">Speaking prep</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- LESSON 1 -->
+<div class="lesson" id="l1">
+  <div class="lesson-title"><span class="num">1</span><h2>Words</h2><span class="pageref">SB p.28</span></div>
+
+  <div class="activity" data-answers="1 laptop · 2 comic · 3 bat · 4 map of the world · 5 blanket · 6 cage · 7 helmet · 8 toothpaste · 9 toothbrush · 10 plant · 11 shower · 12 towel" data-explain="Look at the picture, read the words and draw lines to match each word to the correct item.">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">🔗 Find the things and draw lines.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 clock · 2 mirror" data-explain="Find the round and square items in the picture, then complete each sentence with the correct one.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🔍 Find the shapes and complete the sentences.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Suggested: Jack's bedroom — bed, pillow, picture (car), mouse, CDs, chair, table, TV, lamp, bookcase, books, door.   Jack's bathroom — shelf, cupboard, sink, bath, tap, cup, mat" data-explain="Look for more items in the picture and add them to the table, without repeating any words already used in Activities 1 and 2.">
+    <div class="eyebrow">Activity 3</div>
+    <div class="statement">✏️ Can you name more things in the picture? Write the words.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 2 -->
+<div class="lesson" id="l2">
+  <div class="lesson-title"><span class="num">2</span><h2>Reading &amp; Speaking</h2><span class="pageref">SB p.29</span></div>
+
+  <div class="activity" data-answers="1 A · 2 B · 3 B · 4 A · 5 B · 6 A · 7 A · 8 B · 9 B · 10 A" data-explain="Read each sentence with any, then decide which picture (A or B) it describes.">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">📖 Read and write A or B.</div>
+    <table class="grammar-table">
+      <tr><th>Word</th><th>Use it in</th><th>Example</th></tr>
+      <tr><td class="word">any</td><td>questions and negatives</td><td>Are there any birds? / There aren't any birds.</td></tr>
+    </table>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open speaking activity — no fixed written answers." data-explain="Pair speaking activity: children choose one picture from Activity 1, look at it for a minute, close their books and ask/answer questions from memory.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🧠 Choose a picture in Activity 1 and play a memory game.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open writing activity — no fixed answers." data-explain="Each child completes sentences about their own bedroom using there is/there are + any.">
+    <div class="eyebrow">Activity 3</div>
+    <div class="statement">✏️ Complete the sentences about your own bedroom.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 flat · 2 3 (three) · 3 yes" data-explain="Transcript summary: a child says they live in a flat on the fourth floor, with three bedrooms (one for their parents, one for them, one for their sister), and they've got lots of CDs in their bedroom.">
+    <div class="eyebrow">Activity 4 <span class="audiotag">🎧 Track 18</span></div>
+    <div class="statement">🎧 Listen and circle. Ask and answer.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_18.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 3 -->
+<div class="lesson" id="l3">
+  <div class="lesson-title"><span class="num">3</span><h2>Story</h2><span class="pageref">SB p.30</span></div>
+
+  <div class="activity" data-answers="No written answers — it's a listen-and-act story." data-explain="Play the audio and follow the illustrated story in the Student's Book, then act it out with a partner.">
+    <div class="eyebrow">Activity 1 <span class="audiotag">🎧 Track 19</span></div>
+    <div class="statement">🎧 Listen and read. Then act.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_19.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 brown, red · 2 green, white · 3 blue, orange · 4 purple, yellow" data-explain="Look at the picture of the house and garden and complete each sentence with the colours of the items described, inside/outside or upstairs/downstairs.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🎨 Look and write the colours.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 4 -->
+<div class="lesson" id="l4">
+  <div class="lesson-title"><span class="num">4</span><h2>Language practice</h2><span class="pageref">SB p.31</span></div>
+
+  <div class="activity" data-answers="skipped, danced, shouted, planted, smiled, picked up, dropped, walked, shopped, looked" data-explain="Complete the rhyme with the past simple form of the verbs in the box, then listen to check and practise saying it.">
+    <div class="eyebrow">Activity 1 <span class="audiotag">🎧 Track 20</span></div>
+    <div class="statement">🎧 Complete the rhyme. Listen and say.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_20.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 email, called · 2 listen, watched · 3 open, closed · 4 sail, fished" data-explain="Look at the pictures and complete the sentences with the past simple of the verbs in the box.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">✏️ Look, choose and complete the sentences.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 5 -->
+<div class="lesson" id="l5">
+  <div class="lesson-title"><span class="num">5</span><h2>Language practice</h2><span class="pageref">SB p.32</span></div>
+
+  <div class="activity" data-answers="Past forms: 1 woke up · 2 got up · 3 ate · 4 had · 5 bought · 6 saw · 7 took · 8 rode · 9 got · 10 made   —   Ticked pictures: 1, 2, 4, 6, 8, 9, 10" data-explain="Transcript summary: Daisy describes her morning — she woke up, got up, got dressed, had breakfast, made a chocolate cake, saw Jack outside, and went out to ride her bike with him.">
+    <div class="eyebrow">Activity 1 <span class="audiotag">🎧 Track 21</span></div>
+    <div class="statement">🎧 Write the verbs in the past simple. What did Daisy do this morning? Listen and tick the pictures.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_21.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open speaking activity — no fixed written answers." data-explain="Pair speaking activity with a photocopiable worksheet (Teacher's Book, page 125): one child picks a girl from the sheet without saying her name, and their partner guesses by asking what she did, saw and ate.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🗣️ Do the speaking activity.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- MOVERS PRACTICE TEST -->
+<div class="lesson" id="mpt">
+  <div class="lesson-title"><span class="num">✓</span><h2>Movers practice test</h2><span class="pageref">CB p.33–35</span></div>
+
+  <div class="activity" data-answers="1 hair · 2 table · 3 7 / seven · 4 walking · 5 Children's own answers · 6 Children's own answers" data-explain="Look at the example, then look at the picture to answer the questions and complete the two new sentences about it.">
+    <div class="eyebrow">Reading &amp; Writing, Part 6</div>
+    <div class="statement">📖 Look and read and write.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 book · 2 Castle · 3 5341695 · 4 CDs · 5 hat" data-explain="Transcript summary: Jim asks a woman about her shopping trip — her favourite shop is a bookshop in Castle Street with four floors; its phone number is 5341695; she bought two CDs (wanted six) and a new hat.">
+    <div class="eyebrow">Listening, Part 2 <span class="audiotag">🎧 Track 22</span></div>
+    <div class="statement">🎧 Listen and write. There is one example.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_22.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 smiled · 2 photo · 3 café · 4 burger · 5 bought   —   Title: Jane's day at the zoo" data-explain="Read the whole story about Jane's day at the zoo first, then choose the correct word from the box for each gap, and tick the best title.">
+    <div class="eyebrow">Reading &amp; Writing, Part 3</div>
+    <div class="statement">📝 Read the story. Choose a word from the box. Write the correct words next to numbers 1–5.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- REVISION 1 -->
+<div class="lesson" id="rev">
+  <div class="lesson-title"><span class="num">↻</span><h2>Revision 1</h2><span class="pageref">CB p.36–38</span></div>
+  <p style="color:var(--ink-light);font-size:.9rem;margin-top:-8px;">Revising vocabulary, grammar and skills from Introduction to Unit 4.</p>
+
+  <div class="activity" data-answers="1 a shoe · 2 a chair · 3 a sock · 4 a pencil · 5 a mouse · 6 a cat · 7 a book · 8 a mirror" data-explain="Look at the picture and answer each question, following the example given.">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">❓ Look and answer the questions.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open drawing activity — no fixed answer (depends on each child's drawing based on the text)." data-explain="Read the sentences and draw the missing items in the correct place in the picture.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">✏️ Read and draw the things in the picture.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Colouring activity — answers shown visually in the Student's Book (page 37)." data-explain="Read the sentences and colour the hats in the picture as described.">
+    <div class="eyebrow">Activity 3</div>
+    <div class="statement">🎨 Read and colour the hats.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 library · 2 market · 3 café" data-explain="Look at the picture and complete the incomplete sentences about what you see.">
+    <div class="eyebrow">Activity 4</div>
+    <div class="statement">✏️ Complete the sentences.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 get up · 2 have a bath · 3 send an email · 4 have breakfast · 5 go shopping · 6 wake up · 7 go to school · 8 get dressed · 9 have a shower · 10 go for a swim" data-explain="Read the list of daily routine phrases and draw lines to match each one to the correct picture.">
+    <div class="eyebrow">Activity 5</div>
+    <div class="statement">🔗 Look and read. Draw lines.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open writing activity — no fixed answers (pupils' own answers)." data-explain="Each child ticks or crosses what they did or didn't do this morning, then writes six sentences about it.">
+    <div class="eyebrow">Activity 6</div>
+    <div class="statement">✏️ What did you do this morning? Put a tick or cross next to each picture. Then write six sentences.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open writing activity — no fixed answers (pupils' own answers)." data-explain="Each child completes sentences about what they do at the weekend, using phrases from Activity 1.">
+    <div class="eyebrow">Activity 7</div>
+    <div class="statement">✏️ What do you do at the weekend? Complete the sentences.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- SPEAKING PREP -->
+<div class="lesson" id="sp">
+  <div class="lesson-title"><span class="num">🗣</span><h2>Movers Speaking preparation</h2><span class="pageref">CB p.39</span></div>
+  <p style="color:var(--ink-light);font-size:.9rem;margin-top:-8px;">Revising vocabulary, grammar and test skills from Introduction to Unit 4.</p>
+
+  <div class="activity" data-answers="on, under · square, round · magazine / comic, book · blue, pink/purple · laptop, cage" data-explain="Transcript summary: the pencils are on the table in one picture but under it in the other; one clock is square, the other round; one boy reads a comic, the other a book; one girl's sweater is blue, the other green; one picture has a laptop, the other a cage.">
+    <div class="eyebrow">Activity 1 <span class="audiotag">🎧 Track 23</span></div>
+    <div class="statement">🎧 Circle five differences and complete the sentences. Listen and check.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_23.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Suggested: talking, bat, baseball, tree, playing, park, ball, happy" data-explain="Look at the pictures that will tell a story and circle the words you think will appear in it, thinking about what's happening.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🔍 Look at the pictures. Circle the words that you think will be in the story.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 b · 2 d · 3 a · 4 c" data-explain="Transcript summary: a boy is in the park with a bat and ball wanting to play baseball; a girl is sitting sadly under a tree; he talks to her; then they play baseball together and she is happy.">
+    <div class="eyebrow">Activity 3 <span class="audiotag">🎧 Track 24</span></div>
+    <div class="statement">🎧 Listen and order the pictures. Tell the story.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_24.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+</div>
+
+<footer>Unit 4 Answer Key · Get Ready for Movers · Alina Iuga</footer>
+
+<script>
+document.querySelectorAll('.sitenav a[data-page]').forEach(function(a){
+  if(location.pathname.endsWith(a.getAttribute('href'))) a.classList.add('active');
+});
+document.querySelectorAll('.audio-box audio').forEach(function(a){
+  const box = a.closest('.audio-box');
+  const src = a.getAttribute('src');
+  const fb = document.createElement('div');
+  fb.className = 'audio-fallback';
+  fb.innerHTML = '🔗 <a href="'+src+'" target="_blank">Open audio file directly</a>';
+  box.appendChild(fb);
+  const err = document.createElement('div');
+  err.className = 'audio-error';
+  err.textContent = "⚠️ Couldn't load this audio — check the file is in AUDIOS/ with this exact name.";
+  box.appendChild(err);
+  a.addEventListener('error', function(){ err.style.display = 'block'; });
+});
+document.querySelectorAll('.activity').forEach(function(card){
+  const btn = card.querySelector('.btn-reveal');
+  const box = card.querySelector('.answerbox');
+  const showLabel = btn.textContent;
+  if(card.hasAttribute('data-answers')){
+    box.querySelector('.answers').textContent = '✅ ' + card.getAttribute('data-answers');
+  }
+  box.querySelector('.explain').textContent = card.getAttribute('data-explain');
+  btn.addEventListener('click', function(){
+    const isOn = box.classList.toggle('show');
+    btn.classList.toggle('on', isOn);
+    btn.textContent = isOn ? '🙈 Hide' : showLabel;
+  });
+});
+</script>
+</body>
+</html>
