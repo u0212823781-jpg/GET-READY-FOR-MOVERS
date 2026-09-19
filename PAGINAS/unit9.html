@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 9: Do you like animals? — Answer Key</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFBF2;
+    --mint:#BEE8D3; --mint-dark:#4FAE7C;
+    --peach:#FFD3AE; --peach-dark:#EE8C4A;
+    --butter:#FFE8A3; --butter-dark:#E3AC1C;
+    --sky:#AEE1F0; --sky-dark:#2E9CC2;
+    --coral:#FF7F5C;
+    --ink:#3D3A34; --ink-light:#847F73;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Nunito',sans-serif;line-height:1.5;}
+  h1,h2,h3{font-family:'Baloo 2',cursive;margin:0 0 .3em 0;}
+  .wrap{max-width:780px;margin:0 auto;padding:0 20px 80px;}
+
+  .hero{
+    background:linear-gradient(160deg,var(--mint) 0%, var(--butter) 55%, var(--peach) 100%);
+    border-radius:0 0 40px 40px;padding:46px 20px 38px;text-align:center;margin-bottom:26px;
+  }
+  .hero .plate{font-size:50px;display:block;margin-bottom:6px;}
+  .hero h1{font-size:2rem;color:var(--ink);}
+  .hero p{font-size:1rem;color:#5a564c;max-width:540px;margin:8px auto 0;}
+  .navpills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;}
+  .navpills a{background:var(--white);border-radius:999px;padding:7px 13px;font-size:.8rem;font-weight:700;text-decoration:none;color:var(--ink);box-shadow:0 2px 0 rgba(0,0,0,.06);}
+
+  .lesson{margin-bottom:38px;}
+  .lesson-title{
+    display:flex;align-items:center;gap:10px;margin-bottom:14px;
+    padding-bottom:8px;border-bottom:3px solid var(--butter);
+  }
+  .lesson-title .num{
+    background:var(--coral);color:white;font-family:'Baloo 2',cursive;font-weight:700;
+    width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;
+  }
+  .lesson-title h2{font-size:1.25rem;}
+  .lesson-title .pageref{font-size:.8rem;color:var(--ink-light);font-weight:700;}
+
+  .activity{
+    background:var(--white);border-radius:20px;padding:18px 20px;margin-bottom:14px;
+    box-shadow:0 3px 0 rgba(0,0,0,.05), 0 8px 20px rgba(61,58,52,.05);
+  }
+  .activity .eyebrow{font-weight:800;font-size:.78rem;color:var(--ink-light);margin-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .activity .eyebrow .audiotag{background:var(--sky);color:#155A72;border-radius:999px;padding:2px 9px;font-weight:800;}
+  .activity .statement{font-weight:700;font-size:1rem;margin-bottom:10px;}
+
+  .audio-box{
+    background:#EAF4FB;border:2px solid var(--sky-dark);border-radius:14px;
+    padding:10px 14px;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  }
+  .audio-box audio{flex:1 1 220px;}
+
+  .btn-reveal{
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;
+    background:var(--mint-dark);color:white;border:none;border-radius:999px;
+    padding:8px 16px;cursor:pointer;
+  }
+  .btn-reveal:hover{background:#3f9268;}
+  .btn-reveal.on{background:#E7E2D5;color:var(--ink);}
+
+  .answerbox{
+    display:none;margin-top:12px;background:#FFFDF3;border:2px dashed var(--butter-dark);
+    border-radius:14px;padding:12px 16px;
+  }
+  .answerbox.show{display:block;}
+  .answerbox .answers{font-weight:800;color:#155A2E;margin-bottom:6px;}
+  .answerbox .explain{color:var(--ink-light);font-size:.9rem;}
+
+  .grammar-table{width:100%;border-collapse:collapse;margin:2px 0 12px;}
+  .grammar-table th{background:var(--sky);color:#155A72;padding:6px 8px;border:1px solid #bfe3f0;font-size:.82rem;text-align:left;}
+  .grammar-table td{padding:6px 8px;border:1px solid #d8ecf5;vertical-align:top;font-size:.86rem;}
+  .grammar-table td.word{font-weight:800;color:#155A72;white-space:nowrap;}
+
+  footer{text-align:center;color:var(--ink-light);font-size:.85rem;padding:30px 0 10px;}
+
+  .sitenav{
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    padding:10px 20px;background:var(--white);
+    box-shadow:0 2px 8px rgba(0,0,0,.07);
+    position:sticky;top:0;z-index:50;
+  }
+  .sitenav a{
+    text-decoration:none;font-weight:800;font-size:.82rem;color:var(--ink);
+    background:#F2EFE7;padding:6px 12px;border-radius:999px;white-space:nowrap;
+  }
+  .sitenav a.home{background:var(--coral);color:white;}
+  .sitenav a.active{background:var(--mint-dark);color:white;}
+
+  .audio-fallback{font-size:.78rem;color:var(--ink-light);}
+  .audio-fallback a{color:var(--sky-dark);font-weight:700;}
+  .audio-error{display:none;color:#b3392c;font-size:.8rem;font-weight:700;margin-top:4px;}
+</style>
+</head>
+<body>
+
+<nav class="sitenav">
+  <a class="home" href="../index.html">🏠 Home</a>
+  <a href="introduction.html" data-page="introduction">👋 Introduction</a>
+  <a href="unit1.html" data-page="unit1">🌳 Unit 1</a>
+  <a href="unit2.html" data-page="unit2">📅 Unit 2</a>
+  <a href="unit8.html" data-page="unit8">🍱 Unit 8</a>
+  <a href="unit9.html" data-page="unit9">🐘 Unit 9</a>
+</nav>
+
+<div class="hero">
+  <span class="plate">🐘🦁</span>
+  <h1>Unit 9: Do you like animals?</h1>
+  <p>Answer key for the printed book — page references, simple explanations and real audio, activity by activity.</p>
+  <div class="navpills">
+    <a href="#l1">Lesson 1</a>
+    <a href="#l2">Lesson 2</a>
+    <a href="#l3">Lesson 3</a>
+    <a href="#l4">Lesson 4</a>
+    <a href="#l5">Lesson 5</a>
+    <a href="#mpt">Practice test</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- LESSON 1 -->
+<div class="lesson" id="l1">
+  <div class="lesson-title"><span class="num">1</span><h2>Words</h2><span class="pageref">SB p.76</span></div>
+
+  <div class="activity" data-answers="1 oo · 2 tt · 3 rr · 4 pp · 5 bb · 6 ff · 7 pp   —   Pets: kitten, parrot, puppy, rabbit" data-explain="Each animal name is missing a double letter (oo, tt, rr...). Complete the word, then circle the four animals that can be pets — the rest are wild animals.">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">🐾 Complete the words with double letters. Circle the animals that can be pets.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Across: shark, penguin, whale, dolphin, crocodile, bear   ·   Down: tiger, fly, snail, panda, lion, bat" data-explain="Find nine animal words hidden in the wordsearch (some go across, some go down), circle them, then write each one next to its picture.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🔍 Find, circle and write nine more animal words in the wordsearch.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 2 -->
+<div class="lesson" id="l2">
+  <div class="lesson-title"><span class="num">2</span><h2>Reading &amp; Speaking</h2><span class="pageref">SB p.77</span></div>
+
+  <div class="activity" data-answers="1 wrong · 2 right · 3 wrong · 4 right · 5 wrong · 6 wrong · 7 right · 8 right · 9 wrong · 10 right" data-explain="Transcript summary: Jack reads out animal facts and Daisy says if each is right or wrong — pandas eat plants (not meat); all sharks have teeth; some crocodiles do live in the sea; a lion is a big cat; flies have six legs (spiders have eight); the fastest hippo runs faster than the fastest crocodile; bats can't stand up; the biggest whale is bigger than a bus; hippos eat plants but not fish; the giraffe is the tallest animal in the world.">
+    <div class="eyebrow">Activity 1 <span class="audiotag">🎧 Track 49</span></div>
+    <div class="statement">🎧 Read and circle right or wrong. Listen and check.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_49.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 smaller / shorter · 2 head · 3 kitten, longer · 4 second, penguin · 5 first, ears" data-explain="Compare the two animals in each pair of pictures and complete the sentence with the missing word — usually a comparative adjective or a noun that names the difference.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🐈 Look and complete the sentences. Write one word on each line.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 two mice · 2 no · 3 elephant(s)" data-explain="Transcript summary: an adult interviews a child about animals — the child has two pet mice that live in a cage in their bedroom; they aren't afraid of spiders but they are afraid of snakes; their favourite animals are big ones, especially elephants.">
+    <div class="eyebrow">Activity 3 <span class="audiotag">🎧 Track 50</span></div>
+    <div class="statement">🎧 Listen and circle. Ask and answer.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_50.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 3 -->
+<div class="lesson" id="l3">
+  <div class="lesson-title"><span class="num">3</span><h2>Story</h2><span class="pageref">SB p.78</span></div>
+
+  <div class="activity" data-answers="No written answers — it's a listen-and-act story." data-explain="Play the audio and follow the illustrated story in the Student's Book, then act it out with a partner.">
+    <div class="eyebrow">Activity 1 <span class="audiotag">🎧 Track 51</span></div>
+    <div class="statement">🎧 Listen and read. Then act.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_51.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 You mustn't open the cage. · 2 You must put your fish in the water! · 3 You must feed the lions. · 4 You must give your rabbits a drink! · 5 You mustn't put your parrot in the bath!" data-explain="Match each picture to its sentence, then complete it with must (it's important to do this) or mustn't (it's important NOT to do this).">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">📏 Draw lines and write must or mustn't.</div>
+    <table class="grammar-table">
+      <tr><th>Word</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td class="word">must</td><td>it's important to do this</td><td>You must feed the lions.</td></tr>
+      <tr><td class="word">mustn't</td><td>it's important NOT to do this</td><td>You mustn't open the cage.</td></tr>
+    </table>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 4 -->
+<div class="lesson" id="l4">
+  <div class="lesson-title"><span class="num">4</span><h2>Language practice</h2><span class="pageref">SB p.79</span></div>
+
+  <div class="activity" data-answers="a 3 · b 1 · c 2 · d 4" data-explain="Transcript summary: a mouse jumps out of a shoe and runs round a chair (1), then runs up a leg and jumps onto a book (2), then jumps off the book and runs down the leg (3), then jumps onto a foot and into the shoe (4). Number the pictures in the order the mouse's route is described.">
+    <div class="eyebrow">Activity 1 <span class="audiotag">🎧 Track 52</span></div>
+    <div class="statement">🎧 Read the words in the box. Listen and number the pictures.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_52.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open drawing activity — no fixed answer (depends on each child's drawing based on the text)." data-explain="Read the text describing the parrot's route around the room, then draw the line it follows on the picture, using the prepositions of movement from the text.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">✏️ Read and draw the parrot's route.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 5 -->
+<div class="lesson" id="l5">
+  <div class="lesson-title"><span class="num">5</span><h2>Language practice</h2><span class="pageref">SB p.80</span></div>
+
+  <div class="activity" data-answers="1 a shark · 2 a whale · 3 a horse" data-explain="Transcript summary: comparing pairs of animals — the shark swims more quickly than the dolphin; the whale sings more loudly than the parrot (it's the loudest animal in the world); the horse runs more quickly than the giraffe.">
+    <div class="eyebrow">Activity 1 <span class="audiotag">🎧 Track 53</span></div>
+    <div class="statement">🎧 Guess the answers and circle. Listen and check.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_53.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 d · 2 e · 3 b · 4 c · 5 a" data-explain="Match each Why...? question about the picture to its matching Because... answer.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🔗 Look, read and draw lines.</div>
+    <table class="grammar-table">
+      <tr><th>Word</th><th>Use</th><th>Example</th></tr>
+      <tr><td class="word">Why...?</td><td>to ask for a reason</td><td>Why is she happy?</td></tr>
+      <tr><td class="word">Because...</td><td>to give a reason</td><td>Because she's got a new pet.</td></tr>
+    </table>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open speaking activity — no fixed written answers." data-explain="Pair speaking activity with a photocopiable worksheet (Teacher's Book, page 131): children complete sentences with adjectives, then play a matching game pairing pictures with their why/because reasons.">
+    <div class="eyebrow">Activity 3</div>
+    <div class="statement">🗣️ Do the speaking activity.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- MOVERS PRACTICE TEST -->
+<div class="lesson" id="mpt">
+  <div class="lesson-title"><span class="num">✓</span><h2>Movers practice test</h2><span class="pageref">CB p.81–83</span></div>
+
+  <div class="activity" data-answers="1 Charlie (blond hair, dancing) · 2 Fred (sitting on the stairs, dolphin T-shirt) · 3 Jane (carrying a big present) · 4 Fred's brother (putting on a pirate hat) · 5 Lily (wearing glasses, drinking tea)" data-explain="Transcript summary: at a birthday party, the man asks about different children and the girl identifies each one by what they're doing or wearing — dancing with blond hair, sitting and talking, carrying a present, dressing up as a pirate, and drinking tea while wearing glasses.">
+    <div class="eyebrow">Listening, Part 1 <span class="audiotag">🎧 Track 54</span></div>
+    <div class="statement">🎧 Listen and draw lines. There is one example.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_54.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 but · 2 is · 3 where · 4 can · 5 your" data-explain="Read the whole text first, then choose the word that correctly completes each gap.">
+    <div class="eyebrow">Reading &amp; Writing, Part 4</div>
+    <div class="statement">📝 Read the text. Choose the right words and write them on the lines.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Colouring activity — no written answers, except the word 'cats' written above the picture." data-explain="Transcript summary: in a pet shop scene, colour the boy's hair brown, colour a rabbit black, write the word 'cats' above the kitten picture, colour the star on the bag yellow, and colour the parrot with the long tail red.">
+    <div class="eyebrow">Listening, Part 5 <span class="audiotag">🎧 Track 55</span></div>
+    <div class="statement">🎧 Listen and colour and write. There is one example.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_55.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+</div>
+
+<footer>Unit 9 Answer Key · Get Ready for Movers · Alina Iuga</footer>
+
+<script>
+document.querySelectorAll('.sitenav a[data-page]').forEach(function(a){
+  if(location.pathname.endsWith(a.getAttribute('href'))) a.classList.add('active');
+});
+document.querySelectorAll('.audio-box audio').forEach(function(a){
+  const box = a.closest('.audio-box');
+  const src = a.getAttribute('src');
+  const fb = document.createElement('div');
+  fb.className = 'audio-fallback';
+  fb.innerHTML = '🔗 <a href="'+src+'" target="_blank">Open audio file directly</a>';
+  box.appendChild(fb);
+  const err = document.createElement('div');
+  err.className = 'audio-error';
+  err.textContent = "⚠️ Couldn't load this audio — check the file is in AUDIOS/ with this exact name.";
+  box.appendChild(err);
+  a.addEventListener('error', function(){ err.style.display = 'block'; });
+});
+document.querySelectorAll('.activity').forEach(function(card){
+  const btn = card.querySelector('.btn-reveal');
+  const box = card.querySelector('.answerbox');
+  const showLabel = btn.textContent;
+  if(card.hasAttribute('data-answers')){
+    box.querySelector('.answers').textContent = '✅ ' + card.getAttribute('data-answers');
+  }
+  box.querySelector('.explain').textContent = card.getAttribute('data-explain');
+  btn.addEventListener('click', function(){
+    const isOn = box.classList.toggle('show');
+    btn.classList.toggle('on', isOn);
+    btn.textContent = isOn ? '🙈 Hide' : showLabel;
+  });
+});
+</script>
+</body>
+</html>
