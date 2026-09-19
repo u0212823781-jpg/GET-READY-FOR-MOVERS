@@ -575,6 +575,10 @@ document.querySelectorAll('.tab-btn').forEach(btn=>{
 
 /* ---------- INIT ---------- */
 newMatchGame(); newQuiz(); newBee();
+
+/* ---------- DEEP LINK (#u3, #intro...) ---------- */
+const initialHash = location.hash.replace('#','');
+if(GROUPS.some(g=>g.id===initialHash)) selectGroup(initialHash);
 </script>
 </body>
 </html>

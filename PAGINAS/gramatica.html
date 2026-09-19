@@ -548,6 +548,10 @@ function showQuizResult(){
   });
 }
 newQuiz();
+
+/* ---------- DEEP LINK (#u3, #intro...) ---------- */
+const initialHash = location.hash.replace('#','');
+if(GROUPS.some(g=>g.id===initialHash)) selectGroup(initialHash);
 </script>
 </body>
 </html>
