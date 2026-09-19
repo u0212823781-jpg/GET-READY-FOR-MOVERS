@@ -3,192 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit 8: What's for lunch? — Movers Companion</title>
+<title>Unit 8: What's for lunch? — Answer Key</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream:#FFFBF2;
-    --mint:#BEE8D3;
-    --mint-dark:#4FAE7C;
-    --peach:#FFD3AE;
-    --peach-dark:#EE8C4A;
-    --butter:#FFE8A3;
-    --butter-dark:#E3AC1C;
-    --sky:#AEE1F0;
-    --sky-dark:#2E9CC2;
+    --mint:#BEE8D3; --mint-dark:#4FAE7C;
+    --peach:#FFD3AE; --peach-dark:#EE8C4A;
+    --butter:#FFE8A3; --butter-dark:#E3AC1C;
+    --sky:#AEE1F0; --sky-dark:#2E9CC2;
     --coral:#FF7F5C;
-    --ink:#3D3A34;
-    --ink-light:#847F73;
+    --ink:#3D3A34; --ink-light:#847F73;
     --white:#FFFFFF;
-    --ok:#3E9B5C;
-    --bad:#E15A4D;
   }
   *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--cream);
-    color:var(--ink);
-    font-family:'Nunito',sans-serif;
-    line-height:1.5;
-  }
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Nunito',sans-serif;line-height:1.5;}
   h1,h2,h3{font-family:'Baloo 2',cursive;margin:0 0 .3em 0;}
-  .wrap{max-width:760px;margin:0 auto;padding:0 20px 80px;}
+  .wrap{max-width:780px;margin:0 auto;padding:0 20px 80px;}
 
-  /* HERO */
   .hero{
     background:linear-gradient(160deg,var(--butter) 0%, var(--peach) 55%, var(--mint) 100%);
-    border-radius:0 0 40px 40px;
-    padding:48px 20px 40px;
-    text-align:center;
-    margin-bottom:28px;
+    border-radius:0 0 40px 40px;padding:46px 20px 38px;text-align:center;margin-bottom:26px;
   }
-  .hero .plate{font-size:52px;display:block;margin-bottom:6px;}
-  .hero h1{font-size:2.1rem;color:var(--ink);}
-  .hero p{font-size:1.05rem;color:#5a564c;max-width:520px;margin:8px auto 0;}
-  .navpills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;}
-  .navpills a{
-    background:var(--white);
-    border-radius:999px;
-    padding:7px 14px;
-    font-size:.85rem;
-    font-weight:700;
-    text-decoration:none;
-    color:var(--ink);
-    box-shadow:0 2px 0 rgba(0,0,0,.06);
-  }
+  .hero .plate{font-size:50px;display:block;margin-bottom:6px;}
+  .hero h1{font-size:2rem;color:var(--ink);}
+  .hero p{font-size:1rem;color:#5a564c;max-width:540px;margin:8px auto 0;}
+  .navpills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;}
+  .navpills a{background:var(--white);border-radius:999px;padding:7px 13px;font-size:.8rem;font-weight:700;text-decoration:none;color:var(--ink);box-shadow:0 2px 0 rgba(0,0,0,.06);}
 
-  /* SECTION */
-  section{margin-bottom:44px;}
-  .tag{
-    display:inline-block;
-    font-family:'Nunito',sans-serif;
-    font-weight:800;
-    font-size:.78rem;
-    padding:5px 12px;
-    border-radius:999px;
-    margin-bottom:10px;
+  .lesson{margin-bottom:38px;}
+  .lesson-title{
+    display:flex;align-items:center;gap:10px;margin-bottom:14px;
+    padding-bottom:8px;border-bottom:3px solid var(--butter);
   }
-  .tag.words{background:var(--butter);color:#7a5a00;}
-  .tag.reading{background:var(--mint);color:#1f6b45;}
-  .tag.grammar{background:var(--sky);color:#155a72;}
-  .tag.practice{background:var(--peach);color:#8a3f0f;}
-  .tag.answerkey{background:#F3D9D1;color:#8a3020;}
+  .lesson-title .num{
+    background:var(--coral);color:white;font-family:'Baloo 2',cursive;font-weight:700;
+    width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;
+  }
+  .lesson-title h2{font-size:1.25rem;}
+  .lesson-title .pageref{font-size:.8rem;color:var(--ink-light);font-weight:700;}
 
-  .keyblock{margin-bottom:20px;}
-  .keyblock h3{font-size:1.05rem;margin-bottom:4px;}
-  .keyblock .paraphrase{color:var(--ink);margin-bottom:6px;}
-  .keyblock .answers{font-weight:700;background:#FFFDF3;border-radius:10px;padding:8px 12px;margin-bottom:6px;}
-  .keyblock .explain{color:var(--ink-light);font-size:.92rem;}
+  .activity{
+    background:var(--white);border-radius:20px;padding:18px 20px;margin-bottom:14px;
+    box-shadow:0 3px 0 rgba(0,0,0,.05), 0 8px 20px rgba(61,58,52,.05);
+  }
+  .activity .eyebrow{font-weight:800;font-size:.78rem;color:var(--ink-light);margin-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .activity .eyebrow .audiotag{background:var(--sky);color:#155A72;border-radius:999px;padding:2px 9px;font-weight:800;}
+  .activity .statement{font-weight:700;font-size:1rem;margin-bottom:10px;}
 
-  .card{
-    background:var(--white);
-    border-radius:22px;
-    padding:22px 22px 20px;
-    box-shadow:0 3px 0 rgba(0,0,0,.05), 0 10px 24px rgba(61,58,52,.05);
-    margin-bottom:16px;
-  }
-  .instructions{color:var(--ink-light);font-weight:600;margin-bottom:14px;}
-
-  /* FIELD ROWS */
-  .field{
-    display:flex;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:8px;
-    padding:9px 0;
-    border-bottom:1px dashed #EDE7DA;
-  }
-  .field:last-child{border-bottom:none;}
-  .field .qtext{flex:1 1 260px;font-weight:700;}
-  .field .qtext b{color:var(--coral);}
-  .field input[type=text], .field select{
-    font-family:'Nunito',sans-serif;
-    font-weight:700;
-    font-size:.95rem;
-    padding:6px 10px;
-    border:2px solid #EDE7DA;
-    border-radius:10px;
-    min-width:120px;
-    background:#FFFDF8;
-  }
-  .field input[type=text]:focus, .field select:focus{outline:none;border-color:var(--sky-dark);}
-  .btn-check, .btn-reset, .btn-show{
-    font-family:'Nunito',sans-serif;
-    font-weight:800;
-    font-size:.82rem;
-    border:none;
-    border-radius:999px;
-    padding:7px 12px;
-    cursor:pointer;
-  }
-  .btn-check{background:var(--mint-dark);color:white;}
-  .btn-check:hover{background:#3f9268;}
-  .btn-show{background:var(--sky-dark);color:white;}
-  .btn-show:hover{background:#268aab;}
-  .btn-reset{background:#F2EFE7;color:var(--ink);}
-  .btn-reset:hover{background:#E7E2D5;}
-  .feedback{font-weight:800;font-size:1.05rem;min-width:22px;text-align:center;}
-  .feedback.ok{color:var(--ok);}
-  .feedback.bad{color:var(--bad);}
-  .feedback.shown{color:var(--sky-dark);}
-  .revealed{font-size:.8rem;color:var(--bad);font-weight:700;flex-basis:100%;margin-top:-4px;}
-
-  /* WORD BANK */
-  .wordbank{
-    display:flex;flex-wrap:wrap;gap:8px;
-    background:#FFFDF3;border:2px dashed var(--butter-dark);
-    border-radius:14px;padding:12px 14px;margin-bottom:16px;font-weight:700;
-  }
-  .wordbank span{background:var(--white);border-radius:8px;padding:3px 9px;}
-
-  /* AUDIO */
   .audio-box{
-    background:#EAF4FB;border:2px solid var(--sky-dark);border-radius:16px;
-    padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    background:#EAF4FB;border:2px solid var(--sky-dark);border-radius:14px;
+    padding:10px 14px;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
   }
-  .audio-box .label{font-weight:800;color:#155A72;}
   .audio-box audio{flex:1 1 220px;}
 
-  /* FOOD GRID (Words section) */
-  .foodgrid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
-    gap:14px;
-    margin-bottom:6px;
+  .btn-reveal{
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;
+    background:var(--mint-dark);color:white;border:none;border-radius:999px;
+    padding:8px 16px;cursor:pointer;
   }
-  .fooditem{background:#FFFDF8;border-radius:16px;padding:12px;text-align:center;border:2px solid #F3EEE1;}
-  .fooditem .emoji{font-size:2rem;display:block;margin-bottom:4px;}
-  .fooditem .num{font-weight:800;color:var(--ink-light);font-size:.8rem;}
-  .fooditem input{width:100%;margin-top:6px;text-align:center;}
-  .fooditem .rowbtns{display:flex;gap:5px;justify-content:center;margin-top:6px;}
-  .fooditem .fb{margin-top:4px;}
+  .btn-reveal:hover{background:#3f9268;}
+  .btn-reveal.on{background:#E7E2D5;color:var(--ink);}
 
-  /* PASSAGE (reading style) */
-  .passage{
-    background:#FFFDF6;border-left:5px solid var(--sky-dark);
-    padding:14px 16px;border-radius:0 14px 14px 0;margin-bottom:16px;font-size:.98rem;
+  .answerbox{
+    display:none;margin-top:12px;background:#FFFDF3;border:2px dashed var(--butter-dark);
+    border-radius:14px;padding:12px 16px;
   }
-  .passage .blank{
-    display:inline-block;min-width:90px;border-bottom:2px solid var(--ink-light);
-    text-align:center;font-weight:800;color:var(--coral);
-  }
+  .answerbox.show{display:block;}
+  .answerbox .answers{font-weight:800;color:#155A2E;margin-bottom:6px;}
+  .answerbox .explain{color:var(--ink-light);font-size:.9rem;}
 
-  .checkall{
-    display:block;margin:14px auto 0;
-    background:var(--coral);color:white;font-family:'Baloo 2',cursive;
-    font-weight:700;font-size:1rem;border:none;border-radius:999px;
-    padding:10px 26px;cursor:pointer;
-  }
-  .checkall:hover{background:#e56947;}
+  .ans-table{width:100%;border-collapse:collapse;margin-bottom:8px;}
+  .ans-table th{background:var(--mint);color:#1f6b45;padding:6px 8px;border:1px solid #cdeadb;font-size:.82rem;text-align:left;}
+  .ans-table td{padding:6px 8px;border:1px solid #eee2c9;vertical-align:top;font-weight:700;color:#155A2E;font-size:.88rem;}
 
-  .radiofield label{display:flex;align-items:center;gap:8px;font-weight:700;padding:4px 0;cursor:pointer;}
-
-  .btn-show-mini{
-    background:var(--sky-dark);color:white;border:none;border-radius:999px;
-    font-size:.75rem;padding:2px 7px;cursor:pointer;vertical-align:middle;
-  }
-  .btn-show-mini:hover{background:#268aab;}
+  .grammar-table{width:100%;border-collapse:collapse;margin:2px 0 12px;}
+  .grammar-table th{background:var(--sky);color:#155A72;padding:6px 8px;border:1px solid #bfe3f0;font-size:.82rem;text-align:left;}
+  .grammar-table td{padding:6px 8px;border:1px solid #d8ecf5;vertical-align:top;font-size:.86rem;}
+  .grammar-table td.word{font-weight:800;color:#155A72;white-space:nowrap;}
 
   footer{text-align:center;color:var(--ink-light);font-size:.85rem;padding:30px 0 10px;}
 </style>
@@ -196,647 +89,258 @@
 <body>
 
 <div class="hero">
-  <span class="plate">🍱</span>
+  <span class="plate">📋🍱</span>
   <h1>Unit 8: What's for lunch?</h1>
-  <p>Companion interactivo del libro Movers — practica en clase o en casa, actividad por actividad.</p>
+  <p>Answer key for the printed book — page references, simple explanations and real audio, activity by activity.</p>
   <div class="navpills">
-    <a href="#s1">🍝 Words</a>
-    <a href="#s2">🥕 Reading</a>
-    <a href="#s3">🍏 a/an/some</a>
-    <a href="#s4">🧃 How much/many</a>
-    <a href="#s5">🧹 have to</a>
-    <a href="#s6">📖 R&amp;W Part 1</a>
-    <a href="#s7">🎂 Listening</a>
-    <a href="#s8">📚 R&amp;W Part 3</a>
-    <a href="#s9">🔤 Revision 2</a>
-    <a href="#s10">📋 Answer Key</a>
+    <a href="#l1">Lesson 1</a>
+    <a href="#l2">Lesson 2</a>
+    <a href="#l3">Lesson 3</a>
+    <a href="#l4">Lesson 4</a>
+    <a href="#l5">Lesson 5</a>
+    <a href="#mpt">Practice test</a>
+    <a href="#rev">Revision 2</a>
+    <a href="#sp">Speaking prep</a>
   </div>
 </div>
 
 <div class="wrap">
 
-<!-- SECTION 1: WORDS -->
-<section id="s1">
-  <span class="tag words">📘 Book p.64 · Words · Activity 1</span>
-  <h2>Food words</h2>
-  <div class="card">
-    <p class="instructions">Look at the food below. Write the correct word for each one. Number 1 is done for you.</p>
-    <div class="wordbank"><span>cheese</span><span>chicken</span><span>milk</span><span>pasta</span><span>coffee</span><span>salad</span><span>tea</span><span>water</span><span>soup</span><span>sandwiches</span><span>vegetables</span><span>noodles</span></div>
-    <div class="foodgrid" id="grid1">
-      <div class="fooditem"><span class="num">1</span><span class="emoji">🍝</span>
-        <input type="text" value="pasta" disabled style="background:#F0F7F1;color:var(--ok);font-weight:800;">
+<!-- LESSON 1 -->
+<div class="lesson" id="l1">
+  <div class="lesson-title"><span class="num">1</span><h2>Words</h2><span class="pageref">SB p.64</span></div>
+
+  <div class="activity" data-answers="1 pasta · 2 vegetables · 3 milk · 4 noodles · 5 water · 6 sandwiches · 7 soup · 8 salad · 9 tea · 10 chicken · 11 cheese · 12 coffee" data-explain="Each number matches a food item in the picture. Look carefully at the container and colour to tell similar items apart (e.g. tea and coffee are both in a cup).">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">🍝 Look at the picture and write the food word for each number.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="The man has got a bottle of water. The girl has got a plate of pasta. The woman has got a cup of tea. The boy has got a glass of orange juice. There is a bowl of soup." data-explain="Match each container word (bowl/glass/bottle/cup/plate) to its shape in the picture — a bottle is for drinks you carry, a bowl is for soup, etc.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🍽️ Match each person to what they've got, then complete the sentence.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 2 -->
+<div class="lesson" id="l2">
+  <div class="lesson-title"><span class="num">2</span><h2>Reading &amp; Speaking</h2><span class="pageref">SB p.65</span></div>
+
+  <div class="activity" data-explain="These are suggested answers — the book accepts any reasonable word that fits the category.">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">🥕 Put each word in the right group: drinks, meat, fruit, vegetables or other food.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox">
+      <div class="answers">
+        <table class="ans-table">
+          <tr><th>Category</th><th>Words</th></tr>
+          <tr><td>Drinks</td><td>tea, coffee, milk, lemonade, water, hot chocolate, cola</td></tr>
+          <tr><td>Meat</td><td>chicken, a sausage</td></tr>
+          <tr><td>Fruit</td><td>orange, apple, lemon, watermelon, pear, grapes, strawberries, cherries, mango, lime</td></tr>
+          <tr><td>Vegetables</td><td>peas, potatoes, tomatoes, cucumber, beans, onions, peppers</td></tr>
+          <tr><td>Other food</td><td>butter, cheese, soup, sandwiches, crisps, cake, biscuits, ice cream</td></tr>
+        </table>
       </div>
+      <div class="explain"></div>
     </div>
   </div>
-</section>
 
-<section>
-  <span class="tag words">📘 Book p.64 · Words · Activity 2</span>
-  <h2>What have they got?</h2>
-  <div class="card">
-    <p class="instructions">Choose the correct container for each sentence.</p>
-    <div id="grid2"></div>
-    <button class="checkall" data-group="grid2">Check ✔ all</button>
+  <div class="activity" data-answers="1 bread → sandwich · 2 vegetable → carrot · 3 drink → coffee · 4 juice → bottle" data-explain="Each gapped definition already gives the first letter of the missing word as a clue — read the whole sentence first to guess the item, then check the letter matches.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🔤 Read the clue and complete the missing word.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
   </div>
-</section>
 
-<!-- SECTION 2: READING & SPEAKING -->
-<section id="s2">
-  <span class="tag reading">📘 Book p.65 · Reading &amp; Speaking · Activity 1</span>
-  <h2>Sort the food</h2>
-  <div class="card">
-    <p class="instructions">Choose the correct group for each word.</p>
-    <div id="grid3"></div>
-    <button class="checkall" data-group="grid3">Check ✔ all</button>
+  <div class="activity" data-answers="1 sausages, egg and milk · 2 juice and tea · 3 peas" data-explain="Audioscript summary: the adult asks the child about breakfast, drinks and her favourite vegetable. She had sausages and an egg for breakfast, with milk to drink; her favourite drinks are juice and tea; she likes carrots, but peas are her favourite.">
+    <div class="eyebrow">Activity 3 <span class="audiotag">🎧 Track 42</span></div>
+    <div class="statement">🎧 Listen to the recording and circle the correct answer.</div>
+    <div class="audio-box"><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_42.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
   </div>
-</section>
+</div>
 
-<section>
-  <span class="tag reading">📘 Book p.65 · Reading &amp; Speaking · Activity 2</span>
-  <h2>What is it?</h2>
-  <div class="card">
-    <p class="instructions">Read the clue and write the answer.</p>
-    <div id="grid4"></div>
-    <button class="checkall" data-group="grid4">Check ✔ all</button>
+<!-- LESSON 3 -->
+<div class="lesson" id="l3">
+  <div class="lesson-title"><span class="num">3</span><h2>Story</h2><span class="pageref">SB p.66</span></div>
+
+  <div class="activity" data-answers="No written answers — it's a listen-and-act story." data-explain="Audioscript summary: Daisy phones Jack to ask him to the playground, but she has to make lunch first, so she invites him over instead. He arrives hungry and they eat sandwiches together.">
+    <div class="eyebrow">Activity 1 <span class="audiotag">🎧 Track 43</span></div>
+    <div class="statement">🎧 Listen to the story and follow it in the book, then act it out with a partner.</div>
+    <div class="audio-box"><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_43.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show summary</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
   </div>
-</section>
 
-<section>
-  <span class="tag reading">📘 Book p.65 · Reading &amp; Speaking · Activity 3</span>
-  <h2>Listen and circle</h2>
-  <div class="card">
-    <p class="instructions">Listen to the recording and choose the correct answer for each question.</p>
-    <div class="audio-box"><span class="label">🎧 Track 42</span><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_42.mp3"></audio></div>
-    <div id="grid3b"></div>
-    <button class="checkall" data-group="grid3b">Check ✔ all</button>
-  </div>
-</section>
-
-<!-- SECTION 3: GRAMMAR a/an/some -->
-<section>
-  <span class="tag grammar">📘 Book p.66 · Story · Activity 1</span>
-  <h2>Listen to the story</h2>
-  <div class="card">
-    <p class="instructions">Follow the story in your book while you listen.</p>
-    <div class="audio-box"><span class="label">🎧 Track 43</span><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_43.mp3"></audio></div>
-  </div>
-</section>
-
-<section id="s3">
-  <span class="tag grammar">📘 Book p.66 · Story · Activity 2</span>
-  <h2>a, an or some?</h2>
-  <div class="card">
-    <p class="instructions">Complete each sentence with <b>a</b>, <b>an</b> or <b>some</b>.</p>
-    <div id="grid5"></div>
-    <button class="checkall" data-group="grid5">Check ✔ all</button>
-    <p class="instructions" style="margin-top:14px;">Which two words on this list are <b>uncountable</b>?</p>
-    <div class="field" data-answer="lemonade, chocolate|lemonade,chocolate">
-      <span class="qtext">Answer:</span>
-      <input type="text" class="ans-input" placeholder="word 1, word 2">
-      <button class="btn-check">✔ Check</button>
-      <button class="btn-show">👀 Show answer</button>
-      <button class="btn-reset">🔄 Try again</button>
-      <span class="feedback"></span>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 4: HOW MUCH / HOW MANY -->
-<section id="s4">
-  <span class="tag grammar">📘 Book p.67 · Language Practice · Activity 3</span>
-  <h2>How much or how many?</h2>
-  <div class="card">
-    <p class="instructions">Look at the picnic basket: apples 🍎🍎🍎🍎🍎, one bottle of juice 🧃, eight sandwiches 🥪 and lots of cheese 🧀. Complete the questions with <b>much</b> or <b>many</b>.</p>
-    <div id="grid6"></div>
-    <button class="checkall" data-group="grid6">Check ✔ all</button>
-  </div>
-</section>
-
-<!-- SECTION 5: have to / has to -->
-<section id="s5">
-  <span class="tag grammar">📘 Book p.68 · Language Practice · Activity 1</span>
-  <h2>What does Jack have to do at home?</h2>
-  <div class="card">
-    <p class="instructions">Listen and tick (✓) or cross (✗).</p>
-    <div class="audio-box"><span class="label">🎧 Track 44</span><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_44.mp3"></audio></div>
-    <div id="jackchores"></div>
-    <button class="checkall" data-group="jackchores">Check ✔ all</button>
-  </div>
-</section>
-
-<section>
-  <span class="tag grammar">📘 Book p.68 · Language Practice · Activity 3</span>
-  <h2>What do they have to do?</h2>
-  <div class="card">
-    <p class="instructions">Complete each sentence with <b>have to</b> or <b>has to</b>.</p>
-    <div id="grid7"></div>
-    <button class="checkall" data-group="grid7">Check ✔ all</button>
-  </div>
-</section>
-
-<!-- SECTION 6: MOVERS PRACTICE TEST — R&W PART 1 -->
-<section id="s6">
-  <span class="tag practice">📘 Movers Practice Test · Reading &amp; Writing, Part 1</span>
-  <h2>Look and read</h2>
-  <div class="card">
-    <p class="instructions">Choose the correct word from the box and write it on the line.</p>
-    <div class="wordbank"><span>a rabbit</span><span>ice cream</span><span>a lion</span><span>a park</span><span>cheese</span><span>a kitchen</span><span>biscuits</span><span>a duck</span></div>
-    <p class="instructions"><b>Example:</b> This animal has got a long mane and lives in hot places. It's very strong. → <i>a lion</i></p>
-    <div id="grid8"></div>
-    <button class="checkall" data-group="grid8">Check ✔ all</button>
-  </div>
-</section>
-
-<!-- SECTION 7: LISTENING PART 2 -->
-<section id="s7">
-  <span class="tag practice">📘 Movers Practice Test · Listening, Part 2</span>
-  <h2>My birthday party</h2>
-  <div class="card">
-    <p class="instructions">Listen and write. There is one example.</p>
-    <div class="audio-box"><span class="label">🎧 Track 45</span><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_45.mp3"></audio></div>
-    <div id="grid9"></div>
-    <button class="checkall" data-group="grid9">Check ✔ all</button>
-  </div>
-</section>
-
-<!-- SECTION 8: R&W PART 3 -->
-<section id="s8">
-  <span class="tag practice">📘 Movers Practice Test · Reading &amp; Writing, Part 3</span>
-  <h2>Tom's Saturday</h2>
-  <div class="card">
-    <p class="instructions">Read the story. Choose a word from the box and write it next to numbers 1–5.</p>
-    <div class="wordbank"><span>park</span><span>phoned</span><span>ran</span><span>glass</span><span>balcony</span><span>laughed</span><span>house</span><span>downstairs</span></div>
-    <div class="passage">
-      My name is Tom. On Saturday I went to the <span class="blank">park</span> because I wanted to play football. At eleven o'clock, my dad
-      (1) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="phoned"> <button class="btn-show-mini" data-target="1">👀</button> me. He wanted me to come home for lunch. I
-      (2) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="ran"> <button class="btn-show-mini" data-target="2">👀</button> home quickly. My little sister was in the garden. I gave her a
-      (3) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="glass"> <button class="btn-show-mini" data-target="3">👀</button> of lemonade because she was hot. Then she asked me to make her a sandwich. We ate lunch on the
-      (4) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="balcony"> <button class="btn-show-mini" data-target="4">👀</button> because it was sunny. Later, my friend Ana came to visit. She told a funny joke and I
-      (5) <input type="text" class="ans-input passage-input" style="width:110px;" data-answer="laughed"> <button class="btn-show-mini" data-target="5">👀</button> a lot!
-    </div>
-    <button class="checkall" data-group="s8passage" id="checkPassage">Check ✔ all</button>
-    <button class="btn-show" id="showPassage" style="margin-left:8px;">👀 Show all</button>
-    <p class="instructions" style="margin-top:16px;">(6) Now choose the best title for the story.</p>
-    <div class="radiofield" data-answer="Tom's busy Saturday">
-      <label><input type="radio" name="title8" value="A day in the garden"> A day in the garden</label>
-      <label><input type="radio" name="title8" value="Tom's busy Saturday"> Tom's busy Saturday</label>
-      <label><input type="radio" name="title8" value="The boy who laughed"> The boy who laughed</label>
-      <div style="margin-top:6px;">
-        <button class="btn-check">✔ Check</button>
-        <button class="btn-show">👀 Show answer</button>
-        <button class="btn-reset">🔄 Try again</button>
-        <span class="feedback"></span>
+  <div class="activity" data-explain="Use an before a vowel sound, a before a consonant sound, and some when the food is plural or uncountable (you can't count it as one unit — like lemonade or chocolate).">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🍏 Complete each sentence with a, an or some.</div>
+    <table class="grammar-table">
+      <tr><th>Word</th><th>Use it before...</th><th>Example</th></tr>
+      <tr><td class="word">a</td><td>a consonant sound</td><td>a banana</td></tr>
+      <tr><td class="word">an</td><td>a vowel sound (a, e, i, o, u)</td><td>an apple</td></tr>
+      <tr><td class="word">some</td><td>plural food or food you can't count</td><td>some grapes, some milk</td></tr>
+    </table>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox">
+      <div class="answers">
+        <table class="ans-table">
+          <tr><th>#</th><th>Answer</th><th>Why</th></tr>
+          <tr><td>1</td><td>an <u>a</u>pple</td><td>starts with a vowel sound</td></tr>
+          <tr><td>2</td><td>some lemon<u>s</u></td><td>plural (more than one)</td></tr>
+          <tr><td>3</td><td>some lemonade</td><td>uncountable — can't say "one lemonade"</td></tr>
+          <tr><td>4</td><td>a <u>s</u>andwich</td><td>starts with a consonant sound</td></tr>
+          <tr><td>5</td><td>some chocolate</td><td>uncountable — can't say "one chocolate"</td></tr>
+          <tr><td>6</td><td>some sausage<u>s</u></td><td>plural (more than one)</td></tr>
+        </table>
       </div>
+      <div class="explain"></div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- SECTION 9: REVISION 2 & SPEAKING PREP -->
-<section id="s9">
-  <span class="tag practice">📘 Revision 2 · Activity 2</span>
-  <h2>Listen and complete the question</h2>
-  <div class="card">
-    <p class="instructions">Listen to the recording. It spells out a hidden question, letter by letter. Write the full question, then write your own answer.</p>
-    <div class="audio-box"><span class="label">🎧 Track 46</span><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_46.mp3"></audio></div>
-    <div id="grid10"></div>
-    <button class="checkall" data-group="grid10">Check ✔ all</button>
-    <p class="instructions" style="margin-top:14px;">My answer: _______________________________________________</p>
+<!-- LESSON 4 -->
+<div class="lesson" id="l4">
+  <div class="lesson-title"><span class="num">4</span><h2>Language practice</h2><span class="pageref">SB p.67</span></div>
+
+  <div class="activity" data-answers="1 cakes · 2 sandwiches · 3 juice · 4 chocolate · 5 presents" data-explain="Compare the two pictures item by item — these are the five things that changed between 'before' and 'after' the party.">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">🔍 Find the 5 differences between the two pictures and complete the sentences.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
   </div>
-</section>
 
-<section>
-  <span class="tag practice">📘 Movers Speaking preparation · Activity 1</span>
-  <h2>Spot the differences</h2>
-  <div class="card">
-    <p class="instructions">Listen and complete the sentences about the two pictures.</p>
-    <div class="audio-box"><span class="label">🎧 Track 47</span><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_47.mp3"></audio></div>
-    <div id="grid11"></div>
-    <button class="checkall" data-group="grid11">Check ✔ all</button>
+  <div class="activity" data-answers="1 water · 2 apples · 3 cheese · 4 bananas" data-explain="Use how much with uncountable nouns (water, cheese) and how many with countable nouns in the plural (apples, bananas).">
+    <div class="eyebrow">Activity 3</div>
+    <div class="statement">🧃 Complete the questions with how much or how many.</div>
+    <table class="grammar-table">
+      <tr><th>Word</th><th>Use it with...</th><th>Example</th></tr>
+      <tr><td class="word">how many</td><td>countable food, plural</td><td>How many apples?</td></tr>
+      <tr><td class="word">how much</td><td>food you can't count</td><td>How much water?</td></tr>
+    </table>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
   </div>
-</section>
+</div>
 
-<section>
-  <span class="tag practice">📘 Movers Speaking preparation · Activity 2</span>
-  <h2>Circle the odd one out</h2>
-  <div class="card">
-    <p class="instructions">Listen and complete the sentences.</p>
-    <div class="audio-box"><span class="label">🎧 Track 48</span><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_48.mp3"></audio></div>
-    <div id="grid12"></div>
-    <button class="checkall" data-group="grid12">Check ✔ all</button>
+<!-- LESSON 5 -->
+<div class="lesson" id="l5">
+  <div class="lesson-title"><span class="num">5</span><h2>Language practice</h2><span class="pageref">SB p.68</span></div>
+
+  <div class="activity" data-explain="Audioscript summary: a woman asks Jack about his chores. He has to clean his bedroom every week, cook dinner on Wednesdays, eat fruit and vegetables, and do homework. He doesn't have to walk the dog (they don't have one), do the shopping, clean the windows or wash the car — his parents do those.">
+    <div class="eyebrow">Activity 1 <span class="audiotag">🎧 Track 44</span></div>
+    <div class="statement">🎧 Listen and tick (✓) or cross (✗) what Jack has to do at home.</div>
+    <div class="audio-box"><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_44.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox">
+      <div class="answers">
+        <table class="ans-table">
+          <tr><th>Category</th><th>Chores</th></tr>
+          <tr><td>✓ Has to</td><td>clean bedroom, cook dinner, eat fruit &amp; vegetables, homework</td></tr>
+          <tr><td>✗ Doesn't have to</td><td>walk the dog, shopping, clean windows, wash car</td></tr>
+        </table>
+      </div>
+      <div class="explain"></div>
+    </div>
   </div>
-</section>
 
-<!-- SECTION 10: ANSWER KEY FOR THE REAL BOOK -->
-<section id="s10">
-  <span class="tag answerkey">📘 For the printed book — not this platform's own exercises</span>
-  <h2>Answer key &amp; explanations</h2>
-  <div class="card">
-    <p class="instructions">These are the correct answers for the exercises in the students' printed book (pages 64–71), with a simple explanation of the rule behind each one — so you can correct their books directly. We can't reprint the book's own questions or pictures here, only the answers and the reasoning.</p>
-
-    <div class="keyblock">
-      <h3>Lesson 1 (SB p.64) — Words, Activity 1</h3>
-      <p class="paraphrase">📝 Look at the picture and write the food word for each number.</p>
-      <div class="answers">1 pasta · 2 vegetables · 3 milk · 4 noodles · 5 water · 6 sandwiches · 7 soup · 8 salad · 9 tea · 10 chicken · 11 cheese · 12 coffee</div>
-      <div class="explain">Each number matches a food item in the picture. Look carefully at the container and colour to tell similar items apart (e.g. tea and coffee are both in a cup).</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Lesson 1 (SB p.64) — Words, Activity 2</h3>
-      <p class="paraphrase">📝 Match each person to what they've got, then complete the sentence.</p>
-      <div class="answers">The man has got a bottle of water. · The girl has got a plate of pasta. · The woman has got a cup of tea. · The boy has got a glass of orange juice. · There is a bowl of soup.</div>
-      <div class="explain">Match each container word (bowl/glass/bottle/cup/plate) to its shape in the picture — a bottle is for drinks you carry, a bowl is for soup, etc.</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Lesson 2 (SB p.65) — Reading &amp; Speaking, Activity 1</h3>
-      <p class="paraphrase">📝 Put each word in the right group: drinks, meat, fruit, vegetables or other food.</p>
-      <div class="answers">Drinks: tea, coffee, milk, lemonade, water, hot chocolate, cola · Meat: chicken, a sausage · Fruit: orange, apple, lemon, watermelon, pear, grapes, strawberries, cherries, mango, lime · Vegetables: peas, potatoes, tomatoes, cucumber, beans, onions, peppers · Other food: butter, cheese, soup, sandwiches, crisps, cake, biscuits, ice cream</div>
-      <div class="explain">These are suggested answers — the book accepts any reasonable word that fits the category, this is just a starting list.</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Lesson 2 (SB p.65) — Reading &amp; Speaking, Activity 2</h3>
-      <p class="paraphrase">📝 Read the clue and complete the missing word.</p>
-      <div class="answers">1 bread → sandwich · 2 vegetable → carrot · 3 drink → coffee · 4 juice → bottle</div>
-      <div class="explain">Each gapped definition already gives the first letter of the missing word as a clue — read the whole sentence first to guess the item, then check the letter matches.</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Lesson 2 (SB p.65) — Reading &amp; Speaking, Activity 3 🎧</h3>
-      <p class="paraphrase">📝 Listen to the recording and circle the correct answer.</p>
-      <div class="answers">1 sausages, egg and milk · 2 juice and tea · 3 peas</div>
-      <div class="explain">This one has real audio (Track 42) — do it as the interactive "Listen and circle" exercise further up this page.</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Lesson 3 (SB p.66) — Story, Activity 1 🎧</h3>
-      <p class="paraphrase">📝 Listen to the story and follow it in the book, then act it out with a partner.</p>
-      <div class="answers">No written answers — it's a listen-and-act story.</div>
-      <div class="explain">Real audio (Track 43) — use the "Listen to the story" player further up this page.</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Lesson 3 (SB p.66) — Story, Activity 2</h3>
-      <p class="paraphrase">📝 Complete each sentence with a, an or some.</p>
-      <div class="answers">1 an · 2 some · 3 some · 4 a · 5 some · 6 some &nbsp;|&nbsp; Uncountable nouns: lemonade, chocolate</div>
-      <div class="explain">Use <b>an</b> before a vowel sound, <b>a</b> before a consonant sound, and <b>some</b> when the food is plural or uncountable (you can't count it as one unit — like lemonade or chocolate).</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Lesson 4 (SB p.67) — Language practice, Activity 1</h3>
-      <p class="paraphrase">📝 Find the 5 differences between the two pictures and complete the sentences.</p>
-      <div class="answers">1 cakes · 2 sandwiches · 3 juice · 4 chocolate · 5 presents</div>
-      <div class="explain">Compare the two pictures item by item — these are the five things that changed between "before" and "after" the party.</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Lesson 4 (SB p.67) — Language practice, Activity 3</h3>
-      <p class="paraphrase">📝 Complete the questions with how much or how many.</p>
-      <div class="answers">1 water · 2 apples · 3 cheese · 4 bananas</div>
-      <div class="explain">Use <b>how much</b> with uncountable nouns (water, cheese) and <b>how many</b> with countable nouns in the plural (apples, bananas).</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Lesson 5 (SB p.68) — Language practice, Activity 1 🎧</h3>
-      <p class="paraphrase">📝 Listen and tick (✓) or cross (✗) what Jack has to do at home.</p>
-      <div class="answers">Has to: clean bedroom, cook dinner, eat fruit &amp; vegetables, homework · Doesn't have to: walk the dog, shopping, clean windows, wash car</div>
-      <div class="explain">Real audio (Track 44) — use the "What does Jack have to do at home?" exercise further up this page.</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Lesson 5 (SB p.68) — Language practice, Activity 3</h3>
-      <p class="paraphrase">📝 Look at the pictures and write what they have to do, using have to or has to.</p>
-      <div class="answers">1 The children have to say the alphabet. · 2 The boy has to carry a big bag. · 3 The children have to sit on the floor. · 4 The girl has to feed the fish. · 5 The children have to water the plants. · 6 The children have to go outside.</div>
-      <div class="explain">Use <b>has to</b> only with he/she/it (a single boy or girl); everyone else (the children) uses <b>have to</b>.</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Movers practice test — Reading &amp; Writing, Part 1</h3>
-      <p class="paraphrase">📝 Read each clue and write the correct word from the box.</p>
-      <div class="answers">1 a garden · 2 a horse · 3 cheese · 4 a kitchen · 5 ice cream</div>
-      <div class="explain">Each clue describes the item without naming it — look for key details (where it is, what it's used for, what it looks like) to match it to a word in the box.</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Movers practice test — Reading &amp; Writing, Part 3</h3>
-      <p class="paraphrase">📝 Read the story and complete the gaps with a word from the box, then choose the best title.</p>
-      <div class="answers">1 phoned · 2 ran · 3 glass · 4 balcony · 5 downstairs &nbsp;|&nbsp; Best title: Lucy's busy day</div>
-      <div class="explain">Read the whole story first to understand what happens, then choose the word from the box that makes sense grammatically and logically in each gap.</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Revision 2 — Activity 2 🎧</h3>
-      <p class="paraphrase">📝 Listen to the recording spelling out a hidden question, letter by letter, then complete it.</p>
-      <div class="answers">What food do you like best?</div>
-      <div class="explain">Real audio (Track 46) — use the "Listen and complete the question" exercise further up this page.</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Movers Speaking preparation — Activity 1 🎧</h3>
-      <p class="paraphrase">📝 Listen and complete the sentences about the differences between two pictures.</p>
-      <div class="answers">park → swimming pool · three cars → four cars · skipping → running · handbag → flowers · green door → red door</div>
-      <div class="explain">Real audio (Track 47) — use the "Spot the differences" exercise further up this page.</div>
-    </div>
-
-    <div class="keyblock">
-      <h3>Movers Speaking preparation — Activity 2 🎧</h3>
-      <p class="paraphrase">📝 Listen and complete the sentences to say which picture is the odd one out.</p>
-      <div class="answers">1 clothes · 2 climbing / roller skating · 3 food · 4 in / on (the cupboard)</div>
-      <div class="explain">Real audio (Track 48) — use the "Circle the odd one out" exercise further up this page.</div>
-    </div>
-
+  <div class="activity" data-answers="1 The children have to say the alphabet. 2 The boy has to carry a big bag. 3 The children have to sit on the floor. 4 The girl has to feed the fish. 5 The children have to water the plants. 6 The children have to go outside." data-explain="Use has to only with he/she/it (singular); everyone else uses have to.">
+    <div class="eyebrow">Activity 3</div>
+    <div class="statement">🧹 Look at the pictures and write what they have to do, using have to or has to.</div>
+    <table class="grammar-table">
+      <tr><th>Word</th><th>Use it with...</th><th>Example</th></tr>
+      <tr><td class="word">have to</td><td>I / you / we / they</td><td>I have to tidy my room.</td></tr>
+      <tr><td class="word">has to</td><td>he / she / it</td><td>She has to feed the fish.</td></tr>
+    </table>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
   </div>
-</section>
+</div>
+
+<!-- MOVERS PRACTICE TEST -->
+<div class="lesson" id="mpt">
+  <div class="lesson-title"><span class="num">📘</span><h2>Movers practice test</h2><span class="pageref">SB p.69–71</span></div>
+
+  <div class="activity" data-answers="1 a garden · 2 a horse · 3 cheese · 4 a kitchen · 5 ice cream" data-explain="Each clue describes the item without naming it — look for key details (where it is, what it's used for, what it looks like) to match it to a word in the box.">
+    <div class="eyebrow">Reading &amp; Writing, Part 1</div>
+    <div class="statement">📖 Read each clue and write the correct word from the box.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 76 · 2 Sunny (Street) · 3 cake · 4 13 · 5 Grandpa" data-explain="Audioscript summary: a girl talks about her birthday party. It was at house number 76 on Sunny Street. They had sandwiches and cake, and drank lemonade. Thirteen children came, and three grown-ups: her mum, dad and grandpa.">
+    <div class="eyebrow">Listening, Part 2 <span class="audiotag">🎧 Track 45</span></div>
+    <div class="statement">🎧 Listen and write. There is one example.</div>
+    <div class="audio-box"><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_45.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 phoned · 2 ran · 3 glass · 4 balcony · 5 downstairs — Best title: Lucy's busy day" data-explain="Read the whole story first to understand what happens, then choose the word from the box that makes sense grammatically and logically in each gap.">
+    <div class="eyebrow">Reading &amp; Writing, Part 3</div>
+    <div class="statement">📚 Read the story and complete the gaps with a word from the box, then choose the best title.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- REVISION 2 -->
+<div class="lesson" id="rev">
+  <div class="lesson-title"><span class="num">📘</span><h2>Revision 2</h2><span class="pageref">SB p.72–74</span></div>
+
+  <div class="activity" data-answers="What food do you like best?" data-explain="Audioscript summary: the recording spells out a hidden question by giving the position of each letter (e.g. 'the seventh letter is o'). Following all the clues in order spells out the full question.">
+    <div class="eyebrow">Activity 2 <span class="audiotag">🎧 Track 46</span></div>
+    <div class="statement">🎧 Listen to the recording spelling out a hidden question, letter by letter, then complete it.</div>
+    <div class="audio-box"><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_46.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answer</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- SPEAKING PREP -->
+<div class="lesson" id="sp">
+  <div class="lesson-title"><span class="num">📘</span><h2>Movers Speaking preparation</h2><span class="pageref">CB p.75</span></div>
+
+  <div class="activity" data-answers="park → swimming pool · three cars → four cars · skipping → running · handbag → flowers · green door → red door" data-explain="Audioscript summary: the recording describes five differences between Picture A and Picture B — the place, the number of cars, what the boy is doing, what the woman is carrying, and the door colour.">
+    <div class="eyebrow">Activity 1 <span class="audiotag">🎧 Track 47</span></div>
+    <div class="statement">🎧 Listen and complete the sentences about the differences between two pictures.</div>
+    <div class="audio-box"><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_47.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 clothes · 2 climbing / roller skating · 3 food · 4 in / on (the cupboard)" data-explain="Audioscript summary: for each set of four pictures, the recording says what three of them have in common and points out the odd one out — a camera among clothes, roller skating among climbing pictures, a non-food item among food, and something on the cupboard among things in it.">
+    <div class="eyebrow">Activity 2 <span class="audiotag">🎧 Track 48</span></div>
+    <div class="statement">🎧 Listen and complete the sentences to say which picture is the odd one out.</div>
+    <div class="audio-box"><audio controls src="../AUDIO/Get_Ready_for_Movers_Listening_48.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
 
 </div>
 
-<footer>Companion original de Unit 8, basado en los ejercicios del libro Movers · Alina Iuga</footer>
+<footer>Unit 8 Answer Key · Get Ready for Movers · Alina Iuga</footer>
 
 <script>
-function norm(s){return (s||'').toString().trim().toLowerCase().replace(/\s+/g,' ');}
-
-function makeField(question, answer, type, options){
-  const div = document.createElement('div');
-  div.className = 'field';
-  div.setAttribute('data-answer', answer);
-  const q = document.createElement('span');
-  q.className = 'qtext';
-  q.innerHTML = question;
-  div.appendChild(q);
-  let input;
-  if(type==='select'){
-    input = document.createElement('select');
-    input.className='ans-select';
-    const blank = document.createElement('option'); blank.value=''; blank.textContent='choose...';
-    input.appendChild(blank);
-    options.forEach(o=>{const op=document.createElement('option');op.value=o;op.textContent=o;input.appendChild(op);});
-  } else {
-    input = document.createElement('input');
-    input.type='text'; input.className='ans-input';
-    input.placeholder = options && options.placeholder ? options.placeholder : '';
+document.querySelectorAll('.activity').forEach(function(card){
+  const btn = card.querySelector('.btn-reveal');
+  const box = card.querySelector('.answerbox');
+  const showLabel = btn.textContent;
+  if(card.hasAttribute('data-answers')){
+    box.querySelector('.answers').textContent = '✅ ' + card.getAttribute('data-answers');
   }
-  div.appendChild(input);
-  const bc = document.createElement('button'); bc.className='btn-check'; bc.textContent='✔ Check';
-  const bs = document.createElement('button'); bs.className='btn-show'; bs.textContent='👀 Show answer';
-  const br = document.createElement('button'); br.className='btn-reset'; br.textContent='🔄 Try again';
-  const fb = document.createElement('span'); fb.className='feedback';
-  div.appendChild(bc); div.appendChild(bs); div.appendChild(br); div.appendChild(fb);
-  return div;
-}
-
-function showField(field){
-  const input = field.querySelector('input[type=text], select');
-  const fb = field.querySelector('.feedback');
-  const first = field.getAttribute('data-answer').split('|')[0];
-  input.value = first;
-  fb.textContent='👀'; fb.className='feedback shown';
-}
-
-function checkField(field){
-  const input = field.querySelector('input[type=text], select');
-  const fb = field.querySelector('.feedback');
-  const answers = field.getAttribute('data-answer').split('|').map(norm);
-  const val = norm(input.value);
-  if(answers.includes(val) && val!==''){
-    fb.textContent='✅'; fb.className='feedback ok';
-  } else {
-    fb.textContent='❌'; fb.className='feedback bad';
-  }
-}
-function resetField(field){
-  const input = field.querySelector('input[type=text], select');
-  input.value='';
-  const fb = field.querySelector('.feedback');
-  fb.textContent=''; fb.className='feedback';
-}
-
-document.addEventListener('click', function(e){
-  if(e.target.classList.contains('btn-check')){
-    const field = e.target.closest('.field, .radiofield');
-    if(field.classList.contains('radiofield')){
-      const answer = norm(field.getAttribute('data-answer'));
-      const checked = field.querySelector('input[type=radio]:checked');
-      const fb = field.querySelector('.feedback');
-      if(checked && norm(checked.value)===answer){fb.textContent='✅';fb.className='feedback ok';}
-      else {fb.textContent='❌';fb.className='feedback bad';}
-    } else {
-      checkField(field);
-    }
-  }
-  if(e.target.classList.contains('btn-reset')){
-    const field = e.target.closest('.field, .radiofield');
-    if(field.classList.contains('radiofield')){
-      field.querySelectorAll('input[type=radio]').forEach(r=>r.checked=false);
-      const fb = field.querySelector('.feedback'); fb.textContent=''; fb.className='feedback';
-    } else {
-      resetField(field);
-    }
-  }
-  if(e.target.classList.contains('btn-show')){
-    const field = e.target.closest('.field, .radiofield');
-    if(field.classList.contains('radiofield')){
-      const answer = field.getAttribute('data-answer');
-      field.querySelectorAll('input[type=radio]').forEach(r=>{r.checked = (r.value===answer);});
-      const fb = field.querySelector('.feedback'); fb.textContent='👀'; fb.className='feedback shown';
-    } else {
-      showField(field);
-    }
-  }
-  if(e.target.classList.contains('btn-show-mini')){
-    const input = e.target.previousElementSibling;
-    input.value = input.getAttribute('data-answer');
-    input.style.color='var(--sky-dark)'; input.style.borderColor='var(--sky-dark)';
-  }
-  if(e.target.id==='showPassage'){
-    document.querySelectorAll('.passage-input').forEach(inp=>{
-      inp.value = inp.getAttribute('data-answer');
-      inp.style.color='var(--sky-dark)'; inp.style.borderColor='var(--sky-dark)';
-    });
-  }
-  if(e.target.classList.contains('checkall')){
-    const group = e.target.getAttribute('data-group');
-    if(group==='s8passage'){
-      document.querySelectorAll('.passage-input').forEach(inp=>{
-        const answer = norm(inp.getAttribute('data-answer'));
-        if(norm(inp.value)===answer){inp.style.color='var(--ok)';inp.style.borderColor='var(--ok)';}
-        else{inp.style.color='var(--bad)';inp.style.borderColor='var(--bad)';}
-      });
-    } else {
-      document.querySelectorAll('#'+group+' .field').forEach(checkField);
-    }
-  }
+  box.querySelector('.explain').textContent = card.getAttribute('data-explain');
+  btn.addEventListener('click', function(){
+    const isOn = box.classList.toggle('show');
+    btn.classList.toggle('on', isOn);
+    btn.textContent = isOn ? '🙈 Hide' : showLabel;
+  });
 });
-
-/* Activity: foodgrid items 2-12 */
-const foods = [
-  {n:2, emoji:'🧀', a:'cheese'}, {n:3, emoji:'🍗', a:'chicken'}, {n:4, emoji:'🥛', a:'milk'},
-  {n:5, emoji:'☕', a:'coffee'}, {n:6, emoji:'🥗', a:'salad'}, {n:7, emoji:'🍵', a:'tea'},
-  {n:8, emoji:'💧', a:'water'}, {n:9, emoji:'🍲', a:'soup'}, {n:10, emoji:'🥪', a:'sandwiches'},
-  {n:11, emoji:'🥕', a:'vegetables'}, {n:12, emoji:'🍜', a:'noodles'}
-];
-const grid1 = document.getElementById('grid1');
-foods.forEach(f=>{
-  const div = document.createElement('div');
-  div.className='fooditem';
-  div.innerHTML = `<span class="num">${f.n}</span><span class="emoji">${f.emoji}</span>
-    <input type="text" class="ans-input">
-    <div class="rowbtns">
-      <button class="btn-check">✔</button>
-      <button class="btn-show">👀</button>
-      <button class="btn-reset">🔄</button>
-    </div>
-    <div class="fb feedback"></div>`;
-  div.setAttribute('data-answer', f.a);
-  grid1.appendChild(div);
-});
-document.addEventListener('click', function(e){
-  if(e.target.closest('.fooditem')){
-    const item = e.target.closest('.fooditem');
-    const input = item.querySelector('input');
-    const fb = item.querySelector('.fb');
-    const answer = norm(item.getAttribute('data-answer'));
-    if(e.target.classList.contains('btn-check')){
-      if(norm(input.value)===answer){fb.textContent='✅';fb.className='fb feedback ok';}
-      else{fb.textContent='❌';fb.className='fb feedback bad';}
-    }
-    if(e.target.classList.contains('btn-show')){
-      input.value = item.getAttribute('data-answer');
-      fb.textContent='👀'; fb.className='fb feedback shown';
-    }
-    if(e.target.classList.contains('btn-reset')){
-      input.value=''; fb.textContent=''; fb.className='fb feedback';
-    }
-  }
-});
-
-/* Activity 2: containers */
-const grid2 = document.getElementById('grid2');
-const containerOpts = ['a bowl','a glass','a bottle','a cup','a plate'];
-[
-  ['Mrs Baker has got <b>___</b> of tea.', 'a cup'],
-  ['Leo has got <b>___</b> of water.', 'a bottle'],
-  ['My grandma has got <b>___</b> of soup.', 'a bowl'],
-  ['Dad has got <b>___</b> of pasta.', 'a plate'],
-  ['Emma has got <b>___</b> of orange juice.', 'a glass']
-].forEach(([q,a])=>grid2.appendChild(makeField(q,a,'select',containerOpts)));
-
-/* Activity Sort the food */
-const grid3 = document.getElementById('grid3');
-const catOpts = ['drinks','meat','fruit','vegetables','other food'];
-[
-  ['<b>lemonade</b> →', 'drinks'], ['<b>sausages</b> →', 'meat'], ['<b>banana</b> →', 'fruit'],
-  ['<b>peas</b> →', 'vegetables'], ['<b>rice</b> →', 'other food'], ['<b>grapes</b> →', 'fruit']
-].forEach(([q,a])=>grid3.appendChild(makeField(q,a,'select',catOpts)));
-
-/* What is it? */
-const grid4 = document.getElementById('grid4');
-[
-  ['This meal is made with bread. You can put cheese, meat or vegetables inside. What is it?', 'a sandwich|sandwich'],
-  ['This orange vegetable is often eaten raw in salads. What is it?', 'a carrot|carrot'],
-  ['This hot drink is popular in the afternoon in Britain. People often add milk to it. What is it?', 'tea'],
-  ['You can carry water or juice in this. It isn\'t a cup or a glass. What is it?', 'a bottle|bottle']
-].forEach(([q,a])=>grid4.appendChild(makeField(q,a,'text')));
-
-/* a/an/some */
-const grid5 = document.getElementById('grid5');
-const artOpts = ['a','an','some'];
-[
-  ['I\'ve got <b>___</b> banana.', 'a'],
-  ['I\'ve got <b>___</b> apple.', 'an'],
-  ['I\'ve got <b>___</b> lemonade.', 'some'],
-  ['I\'ve got <b>___</b> sandwich.', 'a'],
-  ['I\'ve got <b>___</b> chocolate.', 'some'],
-  ['I\'ve got <b>___</b> orange.', 'an']
-].forEach(([q,a])=>grid5.appendChild(makeField(q,a,'select',artOpts)));
-
-/* how much/many */
-const grid6 = document.getElementById('grid6');
-const mmOpts = ['much','many'];
-[
-  ['How <b>___</b> apples have they got?', 'many'],
-  ['How <b>___</b> juice have they got?', 'much'],
-  ['How <b>___</b> sandwiches have they got?', 'many'],
-  ['How <b>___</b> cheese have they got?', 'much']
-].forEach(([q,a])=>grid6.appendChild(makeField(q,a,'select',mmOpts)));
-
-/* have to / has to */
-const grid7 = document.getElementById('grid7');
-const htOpts = ['have to','has to'];
-[
-  ['🧹 The children <b>___</b> tidy their books.', 'have to'],
-  ['🐕 Leo <b>___</b> walk the dog.', 'has to'],
-  ['🍽️ Mia and Sam <b>___</b> lay the table.', 'have to'],
-  ['🛏️ Grandpa <b>___</b> make the beds today.', 'has to']
-].forEach(([q,a])=>grid7.appendChild(makeField(q,a,'select',htOpts)));
-
-/* Movers practice R&W Part 1 */
-const grid8 = document.getElementById('grid8');
-[
-  ['1. This place has grass, trees and swings. Families often go there on Sunday.', 'a park|park'],
-  ['2. This small animal has got long ears and a short tail. It loves eating carrots.', 'a rabbit|rabbit'],
-  ['3. People often put this food in sandwiches. It can be yellow or white.', 'cheese'],
-  ['4. This is a room in a house with a cooker and a fridge.', 'a kitchen|kitchen'],
-  ['5. This is a cold sweet food. You eat it from a bowl with a spoon.', 'ice cream']
-].forEach(([q,a])=>grid8.appendChild(makeField(q,a,'text')));
-
-/* Listening note completion */
-const grid9 = document.getElementById('grid9');
-[
-  ['When? on', 'monday'],
-  ['House number:', '76'],
-  ['Street:', 'sunny street|sunny'],
-  ['Food: sandwiches and', 'cake'],
-  ['How many children?', 'thirteen|13'],
-  ['Grown-ups: mum, dad and', 'grandpa']
-].forEach(([q,a])=>grid9.appendChild(makeField(q,a,'text')));
-
-/* Listen and circle — Track 42 */
-const grid3b = document.getElementById('grid3b');
-const mcqOpts1 = ['cereal and toast','sausages, egg and milk','pancakes and juice'];
-const mcqOpts2 = ['milk and water','juice and tea','coffee and cola'];
-const mcqOpts3 = ['carrots','peas','broccoli'];
-[
-  ['1. What did the child have for breakfast?', mcqOpts1, 'sausages, egg and milk'],
-  ['2. Which drinks does the child like best?', mcqOpts2, 'juice and tea'],
-  ["3. What's the child's favourite vegetable?", mcqOpts3, 'peas']
-].forEach(([q,opts,a])=>grid3b.appendChild(makeField(q,a,'select',opts)));
-
-/* Jack's chores — Track 44 */
-const jackchores = document.getElementById('jackchores');
-const tcOpts = ['✓ has to','✗ doesn\'t have to'];
-[
-  ['clean his bedroom', "✓ has to"],
-  ['take the dog for a walk', "✗ doesn't have to"],
-  ['do the shopping', "✗ doesn't have to"],
-  ['cook the dinner', "✓ has to"],
-  ['clean the windows', "✗ doesn't have to"],
-  ['wash the car', "✗ doesn't have to"],
-  ['eat fruit and vegetables', "✓ has to"],
-  ['do homework', "✓ has to"]
-].forEach(([q,a])=>jackchores.appendChild(makeField(q,a,'select',tcOpts)));
-
-/* Coded question — Track 46 */
-const grid10 = document.getElementById('grid10');
-grid10.appendChild(makeField('Full question:', 'What food do you like best?', 'text'));
-
-/* Spot the differences — Track 47 */
-const grid11 = document.getElementById('grid11');
-[
-  ["In Picture A, there's a park, but in Picture B, there's a ______.", 'swimming pool'],
-  ['Here, there are three cars, but here there are ______.', 'four'],
-  ['In this picture the boy is skipping, but in this one he\'s ______.', 'running'],
-  ['Here, the woman has got a handbag, but here she\'s got ______.', 'flowers'],
-  ['This door is green, but this one is ______.', 'red']
-].forEach(([q,a])=>grid11.appendChild(makeField(q,a,'text')));
-
-/* Odd one out — Track 48 */
-const grid12 = document.getElementById('grid12');
-[
-  ['1. These are all ______, but this isn\'t.', 'clothes'],
-  ["2. In these pictures they're all climbing, but in this one they're ______.", 'skating|roller skating'],
-  ['3. These are all ______, but this isn\'t.', 'food'],
-  ['4. These are all in the cupboard, but this one is ______ it.', 'on']
-].forEach(([q,a])=>grid12.appendChild(makeField(q,a,'text')));
 </script>
 </body>
 </html>
