@@ -84,9 +84,34 @@
   .grammar-table td.word{font-weight:800;color:#155A72;white-space:nowrap;}
 
   footer{text-align:center;color:var(--ink-light);font-size:.85rem;padding:30px 0 10px;}
+
+  .sitenav{
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    padding:10px 20px;background:var(--white);
+    box-shadow:0 2px 8px rgba(0,0,0,.07);
+    position:sticky;top:0;z-index:50;
+  }
+  .sitenav a{
+    text-decoration:none;font-weight:800;font-size:.82rem;color:var(--ink);
+    background:#F2EFE7;padding:6px 12px;border-radius:999px;white-space:nowrap;
+  }
+  .sitenav a.home{background:var(--coral);color:white;}
+  .sitenav a.active{background:var(--mint-dark);color:white;}
+
+  .audio-fallback{font-size:.78rem;color:var(--ink-light);}
+  .audio-fallback a{color:var(--sky-dark);font-weight:700;}
+  .audio-error{display:none;color:#b3392c;font-size:.8rem;font-weight:700;margin-top:4px;}
 </style>
 </head>
 <body>
+
+<nav class="sitenav">
+  <a class="home" href="../index.html">🏠 Home</a>
+  <a href="introduction.html" data-page="introduction">👋 Introduction</a>
+  <a href="unit1.html" data-page="unit1">🌳 Unit 1</a>
+  <a href="unit8.html" data-page="unit8">🍱 Unit 8</a>
+</nav>
+
 
 <div class="hero">
   <span class="plate">👋🏠</span>
@@ -176,6 +201,22 @@
 <footer>Introduction Answer Key · Get Ready for Movers · Alina Iuga</footer>
 
 <script>
+document.querySelectorAll('.sitenav a[data-page]').forEach(function(a){
+  if(location.pathname.endsWith(a.getAttribute('href'))) a.classList.add('active');
+});
+document.querySelectorAll('.audio-box audio').forEach(function(a){
+  const box = a.closest('.audio-box');
+  const src = a.getAttribute('src');
+  const fb = document.createElement('div');
+  fb.className = 'audio-fallback';
+  fb.innerHTML = '<a href="'+src+'" target="_blank">🔗 Open audio file directly</a>';
+  box.appendChild(fb);
+  const err = document.createElement('div');
+  err.className = 'audio-error';
+  err.textContent = "⚠️ Couldn't load this audio — check the file is in AUDIO/ with this exact name.";
+  box.appendChild(err);
+  a.addEventListener('error', function(){ err.style.display = 'block'; });
+});
 document.querySelectorAll('.activity').forEach(function(card){
   const btn = card.querySelector('.btn-reveal');
   const box = card.querySelector('.answerbox');
