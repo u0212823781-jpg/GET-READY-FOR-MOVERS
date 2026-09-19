@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5: Let's go on holiday! — Answer Key</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFBF2;
+    --mint:#BEE8D3; --mint-dark:#4FAE7C;
+    --peach:#FFD3AE; --peach-dark:#EE8C4A;
+    --butter:#FFE8A3; --butter-dark:#E3AC1C;
+    --sky:#AEE1F0; --sky-dark:#2E9CC2;
+    --coral:#FF7F5C;
+    --ink:#3D3A34; --ink-light:#847F73;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:'Nunito',sans-serif;line-height:1.5;}
+  h1,h2,h3{font-family:'Baloo 2',cursive;margin:0 0 .3em 0;}
+  .wrap{max-width:780px;margin:0 auto;padding:0 20px 80px;}
+
+  .hero{
+    background:linear-gradient(160deg,var(--butter) 0%, var(--coral) 55%, var(--sky) 100%);
+    border-radius:0 0 40px 40px;padding:46px 20px 38px;text-align:center;margin-bottom:26px;
+  }
+  .hero .plate{font-size:50px;display:block;margin-bottom:6px;}
+  .hero h1{font-size:2rem;color:var(--ink);}
+  .hero p{font-size:1rem;color:#5a564c;max-width:540px;margin:8px auto 0;}
+  .navpills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:20px;}
+  .navpills a{background:var(--white);border-radius:999px;padding:7px 13px;font-size:.8rem;font-weight:700;text-decoration:none;color:var(--ink);box-shadow:0 2px 0 rgba(0,0,0,.06);}
+
+  .lesson{margin-bottom:38px;}
+  .lesson-title{
+    display:flex;align-items:center;gap:10px;margin-bottom:14px;
+    padding-bottom:8px;border-bottom:3px solid var(--butter);
+  }
+  .lesson-title .num{
+    background:var(--coral);color:white;font-family:'Baloo 2',cursive;font-weight:700;
+    width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;
+  }
+  .lesson-title h2{font-size:1.25rem;}
+  .lesson-title .pageref{font-size:.8rem;color:var(--ink-light);font-weight:700;}
+
+  .activity{
+    background:var(--white);border-radius:20px;padding:18px 20px;margin-bottom:14px;
+    box-shadow:0 3px 0 rgba(0,0,0,.05), 0 8px 20px rgba(61,58,52,.05);
+  }
+  .activity .eyebrow{font-weight:800;font-size:.78rem;color:var(--ink-light);margin-bottom:6px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .activity .eyebrow .audiotag{background:var(--sky);color:#155A72;border-radius:999px;padding:2px 9px;font-weight:800;}
+  .activity .statement{font-weight:700;font-size:1rem;margin-bottom:10px;}
+
+  .audio-box{
+    background:#EAF4FB;border:2px solid var(--sky-dark);border-radius:14px;
+    padding:10px 14px;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  }
+  .audio-box audio{flex:1 1 220px;}
+
+  .btn-reveal{
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:.85rem;
+    background:var(--mint-dark);color:white;border:none;border-radius:999px;
+    padding:8px 16px;cursor:pointer;
+  }
+  .btn-reveal:hover{background:#3f9268;}
+  .btn-reveal.on{background:#E7E2D5;color:var(--ink);}
+
+  .answerbox{
+    display:none;margin-top:12px;background:#FFFDF3;border:2px dashed var(--butter-dark);
+    border-radius:14px;padding:12px 16px;
+  }
+  .answerbox.show{display:block;}
+  .answerbox .answers{font-weight:800;color:#155A2E;margin-bottom:6px;}
+  .answerbox .explain{color:var(--ink-light);font-size:.9rem;}
+
+  .grammar-table{width:100%;border-collapse:collapse;margin:2px 0 12px;}
+  .grammar-table th{background:var(--sky);color:#155A72;padding:6px 8px;border:1px solid #bfe3f0;font-size:.82rem;text-align:left;}
+  .grammar-table td{padding:6px 8px;border:1px solid #d8ecf5;vertical-align:top;font-size:.86rem;}
+  .grammar-table td.word{font-weight:800;color:#155A72;white-space:nowrap;}
+
+  footer{text-align:center;color:var(--ink-light);font-size:.85rem;padding:30px 0 10px;}
+
+  .sitenav{
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+    padding:10px 20px;background:var(--white);
+    box-shadow:0 2px 8px rgba(0,0,0,.07);
+    position:sticky;top:0;z-index:50;
+  }
+  .sitenav a{
+    text-decoration:none;font-weight:800;font-size:.82rem;color:var(--ink);
+    background:#F2EFE7;padding:6px 12px;border-radius:999px;white-space:nowrap;
+  }
+  .sitenav a.home{background:var(--coral);color:white;}
+  .sitenav a.active{background:var(--mint-dark);color:white;}
+
+  .audio-fallback{font-size:.78rem;color:var(--ink-light);}
+  .audio-fallback a{color:var(--sky-dark);font-weight:700;}
+  .audio-error{display:none;color:#b3392c;font-size:.8rem;font-weight:700;margin-top:4px;}
+</style>
+</head>
+<body>
+
+<nav class="sitenav">
+  <a class="home" href="../index.html">🏠 Home</a>
+  <a href="introduction.html" data-page="introduction">👋 Introduction</a>
+  <a href="unit1.html" data-page="unit1">🌳 Unit 1</a>
+  <a href="unit2.html" data-page="unit2">📅 Unit 2</a>
+  <a href="unit3.html" data-page="unit3">🏙️ Unit 3</a>
+  <a href="unit4.html" data-page="unit4">🏠 Unit 4</a>
+  <a href="unit5.html" data-page="unit5">🏖️ Unit 5</a>
+  <a href="unit8.html" data-page="unit8">🍱 Unit 8</a>
+  <a href="unit9.html" data-page="unit9">🐘 Unit 9</a>
+  <a href="unit10.html" data-page="unit10">🌦️ Unit 10</a>
+  <a href="unit11.html" data-page="unit11">🤒 Unit 11</a>
+  <a href="unit12.html" data-page="unit12">🌄 Unit 12</a>
+</nav>
+
+<div class="hero">
+  <span class="plate">🏖️✈️</span>
+  <h1>Unit 5: Let's go on holiday!</h1>
+  <p>Answer key for the printed book — page references, simple explanations and real audio, activity by activity.</p>
+  <div class="navpills">
+    <a href="#l1">Lesson 1</a>
+    <a href="#l2">Lesson 2</a>
+    <a href="#l3">Lesson 3</a>
+    <a href="#l4">Lesson 4</a>
+    <a href="#l5">Lesson 5</a>
+    <a href="#mpt">Practice test</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- LESSON 1 -->
+<div class="lesson" id="l1">
+  <div class="lesson-title"><span class="num">1</span><h2>Words</h2><span class="pageref">SB p.40</span></div>
+
+  <div class="activity" data-answers="1 wave · 2 sea · 3 beach · 4 ticket · 5 cinema · 6 balcony · 7 stairs · 8 lift · 9 seat · 10 swimming pool" data-explain="Look at the holiday picture and write the correct number next to each word.">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">✏️ Write the numbers.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 e · 2 c · 3 b · 4 a · 5 d" data-explain="Look at the picture from Activity 1, read the sentence halves and draw lines to make complete sentences.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🔗 Look at the picture in Activity 1 and draw lines.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 2 -->
+<div class="lesson" id="l2">
+  <div class="lesson-title"><span class="num">2</span><h2>Reading &amp; Speaking</h2><span class="pageref">SB p.41</span></div>
+
+  <div class="activity" data-answers="movie – film · elevator – lift · store – shop" data-explain="Read the American English words and write their British English equivalent to complete the table.">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">🇺🇸 Do you know any American words? Read, then write the British words.</div>
+    <table class="grammar-table">
+      <tr><th>American English</th><th>British English</th></tr>
+      <tr><td class="word">movie</td><td>film</td></tr>
+      <tr><td class="word">elevator</td><td>lift</td></tr>
+      <tr><td class="word">store</td><td>shop</td></tr>
+    </table>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 yes · 2 no · 3 no · 4 yes · 5 no · 6 yes · 7 yes · 8 no" data-explain="Look at the picture of the bus stop, read each sentence and decide if it's true or false.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">✅ Read, look and write yes or no.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 yes · 2 no · 3 no" data-explain="Transcript summary: a child says they went to a hotel on holiday last year with their parents and brother; they love swimming but prefer a pool to the cold sea; they live in a flat with no balconies.">
+    <div class="eyebrow">Activity 3 <span class="audiotag">🎧 Track 25</span></div>
+    <div class="statement">🎧 Listen and circle. Ask and answer.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_25.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 3 -->
+<div class="lesson" id="l3">
+  <div class="lesson-title"><span class="num">3</span><h2>Story</h2><span class="pageref">SB p.42</span></div>
+
+  <div class="activity" data-answers="No written answers — it's a listen-and-act story." data-explain="Play the audio and follow the illustrated story in the Student's Book, then act it out with a partner.">
+    <div class="eyebrow">Activity 1 <span class="audiotag">🎧 Track 26</span></div>
+    <div class="statement">🎧 Listen and read. Then act.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_26.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Picture 1: Daisy's hat is purple, Daisy's mum's ice cream is green, the bag is orange.   Picture 2: the bird is blue." data-explain="Read the sentences below the pictures and colour the items they describe.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">🎨 Read and colour.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Colouring activity — answers shown as coloured items in the Student's Book." data-explain="Transcript summary: Daisy's sister's T-shirt in the shop was purple, the bag she took was yellow, her dad's sweater was brown, Daisy's hat was green, her brother's dropped ice cream was pink, and the bird that ate it was black.">
+    <div class="eyebrow">Activity 3 <span class="audiotag">🎧 Track 27</span></div>
+    <div class="statement">🎧 Listen and colour more things in the pictures.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_27.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 4 -->
+<div class="lesson" id="l4">
+  <div class="lesson-title"><span class="num">4</span><h2>Language practice</h2><span class="pageref">SB p.43</span></div>
+
+  <div class="activity" data-answers="1 c had · 2 e played · 3 d went · 4 a watched · 5 f slept · 6 b swam" data-explain="Look at the pictures, complete the sentences with the past simple of the correct verb, and write each sentence's number next to its matching picture.">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">✏️ Write the numbers. Complete the sentences with the past simple form of the verbs.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 swimming pool · 2 bedroom · 3 cinema · 4 supermarket · 5 sports centre" data-explain="Read each sentence and think about what place it describes, then complete it with the correct word.">
+    <div class="eyebrow">Activity 2</div>
+    <div class="statement">✏️ Complete the sentences.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="Open speaking activity — no fixed written answers." data-explain="Pair speaking activity with a photocopiable worksheet (Teacher's Book, pages 126-127): children complete Activity 1 with their own ideas, then ask and answer to complete Activity 2.">
+    <div class="eyebrow">Activity 3</div>
+    <div class="statement">🗣️ Do the speaking activity.</div>
+    <button class="btn-reveal">👀 Show note</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- LESSON 5 -->
+<div class="lesson" id="l5">
+  <div class="lesson-title"><span class="num">5</span><h2>Language practice</h2><span class="pageref">SB p.44</span></div>
+
+  <div class="activity" data-answers="1 The girl bought Daisy a milkshake. · 2 Jack sent Daisy an email. · 3 Daisy made her brother a sandwich. · 4 Jack told his brother a story. · 5 Daisy showed Jack her picture. · 6 Jack gave his mum a present." data-explain="Rewrite each sentence so it means the same, following the example: swap the direct and indirect objects and remove the preposition.">
+    <div class="eyebrow">Activity 1</div>
+    <div class="statement">✏️ Write sentences that mean the same.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="an ice cream, a pear, some lunch, a chair, a story, a cake, a book, a snake" data-explain="Complete the rhyme with the missing words from the box, based on the pictures, then listen to check and practise saying it.">
+    <div class="eyebrow">Activity 2 <span class="audiotag">🎧 Track 28</span></div>
+    <div class="statement">🎧 Complete the rhyme. Listen and say.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_28.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+<!-- MOVERS PRACTICE TEST -->
+<div class="lesson" id="mpt">
+  <div class="lesson-title"><span class="num">✓</span><h2>Movers practice test</h2><span class="pageref">CB p.45–47</span></div>
+
+  <div class="activity" data-answers="1 Vicky (swimming in the sea, near the beach) · 2 Mary (sitting on a towel, yellow dress) · 3 Peter (on the boat, getting undressed) · 4 Jane (waiting by the shower) · 5 Jim (buying an ice cream)" data-explain="Transcript summary: at the beach, Vicky is swimming near the shore; Mary sits on a towel in a yellow dress, not swimming; Peter is on the boat getting undressed to go for a swim; Jane waits by the shower; and Jim is buying the speaker an ice cream.">
+    <div class="eyebrow">Listening, Part 1 <span class="audiotag">🎧 Track 29</span></div>
+    <div class="statement">🎧 Listen and draw lines. There is one example.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_29.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 A · 2 C · 3 B · 4 B · 5 A · 6 C" data-explain="Read the whole conversation between Kim and her friend Anna first, then choose the option that best completes each gap.">
+    <div class="eyebrow">Reading &amp; Writing, Part 2</div>
+    <div class="statement">📝 Read the text and choose the best answer. Kim is talking to her friend, Anna.</div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+
+  <div class="activity" data-answers="1 B · 2 A · 3 B · 4 C" data-explain="Transcript summary: a girl describes her weekend — her new sweater and socks were a gift, her jeans are old; she went horse riding, not cycling; her house is small but nice with no garden, just a balcony; her favourite room is her bedroom, which has a cupboard but no bookcase (books are downstairs); and after lunch she went to the sports centre and played tennis, not basketball.">
+    <div class="eyebrow">Listening, Part 4 <span class="audiotag">🎧 Track 30</span></div>
+    <div class="statement">🎧 Listen and tick the box. There is one example.</div>
+    <div class="audio-box"><audio controls src="../AUDIOS/Get_Ready_for_Movers_Listening_30.mp3"></audio></div>
+    <button class="btn-reveal">👀 Show answers</button>
+    <div class="answerbox"><div class="answers"></div><div class="explain"></div></div>
+  </div>
+</div>
+
+</div>
+
+<footer>Unit 5 Answer Key · Get Ready for Movers · Alina Iuga</footer>
+
+<script>
+document.querySelectorAll('.sitenav a[data-page]').forEach(function(a){
+  if(location.pathname.endsWith(a.getAttribute('href'))) a.classList.add('active');
+});
+document.querySelectorAll('.audio-box audio').forEach(function(a){
+  const box = a.closest('.audio-box');
+  const src = a.getAttribute('src');
+  const fb = document.createElement('div');
+  fb.className = 'audio-fallback';
+  fb.innerHTML = '🔗 <a href="'+src+'" target="_blank">Open audio file directly</a>';
+  box.appendChild(fb);
+  const err = document.createElement('div');
+  err.className = 'audio-error';
+  err.textContent = "⚠️ Couldn't load this audio — check the file is in AUDIOS/ with this exact name.";
+  box.appendChild(err);
+  a.addEventListener('error', function(){ err.style.display = 'block'; });
+});
+document.querySelectorAll('.activity').forEach(function(card){
+  const btn = card.querySelector('.btn-reveal');
+  const box = card.querySelector('.answerbox');
+  const showLabel = btn.textContent;
+  if(card.hasAttribute('data-answers')){
+    box.querySelector('.answers').textContent = '✅ ' + card.getAttribute('data-answers');
+  }
+  box.querySelector('.explain').textContent = card.getAttribute('data-explain');
+  btn.addEventListener('click', function(){
+    const isOn = box.classList.toggle('show');
+    btn.classList.toggle('on', isOn);
+    btn.textContent = isOn ? '🙈 Hide' : showLabel;
+  });
+});
+</script>
+</body>
+</html>
