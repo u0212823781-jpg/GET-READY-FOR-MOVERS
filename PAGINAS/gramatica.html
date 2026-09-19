@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grammar Practice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#F3F1FE; --navy2:#FFFFFF; --navy3:#EEEAFB;
+    --violet:#7C6AE8; --violet-dim:#B5AAF2;
+    --teal:#12A594; --gold:#C9840F; --pink:#D93C79;
+    --ink:#2B2555; --ink-dim:#6E6795; --line:#DDD6F7;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 15% -10%, #E3DCFF 0%, transparent 55%),
+      radial-gradient(ellipse at 90% 5%, #D8F5F0 0%, transparent 45%),
+      var(--navy);
+    color:var(--ink);font-family:'Work Sans',sans-serif;line-height:1.5;min-height:100vh;
+  }
+  h1,h2,h3{font-family:'Fredoka',sans-serif;margin:0;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px 90px;}
+
+  .sitenav{display:flex;align-items:center;gap:8px;padding:10px 20px;background:var(--navy2);
+    box-shadow:0 2px 8px rgba(43,37,85,.06);position:sticky;top:0;z-index:50;}
+  .sitenav a{text-decoration:none;font-weight:800;font-size:.82rem;color:var(--ink);
+    background:var(--navy3);padding:6px 14px;border-radius:999px;font-family:'Fredoka',sans-serif;}
+
+  .hero{padding:44px 20px 24px;text-align:center;}
+  .hero-emoji{font-size:50px;display:block;margin-bottom:8px;}
+  .hero h1{font-size:clamp(1.7rem,5vw,2.4rem);}
+  .hero p{color:var(--ink-dim);max-width:540px;margin:10px auto 0;}
+
+  .groups{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:24px 0 8px;}
+  .group-btn{font-family:'Fredoka';font-weight:600;font-size:.88rem;background:var(--navy2);
+    color:var(--ink-dim);border:2px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer;transition:.15s;}
+  .group-btn:hover{border-color:var(--violet-dim);color:var(--ink);}
+  .group-btn.active{background:var(--violet);border-color:var(--violet);color:#fff;}
+
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:18px 0 26px;}
+  .tab-btn{font-family:'Fredoka';font-weight:600;font-size:.9rem;background:var(--navy3);
+    color:var(--ink-dim);border:2px solid transparent;border-radius:999px;padding:8px 16px;cursor:pointer;transition:.15s;}
+  .tab-btn:hover{color:var(--ink);}
+  .tab-btn.active{background:var(--teal);color:#fff;}
+
+  .gpanel{display:none;} .gpanel.active{display:block;}
+  .tpanel{display:none;animation:fadein .25s ease;} .tpanel.active{display:block;}
+  @keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .card{background:var(--navy2);border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:16px;
+    box-shadow:0 4px 0 rgba(124,106,232,.06), 0 14px 30px rgba(43,37,85,.08);}
+
+  .gtitle{font-family:'Fredoka';font-weight:600;font-size:1.05rem;color:var(--violet);margin:0 0 10px;}
+  .gtitle:not(:first-child){margin-top:22px;}
+  .gnote{color:var(--ink-dim);font-size:.88rem;margin:0 0 12px;}
+
+  table.gtable{width:100%;border-collapse:collapse;margin-bottom:8px;font-size:.9rem;}
+  table.gtable th{background:var(--navy3);color:var(--ink);font-family:'Fredoka';font-weight:600;font-size:.82rem;
+    text-align:left;padding:8px 10px;border:1px solid var(--line);}
+  table.gtable td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;}
+  table.gtable td.label{background:var(--navy3);font-weight:700;color:var(--violet);white-space:nowrap;}
+  table.gtable em{color:var(--ink-dim);font-style:italic;}
+  table.gtable b, table.gtable strong{color:var(--teal);}
+
+  .quiz-progress{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:.85rem;color:var(--ink-dim);font-weight:600;}
+  .quiz-bar{height:6px;background:var(--navy3);border-radius:999px;overflow:hidden;margin-bottom:18px;}
+  .quiz-bar-fill{height:100%;background:var(--teal);transition:width .3s;}
+  .quiz-question{font-family:'Fredoka';font-size:1.1rem;margin-bottom:16px;text-align:center;}
+  .quiz-question .blank{color:var(--gold);}
+  .quiz-options{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+  @media(max-width:560px){.quiz-options{grid-template-columns:1fr;}}
+  .quiz-opt{background:var(--navy3);border:2px solid var(--line);border-radius:14px;padding:13px;text-align:center;
+    font-weight:600;cursor:pointer;font-size:.96rem;transition:.12s;}
+  .quiz-opt:hover{border-color:var(--violet-dim);}
+  .quiz-opt.correct{border-color:var(--teal);background:#DDF6F1;color:#0E8577;}
+  .quiz-opt.wrong{border-color:var(--pink);background:#FBE1EC;color:#C81B5B;}
+  .quiz-opt.disabled{pointer-events:none;opacity:.55;}
+  .quiz-result{text-align:center;padding:26px 10px;} .quiz-result .score{font-family:'Fredoka';font-size:2.3rem;color:var(--gold);}
+  .btn{font-family:'Fredoka';font-weight:600;font-size:.9rem;border:none;border-radius:999px;padding:10px 20px;cursor:pointer;transition:.15s;}
+  .btn-primary{background:var(--violet);color:#fff;} .btn-primary:hover{background:#6C5CE0;}
+
+  footer{text-align:center;color:var(--ink-dim);font-size:.82rem;padding:30px 0 10px;}
+</style>
+</head>
+<body>
+
+<nav class="sitenav"><a href="../index.html">🏠 Home</a></nav>
+
+<div class="hero">
+  <span class="hero-emoji">📐✏️</span>
+  <h1>Grammar Practice</h1>
+  <p>The grammar reference tables from the book, organised by unit, with multiple-choice practice for each point.</p>
+</div>
+
+<div class="wrap">
+
+  <div class="groups" id="groupSelector"></div>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="table">📊 Grammar Reference</button>
+    <button class="tab-btn" data-tab="quiz">❓ Practice</button>
+  </div>
+
+  <!-- ===== GRAMMAR REFERENCE PANELS (static per group) ===== -->
+  <div class="tpanel active" id="tpanel-table">
+
+    <div class="gpanel active card" id="gpanel-intro">
+      <div class="gtitle">Present simple — statements</div>
+      <p class="gnote">Use the present simple for things that are generally true or always happen. Add <b>-s</b> for he/she/it.</p>
+      <table class="gtable">
+        <tr><th>I / You / We / They</th><th>He / She / It</th></tr>
+        <tr><td>I <b>live</b> in a flat.</td><td>She <b>lives</b> in a house.</td></tr>
+      </table>
+      <div class="gtitle">Present continuous — statements &amp; <em>Where's...?</em></div>
+      <p class="gnote">Use the present continuous for things happening right now. Form: <b>am/is/are</b> + verb-<b>ing</b>.</p>
+      <table class="gtable">
+        <tr><th>Statement</th><th>Question with <em>Where's...?</em></th></tr>
+        <tr><td>Daisy <b>is walking</b> to school.</td><td><b>Where's</b> Daisy's house? — It's next to the park.</td></tr>
+      </table>
+    </div>
+
+    <div class="gpanel card" id="gpanel-u1">
+      <div class="gtitle">be good at</div>
+      <table class="gtable">
+        <tr><th></th><th></th></tr>
+        <tr><td class="label">be good at + noun</td><td><em>My parents <b>are good at</b> English.</em> · <em>She isn't good at sport.</em></td></tr>
+        <tr><td class="label">be good at + verb + -ing</td><td><em>That boy <b>is good at</b> dancing.</em> · <em>They aren't good at fishing.</em></td></tr>
+      </table>
+      <div class="gtitle">Comparative &amp; superlative adjectives — short adjectives</div>
+      <p class="gnote">Short adjectives: add <b>-er</b> for comparative, <b>-est</b> for superlative.</p>
+      <table class="gtable">
+        <tr><th>Adjective</th><th>Comparative</th><th>Superlative</th></tr>
+        <tr><td>long</td><td><b>longer</b></td><td><b>longest</b></td></tr>
+        <tr><td>big</td><td><b>bigger</b></td><td><b>biggest</b></td></tr>
+        <tr><td>pretty</td><td><b>prettier</b></td><td><b>prettiest</b></td></tr>
+      </table>
+    </div>
+
+    <div class="gpanel card" id="gpanel-u2">
+      <div class="gtitle">Shall I ...? — offers</div>
+      <table class="gtable">
+        <tr><th>Offer</th><th>Answer</th></tr>
+        <tr><td><b>Shall I</b> open the window?</td><td>Yes, please. I'm hot!</td></tr>
+        <tr><td><b>Shall I</b> make dinner?</td><td>No, thanks. I'm not hungry.</td></tr>
+      </table>
+      <div class="gtitle">like / love / hate + verb + -ing</div>
+      <p class="gnote">After <b>like</b>, <b>love</b> and <b>hate</b>, the next verb takes the <b>-ing</b> form.</p>
+      <table class="gtable">
+        <tr><th>Example</th></tr>
+        <tr><td>I <b>like listening</b> to music. She <b>loves reading</b> books.</td></tr>
+      </table>
+    </div>
+
+    <div class="gpanel card" id="gpanel-u3">
+      <div class="gtitle">The past simple</div>
+      <table class="gtable">
+        <tr><th></th><th>Regular verbs</th><th>Irregular verbs</th></tr>
+        <tr><td class="label">+</td><td>She <b>watched</b> a film.</td><td>I <b>went</b> shopping yesterday.</td></tr>
+        <tr><td class="label">−</td><td>They <b>didn't watch</b> television.</td><td>I <b>didn't go</b> to school.</td></tr>
+        <tr><td class="label">?</td><td>What film <b>did</b> she <b>watch</b>? <br>Did you watch a DVD on Saturday?</td><td>When <b>did</b> you <b>go</b> to the shops? <br>Did he go for a swim yesterday?</td></tr>
+        <tr><td class="label">Short answers</td><td>Yes, we <b>did</b>.</td><td>No, he <b>didn't</b>.</td></tr>
+      </table>
+    </div>
+
+    <div class="gpanel card" id="gpanel-u4">
+      <div class="gtitle">The past simple — regular verbs</div>
+      <p class="gnote">Add <b>-ed</b> to regular verbs. Same table as Unit 3 — keep practising the pattern.</p>
+      <table class="gtable">
+        <tr><th></th><th>Regular verbs</th></tr>
+        <tr><td class="label">+</td><td>He <b>cleaned</b> his room. She <b>washed</b> the windows.</td></tr>
+        <tr><td class="label">−</td><td>They <b>didn't clean</b> the kitchen.</td></tr>
+        <tr><td class="label">?</td><td><b>Did</b> you <b>clean</b> your room on Saturday?</td></tr>
+      </table>
+      <div class="gtitle">There is / There are + any</div>
+      <table class="gtable">
+        <tr><th></th><th>Singular</th><th>Plural / Negative / Question</th></tr>
+        <tr><td class="label">+</td><td>There <b>is</b> some milk.</td><td>There <b>are</b> some apples.</td></tr>
+        <tr><td class="label">−</td><td colspan="2">There isn't <b>any</b> juice. There aren't <b>any</b> biscuits.</td></tr>
+        <tr><td class="label">?</td><td colspan="2"><b>Is</b> there <b>any</b> juice? <b>Are</b> there <b>any</b> apples?</td></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- ===== QUIZ PANEL (shared, data-driven) ===== -->
+  <div class="tpanel" id="tpanel-quiz">
+    <div class="card" id="quizCard">
+      <div class="quiz-progress"><span id="quizCounter"></span><span>Score: <b id="quizScore" style="color:var(--gold)">0</b></span></div>
+      <div class="quiz-bar"><div class="quiz-bar-fill" id="quizBarFill" style="width:0%"></div></div>
+      <div class="quiz-question" id="quizQuestion"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>Grammar Practice · Get Ready for Movers · Alina Iuga</footer>
+
+<script>
+const GROUPS = [
+  {id:'intro', title:'Introduction', icon:'👋'},
+  {id:'u1', title:'Unit 1', icon:'🌳'},
+  {id:'u2', title:'Unit 2', icon:'📅'},
+  {id:'u3', title:'Unit 3', icon:'🏙️'},
+  {id:'u4', title:'Unit 4', icon:'🏠'},
+];
+
+const QUESTIONS = {
+  intro: [
+    {q:"I ___ in Madrid.", opts:["live","living","lives"], a:"live"},
+    {q:"She ___ a red T-shirt today.", opts:["wear","wears","is wearing"], a:"is wearing"},
+    {q:"___ Daisy's house?", opts:["Where's","Where","What's"], a:"Where's"},
+    {q:"He ___ football every Saturday.", opts:["play","plays","is playing"], a:"plays"},
+    {q:"Look! They ___ in the park now.", opts:["play","plays","are playing"], a:"are playing"},
+    {q:"My brother ___ in a flat.", opts:["live","lives","living"], a:"lives"},
+  ],
+  u1: [
+    {q:"My parents ___ good at English.", opts:["is","are","am"], a:"are"},
+    {q:"She isn't good at ___.", opts:["swim","swimming","swims"], a:"swimming"},
+    {q:"That boy is good at ___.", opts:["dance","dancing","danced"], a:"dancing"},
+    {q:"The red scarf is ___ than the blue one.", opts:["long","longer","longest"], a:"longer"},
+    {q:"This is the ___ tree in the park.", opts:["tall","taller","tallest"], a:"tallest"},
+    {q:"My book is ___ than yours.", opts:["big","bigger","biggest"], a:"bigger"},
+    {q:"She's the ___ girl in the class.", opts:["pretty","prettier","prettiest"], a:"prettiest"},
+    {q:"They aren't good at ___.", opts:["fish","fishing","fished"], a:"fishing"},
+  ],
+  u2: [
+    {q:"___ I open the window? — Yes, please.", opts:["Shall","Do","Am"], a:"Shall"},
+    {q:"Shall I make dinner? — No, thanks. I'm not ___.", opts:["hunger","hungry","hungrily"], a:"hungry"},
+    {q:"I like ___ to music.", opts:["listen","listening","listened"], a:"listening"},
+    {q:"___ I write a story? — Yes, good idea!", opts:["Shall","Can","Do"], a:"Shall"},
+    {q:"She loves ___ books.", opts:["read","reading","reads"], a:"reading"},
+    {q:"Shall I swim in the sea? — No! It's too ___.", opts:["cold","colder","coldest"], a:"cold"},
+  ],
+  u3: [
+    {q:"She ___ a film last night.", opts:["watch","watched","watches"], a:"watched"},
+    {q:"They ___ watch television yesterday.", opts:["don't","didn't","doesn't"], a:"didn't"},
+    {q:"___ you watch a DVD on Saturday?", opts:["Do","Did","Does"], a:"Did"},
+    {q:"I ___ shopping yesterday.", opts:["go","went","goes"], a:"went"},
+    {q:"___ did you go to the shops?", opts:["When","What","Who"], a:"When"},
+    {q:"Did he go for a swim yesterday? — No, he ___.", opts:["doesn't","wasn't","didn't"], a:"didn't"},
+    {q:"What film ___ she watch?", opts:["did","does","do"], a:"did"},
+    {q:"___ we watch TV on Saturday? — Yes, we did.", opts:["Did","Do","Were"], a:"Did"},
+  ],
+  u4: [
+    {q:"There ___ some milk in the fridge.", opts:["is","are","be"], a:"is"},
+    {q:"___ there any apples?", opts:["Is","Are","Do"], a:"Are"},
+    {q:"He ___ his room yesterday.", opts:["clean","cleaned","cleans"], a:"cleaned"},
+    {q:"There isn't ___ juice.", opts:["some","any","a"], a:"any"},
+    {q:"I ___ my homework last night.", opts:["do","did","does"], a:"did"},
+    {q:"She ___ the windows on Monday.", opts:["wash","washed","washes"], a:"washed"},
+    {q:"There aren't ___ biscuits in the box.", opts:["some","any","no"], a:"any"},
+  ],
+};
+
+let currentGroup = 'intro';
+
+/* GROUP SELECTOR */
+const groupSelector = document.getElementById('groupSelector');
+GROUPS.forEach(g=>{
+  const btn=document.createElement('button');
+  btn.className='group-btn'+(g.id===currentGroup?' active':'');
+  btn.textContent=g.icon+' '+g.title; btn.dataset.id=g.id;
+  btn.addEventListener('click', ()=>selectGroup(g.id));
+  groupSelector.appendChild(btn);
+});
+function selectGroup(id){
+  currentGroup=id;
+  document.querySelectorAll('.group-btn').forEach(b=>b.classList.toggle('active', b.dataset.id===id));
+  document.querySelectorAll('.gpanel').forEach(p=>p.classList.toggle('active', p.id==='gpanel-'+id));
+  newQuiz();
+}
+
+/* CONTENT TABS */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tpanel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active'); document.getElementById('tpanel-'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* QUIZ ENGINE */
+let quizPool=[], quizIndex=0, quizScore=0;
+let quizQuestion, quizOptions, quizCounter, quizScoreEl, quizBarFill;
+const quizCard=document.getElementById('quizCard');
+function bindQuizRefs(){
+  quizQuestion=document.getElementById('quizQuestion'); quizOptions=document.getElementById('quizOptions');
+  quizCounter=document.getElementById('quizCounter'); quizScoreEl=document.getElementById('quizScore');
+  quizBarFill=document.getElementById('quizBarFill');
+}
+bindQuizRefs();
+function newQuiz(){
+  quizPool=[...QUESTIONS[currentGroup]]; quizIndex=0; quizScore=0;
+  quizScoreEl.textContent=0; renderQuizQuestion();
+}
+function renderQuizQuestion(){
+  if(quizIndex>=quizPool.length){ showQuizResult(); return; }
+  const item=quizPool[quizIndex];
+  quizCounter.textContent=`Question ${quizIndex+1}/${quizPool.length}`;
+  quizBarFill.style.width=(quizIndex/quizPool.length*100)+"%";
+  quizQuestion.innerHTML = item.q.replace('___', '<span class="blank">___</span>');
+  let opts=[...item.opts].sort(()=>Math.random()-0.5);
+  quizOptions.innerHTML="";
+  opts.forEach(opt=>{
+    const div=document.createElement('div'); div.className='quiz-opt'; div.textContent=opt;
+    div.addEventListener('click', ()=>onQuizAnswer(div, opt, item.a));
+    quizOptions.appendChild(div);
+  });
+}
+function onQuizAnswer(el, chosen, correct){
+  document.querySelectorAll('.quiz-opt').forEach(o=>o.classList.add('disabled'));
+  if(chosen===correct){ el.classList.add('correct'); quizScore++; quizScoreEl.textContent=quizScore; }
+  else { el.classList.add('wrong'); document.querySelectorAll('.quiz-opt').forEach(o=>{ if(o.textContent===correct) o.classList.add('correct'); }); }
+  setTimeout(()=>{ quizIndex++; renderQuizQuestion(); }, 900);
+}
+function showQuizResult(){
+  quizBarFill.style.width="100%";
+  quizCard.innerHTML = `<div class="quiz-result"><div class="score">${quizScore} / ${quizPool.length}</div>
+    <p>${quizScore===quizPool.length?'Perfect! 🌟':quizScore>=quizPool.length*0.7?'Well done! 👏':'Keep practicing! 💪'}</p>
+    <button class="btn btn-primary" id="quizRestart">🔁 Play again</button></div>`;
+  document.getElementById('quizRestart').addEventListener('click', ()=>{
+    quizCard.innerHTML = `<div class="quiz-progress"><span id="quizCounter"></span><span>Score: <b id="quizScore" style="color:var(--gold)">0</b></span></div>
+      <div class="quiz-bar"><div class="quiz-bar-fill" id="quizBarFill" style="width:0%"></div></div>
+      <div class="quiz-question" id="quizQuestion"></div><div class="quiz-options" id="quizOptions"></div>`;
+    bindQuizRefs(); newQuiz();
+  });
+}
+newQuiz();
+</script>
+</body>
+</html>
