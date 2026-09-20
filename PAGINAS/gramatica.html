@@ -80,6 +80,21 @@
   .quiz-opt.wrong{border-color:var(--pink);background:#FBE1EC;color:#C81B5B;}
   .quiz-opt.disabled{pointer-events:none;opacity:.55;}
   .quiz-result{text-align:center;padding:26px 10px;} .quiz-result .score{font-family:'Fredoka';font-size:2.3rem;color:var(--gold);}
+
+  .gap-input-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:6px 0 14px;}
+  .gap-input-row input{background:var(--navy3);border:2px solid var(--line);border-radius:12px;padding:12px 16px;
+    color:var(--ink);font-size:1.05rem;text-align:center;width:220px;outline:none;}
+  .gap-input-row input:focus{border-color:var(--violet);}
+  .gap-controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+  .bee-feedback{text-align:center;font-weight:600;min-height:26px;margin-bottom:6px;}
+  .bee-feedback.ok{color:var(--teal);} .bee-feedback.bad{color:var(--pink);}
+
+  .tf-buttons{display:flex;gap:14px;justify-content:center;margin:8px 0 14px;}
+  .tf-btn{background:var(--navy3);border:2px solid var(--line);color:var(--ink);padding:12px 28px;font-size:1rem;}
+  .tf-btn:hover{border-color:var(--violet-dim);}
+  .tf-btn.correct{border-color:var(--teal);background:#DDF6F1;color:#0E8577;}
+  .tf-btn.wrong{border-color:var(--pink);background:#FBE1EC;color:#C81B5B;}
+  .tf-btn.disabled{pointer-events:none;opacity:.55;}
   .btn{font-family:'Fredoka';font-weight:600;font-size:.9rem;border:none;border-radius:999px;padding:10px 20px;cursor:pointer;transition:.15s;}
   .btn-primary{background:var(--violet);color:#fff;} .btn-primary:hover{background:#6C5CE0;}
 
@@ -101,7 +116,9 @@
   <div class="groups" id="groupSelector"></div>
   <div class="tabs">
     <button class="tab-btn active" data-tab="table">📊 Grammar Reference</button>
-    <button class="tab-btn" data-tab="quiz">❓ Practice</button>
+    <button class="tab-btn" data-tab="quiz">❓ Multiple Choice</button>
+    <button class="tab-btn" data-tab="gap">✍️ Fill the Gap</button>
+    <button class="tab-btn" data-tab="tf">✅ True or False</button>
   </div>
 
   <!-- ===== GRAMMAR REFERENCE PANELS (static per group) ===== -->
@@ -328,6 +345,37 @@
       <div class="quiz-bar"><div class="quiz-bar-fill" id="quizBarFill" style="width:0%"></div></div>
       <div class="quiz-question" id="quizQuestion"></div>
       <div class="quiz-options" id="quizOptions"></div>
+    </div>
+  </div>
+
+  <!-- ===== FILL THE GAP ===== -->
+  <div class="tpanel" id="tpanel-gap">
+    <div class="card" id="gapCard">
+      <div class="quiz-progress"><span id="gapCounter"></span><span>Score: <b id="gapScore" style="color:var(--gold)">0</b></span></div>
+      <div class="quiz-bar"><div class="quiz-bar-fill" id="gapBarFill" style="width:0%"></div></div>
+      <div class="quiz-question" id="gapQuestion"></div>
+      <div class="gap-input-row">
+        <input type="text" id="gapInput" placeholder="type the missing word..." autocomplete="off">
+        <button class="btn btn-primary" id="gapCheck">Check</button>
+      </div>
+      <div class="bee-feedback" id="gapFeedback"></div>
+      <div class="gap-controls">
+        <button class="btn btn-ghost" id="gapNext" style="display:none;">Next ➡</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TRUE OR FALSE ===== -->
+  <div class="tpanel" id="tpanel-tf">
+    <div class="card" id="tfCard">
+      <div class="quiz-progress"><span id="tfCounter"></span><span>Score: <b id="tfScore" style="color:var(--gold)">0</b></span></div>
+      <div class="quiz-bar"><div class="quiz-bar-fill" id="tfBarFill" style="width:0%"></div></div>
+      <div class="quiz-question" id="tfQuestion"></div>
+      <div class="tf-buttons">
+        <button class="btn tf-btn" id="tfTrue">✅ True</button>
+        <button class="btn tf-btn" id="tfFalse">❌ False</button>
+      </div>
+      <div class="bee-feedback" id="tfFeedback"></div>
     </div>
   </div>
 
@@ -591,7 +639,7 @@ function selectGroup(id){
   currentGroup=id;
   document.querySelectorAll('.group-btn').forEach(b=>b.classList.toggle('active', b.dataset.id===id));
   document.querySelectorAll('.gpanel').forEach(p=>p.classList.toggle('active', p.id==='gpanel-'+id));
-  newQuiz();
+  newQuiz(); newGap(); newTF();
 }
 
 /* CONTENT TABS */
@@ -652,6 +700,115 @@ function showQuizResult(){
   });
 }
 newQuiz();
+
+/* ---------- FILL THE GAP (reuses QUESTIONS) ---------- */
+let gapPool=[], gapIndex=0, gapScore=0, gapAnswered=false;
+const gapCard=document.getElementById('gapCard');
+const gapQuestion=document.getElementById('gapQuestion'), gapInput=document.getElementById('gapInput');
+const gapFeedback=document.getElementById('gapFeedback'), gapCounter=document.getElementById('gapCounter');
+const gapScoreEl=document.getElementById('gapScore'), gapBarFill=document.getElementById('gapBarFill');
+const gapCheckBtn=document.getElementById('gapCheck'), gapNextBtn=document.getElementById('gapNext');
+function normalizeGap(s){ return s.toLowerCase().trim().replace(/[.?!]+$/,'').replace(/\s+/g,' '); }
+function newGap(){
+  const bank=[...QUESTIONS[currentGroup]].sort(()=>Math.random()-0.5);
+  gapPool=bank.slice(0, Math.min(10, bank.length));
+  gapIndex=0; gapScore=0; gapScoreEl.textContent=0; renderGap();
+}
+function renderGap(){
+  if(gapIndex>=gapPool.length){ finishGap(); return; }
+  gapAnswered=false;
+  const item=gapPool[gapIndex];
+  gapCounter.textContent=`Question ${gapIndex+1}/${gapPool.length}`;
+  gapBarFill.style.width=(gapIndex/gapPool.length*100)+"%";
+  gapQuestion.innerHTML = item.q.replace('___', '<span class="blank">___</span>');
+  gapInput.value=''; gapInput.disabled=false; gapInput.style.display='inline-block';
+  gapFeedback.textContent=''; gapFeedback.className='bee-feedback';
+  gapCheckBtn.style.display='inline-block'; gapNextBtn.style.display='none'; gapInput.focus();
+}
+function checkGap(){
+  if(gapAnswered) return;
+  const item=gapPool[gapIndex]; const ok=normalizeGap(gapInput.value)===normalizeGap(item.a);
+  gapAnswered=true; gapInput.disabled=true; gapCheckBtn.style.display='none'; gapNextBtn.style.display='inline-block';
+  if(ok){ gapScore++; gapScoreEl.textContent=gapScore; gapFeedback.textContent='✅ Correct!'; gapFeedback.className='bee-feedback ok'; }
+  else { gapFeedback.textContent=`❌ The correct answer is "${item.a}"`; gapFeedback.className='bee-feedback bad'; }
+}
+function finishGap(){
+  gapBarFill.style.width="100%"; gapQuestion.textContent=''; gapInput.style.display='none';
+  gapCheckBtn.style.display='none'; gapNextBtn.style.display='none';
+  gapFeedback.className='bee-feedback ok';
+  gapFeedback.innerHTML = `Final score: <b style="color:var(--gold);font-size:1.3rem;">${gapScore}/${gapPool.length}</b> · <span style="cursor:pointer;text-decoration:underline;color:var(--violet);" id="gapRestart">🔁 Try again</span>`;
+  document.getElementById('gapRestart').addEventListener('click', newGap);
+}
+gapCheckBtn.addEventListener('click', checkGap);
+gapInput.addEventListener('keydown', e=>{ if(e.key==='Enter' && !gapAnswered) checkGap(); });
+gapNextBtn.addEventListener('click', ()=>{ gapIndex++; renderGap(); });
+newGap();
+
+/* ---------- TRUE OR FALSE (reuses QUESTIONS) ---------- */
+let tfPool=[], tfIndex=0, tfScore=0, tfAnswered=false;
+const tfCard=document.getElementById('tfCard');
+let tfQuestion=document.getElementById('tfQuestion'), tfFeedback=document.getElementById('tfFeedback');
+let tfCounter=document.getElementById('tfCounter'), tfScoreEl=document.getElementById('tfScore');
+let tfBarFill=document.getElementById('tfBarFill'), tfTrueBtn=document.getElementById('tfTrue'), tfFalseBtn=document.getElementById('tfFalse');
+function newTF(){
+  const bank=[...QUESTIONS[currentGroup]].sort(()=>Math.random()-0.5);
+  const pick=bank.slice(0, Math.min(10, bank.length));
+  tfPool = pick.map(item=>{
+    const showTrue = Math.random()<0.5;
+    let word = item.a;
+    if(!showTrue){
+      const wrongOpts = item.opts.filter(o=>o!==item.a);
+      word = wrongOpts[Math.floor(Math.random()*wrongOpts.length)];
+    }
+    return { sentence: item.q.replace('___', word), isTrue: showTrue };
+  });
+  tfIndex=0; tfScore=0; tfScoreEl.textContent=0; renderTF();
+}
+function renderTF(){
+  if(tfIndex>=tfPool.length){ finishTF(); return; }
+  tfAnswered=false;
+  tfCounter.textContent=`Question ${tfIndex+1}/${tfPool.length}`;
+  tfBarFill.style.width=(tfIndex/tfPool.length*100)+"%";
+  tfQuestion.textContent = tfPool[tfIndex].sentence;
+  tfFeedback.textContent=''; tfFeedback.className='bee-feedback';
+  tfTrueBtn.classList.remove('correct','wrong','disabled'); tfFalseBtn.classList.remove('correct','wrong','disabled');
+}
+function onTF(choice){
+  if(tfAnswered) return; tfAnswered=true;
+  const item=tfPool[tfIndex];
+  tfTrueBtn.classList.add('disabled'); tfFalseBtn.classList.add('disabled');
+  const chosenBtn = choice ? tfTrueBtn : tfFalseBtn;
+  const correctBtn = item.isTrue ? tfTrueBtn : tfFalseBtn;
+  if(choice===item.isTrue){ chosenBtn.classList.add('correct'); tfScore++; tfScoreEl.textContent=tfScore;
+    tfFeedback.textContent='✅ Correct!'; tfFeedback.className='bee-feedback ok'; }
+  else { chosenBtn.classList.add('wrong'); correctBtn.classList.add('correct');
+    tfFeedback.textContent='❌ Not quite.'; tfFeedback.className='bee-feedback bad'; }
+  setTimeout(()=>{ tfIndex++; renderTF(); }, 900);
+}
+tfTrueBtn.addEventListener('click', ()=>onTF(true));
+tfFalseBtn.addEventListener('click', ()=>onTF(false));
+function finishTF(){
+  tfBarFill.style.width="100%";
+  tfCard.innerHTML = `<div class="quiz-result"><div class="score">${tfScore} / ${tfPool.length}</div>
+    <p>${tfScore===tfPool.length?'Perfect! 🌟':tfScore>=tfPool.length*0.7?'Well done! 👏':'Keep practicing! 💪'}</p>
+    <button class="btn btn-primary" id="tfRestart">🔁 Play again</button></div>`;
+  document.getElementById('tfRestart').addEventListener('click', ()=>{
+    tfCard.innerHTML = `<div class="quiz-progress"><span id="tfCounter"></span><span>Score: <b id="tfScore" style="color:var(--gold)">0</b></span></div>
+      <div class="quiz-bar"><div class="quiz-bar-fill" id="tfBarFill" style="width:0%"></div></div>
+      <div class="quiz-question" id="tfQuestion"></div>
+      <div class="tf-buttons"><button class="btn tf-btn" id="tfTrue">✅ True</button><button class="btn tf-btn" id="tfFalse">❌ False</button></div>
+      <div class="bee-feedback" id="tfFeedback"></div>`;
+    bindTFRefs(); newTF();
+  });
+}
+function bindTFRefs(){
+  tfQuestion=document.getElementById('tfQuestion'); tfFeedback=document.getElementById('tfFeedback');
+  tfCounter=document.getElementById('tfCounter'); tfScoreEl=document.getElementById('tfScore');
+  tfBarFill=document.getElementById('tfBarFill'); tfTrueBtn=document.getElementById('tfTrue'); tfFalseBtn=document.getElementById('tfFalse');
+  tfTrueBtn.addEventListener('click', ()=>onTF(true));
+  tfFalseBtn.addEventListener('click', ()=>onTF(false));
+}
+newTF();
 
 /* ---------- DEEP LINK (#u3, #intro...) ---------- */
 const initialHash = location.hash.replace('#','');
