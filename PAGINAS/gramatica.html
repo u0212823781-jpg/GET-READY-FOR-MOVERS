@@ -59,7 +59,7 @@
   .gnote{color:var(--ink-dim);font-size:.88rem;margin:0 0 12px;}
 
   table.gtable{width:100%;border-collapse:collapse;margin-bottom:8px;font-size:.9rem;}
-  table.gtable th{background:var(--navy3);color:var(--ink);font-family:'Fredoka';font-weight:600;font-size:.82rem;
+  table.gtable th{background:var(--navy3);color:var(--ink);font-family:'Fredoka';font-weight:600;font-size:.82em;
     text-align:left;padding:8px 10px;border:1px solid var(--line);}
   table.gtable td{padding:8px 10px;border:1px solid var(--line);vertical-align:top;}
   table.gtable td.label{background:var(--navy3);font-weight:700;color:var(--violet);white-space:nowrap;}
@@ -69,16 +69,18 @@
   /* Zoom for grammar reference tables */
   @keyframes gt-pop{0%{transform:scale(.96);opacity:.5;}100%{transform:scale(1);opacity:1;}}
   .gpanel.active{animation:gt-pop .3s ease;}
-  .gt-wrap{position:relative;}
-  .gt-zoom-btn{
-    font-family:'Fredoka';font-weight:600;font-size:.72rem;
+  .gt-wrap{margin-bottom:10px;}
+  .gt-wrap .zoom-ctrl{margin-bottom:6px;}
+  .gt-scroll{overflow-x:auto;}
+  .zoom-ctrl{display:flex;align-items:center;gap:6px;justify-content:flex-end;}
+  .zoom-ctrl button{
+    font-family:'Fredoka';font-weight:600;font-size:.85rem;line-height:1;
     background:var(--navy3);border:1.5px solid var(--line);color:var(--ink);
-    border-radius:999px;padding:4px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:4px;
-    margin-bottom:6px;
+    border-radius:999px;width:26px;height:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;
   }
-  .gt-zoom-btn:hover{border-color:var(--violet-dim);}
-  table.gtable.zoomed{font-size:1.25em;}
-  table.gtable.zoomed th, table.gtable.zoomed td{padding:11px 13px;}
+  .zoom-ctrl button:hover:not(:disabled){border-color:var(--violet-dim);}
+  .zoom-ctrl button:disabled{opacity:.35;cursor:default;}
+  .zoom-ctrl .zoom-pct{font-family:'Fredoka';font-weight:600;font-size:.76rem;color:var(--ink-dim);min-width:34px;text-align:center;}
 
   .quiz-progress{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:.85rem;color:var(--ink-dim);font-weight:600;}
   .quiz-bar{height:6px;background:var(--navy3);border-radius:999px;overflow:hidden;margin-bottom:18px;}
@@ -830,19 +832,19 @@ if(GROUPS.some(g=>g.id===initialHash)) selectGroup(initialHash);
 
 /* ---------- ZOOM BUTTONS FOR GRAMMAR TABLES ---------- */
 document.querySelectorAll('table.gtable').forEach(function(table){
-  const wrap = document.createElement('div');
-  wrap.className = 'gt-wrap';
+  const wrap = document.createElement('div'); wrap.className = 'gt-wrap';
   table.parentNode.insertBefore(wrap, table);
-  const zbtn = document.createElement('button');
-  zbtn.type = 'button';
-  zbtn.className = 'gt-zoom-btn';
-  zbtn.textContent = '🔍 Zoom table';
-  wrap.appendChild(zbtn);
-  wrap.appendChild(table);
-  zbtn.addEventListener('click', function(){
-    const isZoomed = table.classList.toggle('zoomed');
-    zbtn.textContent = isZoomed ? '🔎 Zoom out' : '🔍 Zoom table';
-  });
+  const ctrl = document.createElement('div'); ctrl.className = 'zoom-ctrl';
+  const minusBtn = document.createElement('button'); minusBtn.type = 'button'; minusBtn.textContent = '−'; minusBtn.setAttribute('aria-label','Zoom out');
+  const pctLabel = document.createElement('span'); pctLabel.className = 'zoom-pct'; pctLabel.textContent = '100%';
+  const plusBtn = document.createElement('button'); plusBtn.type = 'button'; plusBtn.textContent = '+'; plusBtn.setAttribute('aria-label','Zoom in');
+  ctrl.appendChild(minusBtn); ctrl.appendChild(pctLabel); ctrl.appendChild(plusBtn);
+  const scrollBox = document.createElement('div'); scrollBox.className = 'gt-scroll';
+  wrap.appendChild(ctrl); wrap.appendChild(scrollBox); scrollBox.appendChild(table);
+  let level = 100;
+  function apply(){ table.style.fontSize = level + '%'; pctLabel.textContent = level + '%'; minusBtn.disabled = level<=100; plusBtn.disabled = level>=280; }
+  minusBtn.addEventListener('click', function(){ level = Math.max(100, level - 20); apply(); });
+  plusBtn.addEventListener('click', function(){ level = Math.min(280, level + 20); apply(); });
 });
 </script>
 </body>
