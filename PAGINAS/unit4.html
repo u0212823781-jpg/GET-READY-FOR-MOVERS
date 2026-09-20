@@ -80,6 +80,32 @@
   .grammar-table td{padding:6px 8px;border:1px solid #d8ecf5;vertical-align:top;font-size:.86rem;}
   .grammar-table td.word{font-weight:800;color:#155A72;white-space:nowrap;}
 
+  /* Zoom: answerbox pop-in + manual zoom button */
+  @keyframes gr-pop{0%{transform:scale(.92);opacity:.4;}60%{transform:scale(1.02);}100%{transform:scale(1);opacity:1;}}
+  .answerbox.show{animation:gr-pop .35s ease;}
+  .answerbox .zoom-row{display:flex;justify-content:flex-end;margin-top:8px;}
+  .answerbox .zoom-btn{
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;
+    background:var(--white);border:1.5px solid var(--butter-dark);color:var(--ink);
+    border-radius:999px;padding:4px 10px;cursor:pointer;
+  }
+  .answerbox .zoom-btn:hover{background:var(--butter);}
+  .answerbox.zoomed{transform:scale(1.14);transform-origin:top center;margin-bottom:14px;
+    box-shadow:0 10px 26px rgba(0,0,0,.12);position:relative;z-index:5;}
+  .answerbox.zoomed .answers, .answerbox.zoomed .explain{font-size:1.15em;}
+
+  /* Zoom: grammar tables */
+  .gt-wrap{position:relative;}
+  .gt-zoom-btn{
+    font-family:'Nunito',sans-serif;font-weight:800;font-size:.72rem;
+    background:var(--sky);border:1.5px solid var(--sky-dark);color:#155A72;
+    border-radius:999px;padding:4px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:4px;
+    margin-bottom:6px;
+  }
+  .gt-zoom-btn:hover{background:#DCEEF8;}
+  .grammar-table.zoomed{font-size:1.28em;}
+  .grammar-table.zoomed th, .grammar-table.zoomed td{padding:10px 12px;}
+
   footer{text-align:center;color:var(--ink-light);font-size:.85rem;padding:30px 0 10px;}
 
   .sitenav{
@@ -403,10 +429,40 @@ document.querySelectorAll('.activity').forEach(function(card){
     box.querySelector('.answers').textContent = '✅ ' + card.getAttribute('data-answers');
   }
   box.querySelector('.explain').textContent = card.getAttribute('data-explain');
+  const zoomRow = document.createElement('div');
+  zoomRow.className = 'zoom-row';
+  const zoomBtn = document.createElement('button');
+  zoomBtn.type = 'button';
+  zoomBtn.className = 'zoom-btn';
+  zoomBtn.textContent = '🔍 Zoom';
+  zoomRow.appendChild(zoomBtn);
+  box.appendChild(zoomRow);
+  zoomBtn.addEventListener('click', function(){
+    const isZoomed = box.classList.toggle('zoomed');
+    zoomBtn.textContent = isZoomed ? '🔎 Zoom out' : '🔍 Zoom';
+  });
   btn.addEventListener('click', function(){
     const isOn = box.classList.toggle('show');
     btn.classList.toggle('on', isOn);
     btn.textContent = isOn ? '🙈 Hide' : showLabel;
+    if(!isOn){ box.classList.remove('zoomed'); zoomBtn.textContent = '🔍 Zoom'; }
+    else { box.scrollIntoView({behavior:'smooth', block:'center'}); }
+  });
+});
+
+document.querySelectorAll('table.grammar-table').forEach(function(table){
+  const wrap = document.createElement('div');
+  wrap.className = 'gt-wrap';
+  table.parentNode.insertBefore(wrap, table);
+  const zbtn = document.createElement('button');
+  zbtn.type = 'button';
+  zbtn.className = 'gt-zoom-btn';
+  zbtn.textContent = '🔍 Zoom table';
+  wrap.appendChild(zbtn);
+  wrap.appendChild(table);
+  zbtn.addEventListener('click', function(){
+    const isZoomed = table.classList.toggle('zoomed');
+    zbtn.textContent = isZoomed ? '🔎 Zoom out' : '🔍 Zoom table';
   });
 });
 </script>

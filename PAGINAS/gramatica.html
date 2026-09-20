@@ -66,6 +66,20 @@
   table.gtable em{color:var(--ink-dim);font-style:italic;}
   table.gtable b, table.gtable strong{color:var(--teal);}
 
+  /* Zoom for grammar reference tables */
+  @keyframes gt-pop{0%{transform:scale(.96);opacity:.5;}100%{transform:scale(1);opacity:1;}}
+  .gpanel.active{animation:gt-pop .3s ease;}
+  .gt-wrap{position:relative;}
+  .gt-zoom-btn{
+    font-family:'Fredoka';font-weight:600;font-size:.72rem;
+    background:var(--navy3);border:1.5px solid var(--line);color:var(--ink);
+    border-radius:999px;padding:4px 10px;cursor:pointer;display:inline-flex;align-items:center;gap:4px;
+    margin-bottom:6px;
+  }
+  .gt-zoom-btn:hover{border-color:var(--violet-dim);}
+  table.gtable.zoomed{font-size:1.25em;}
+  table.gtable.zoomed th, table.gtable.zoomed td{padding:11px 13px;}
+
   .quiz-progress{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:.85rem;color:var(--ink-dim);font-weight:600;}
   .quiz-bar{height:6px;background:var(--navy3);border-radius:999px;overflow:hidden;margin-bottom:18px;}
   .quiz-bar-fill{height:100%;background:var(--teal);transition:width .3s;}
@@ -813,6 +827,23 @@ newTF();
 /* ---------- DEEP LINK (#u3, #intro...) ---------- */
 const initialHash = location.hash.replace('#','');
 if(GROUPS.some(g=>g.id===initialHash)) selectGroup(initialHash);
+
+/* ---------- ZOOM BUTTONS FOR GRAMMAR TABLES ---------- */
+document.querySelectorAll('table.gtable').forEach(function(table){
+  const wrap = document.createElement('div');
+  wrap.className = 'gt-wrap';
+  table.parentNode.insertBefore(wrap, table);
+  const zbtn = document.createElement('button');
+  zbtn.type = 'button';
+  zbtn.className = 'gt-zoom-btn';
+  zbtn.textContent = '🔍 Zoom table';
+  wrap.appendChild(zbtn);
+  wrap.appendChild(table);
+  zbtn.addEventListener('click', function(){
+    const isZoomed = table.classList.toggle('zoomed');
+    zbtn.textContent = isZoomed ? '🔎 Zoom out' : '🔍 Zoom table';
+  });
+});
 </script>
 </body>
 </html>
